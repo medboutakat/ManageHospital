@@ -1,6 +1,8 @@
 ﻿namespace ManageHospitalData.Entities
 {
-    public class DoctorsCategory:Settings
+    public class RoomCategory : Settings
     { 
-    } 
+    }
+
+
 }

@@ -2,9 +2,7 @@
 {
     public class Material : Settings
     {
-
-
+        public int Quantity { get; set; } 
     }
-
 
 }

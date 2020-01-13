@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\source\\repos\\MangedHostpital\\MangedHostpital\\MangedHostpital.csproj": {}
+    "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\MangedHostpital\\MangedHostpital.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\source\\repos\\MangedHostpital\\MangedHostpital\\MangedHostpital.csproj": {
+    "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\MangedHostpital\\MangedHostpital.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\MangedHostpital\\MangedHostpital\\MangedHostpital.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\MangedHostpital\\MangedHostpital.csproj",
         "projectName": "MangedHostpital",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\MangedHostpital\\MangedHostpital\\MangedHostpital.csproj",
+        "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\MangedHostpital\\MangedHostpital.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\MangedHostpital\\MangedHostpital\\obj\\",
+        "outputPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\MangedHostpital\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
