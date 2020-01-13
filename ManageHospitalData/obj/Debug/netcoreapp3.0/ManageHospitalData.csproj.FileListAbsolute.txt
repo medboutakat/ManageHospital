@@ -1,0 +1,5 @@
+C:\Users\admin\source\repos\MangedHostpital\ManageHospitalData\bin\Debug\netcoreapp3.0\ManageHospitalData.deps.json
+C:\Users\admin\source\repos\MangedHostpital\ManageHospitalData\bin\Debug\netcoreapp3.0\ManageHospitalData.dll
+C:\Users\admin\source\repos\MangedHostpital\ManageHospitalData\obj\Debug\netcoreapp3.0\ManageHospitalData.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\MangedHostpital\ManageHospitalData\obj\Debug\netcoreapp3.0\ManageHospitalData.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\MangedHostpital\ManageHospitalData\obj\Debug\netcoreapp3.0\ManageHospitalData.AssemblyInfo.cs

@@ -1,0 +1,9 @@
+C:\Users\admin\source\repos\MangedHostpital\MangedHostpital\bin\Debug\netcoreapp3.0\appsettings.Development.json
+C:\Users\admin\source\repos\MangedHostpital\MangedHostpital\bin\Debug\netcoreapp3.0\appsettings.json
+C:\Users\admin\source\repos\MangedHostpital\MangedHostpital\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
+C:\Users\admin\source\repos\MangedHostpital\MangedHostpital\obj\Debug\netcoreapp3.0\MangedHostpital.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\MangedHostpital\MangedHostpital\obj\Debug\netcoreapp3.0\staticwebassets\MangedHostpital.StaticWebAssets.Manifest.cache
+C:\Users\admin\source\repos\MangedHostpital\MangedHostpital\obj\Debug\netcoreapp3.0\staticwebassets\MangedHostpital.StaticWebAssets.xml
+C:\Users\admin\source\repos\MangedHostpital\MangedHostpital\obj\Debug\netcoreapp3.0\MangedHostpital.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\MangedHostpital\MangedHostpital\obj\Debug\netcoreapp3.0\MangedHostpital.AssemblyInfo.cs
+C:\Users\admin\source\repos\MangedHostpital\MangedHostpital\obj\Debug\netcoreapp3.0\MangedHostpital.RazorTargetAssemblyInfo.cache
