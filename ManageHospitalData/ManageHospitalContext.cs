@@ -5,6 +5,10 @@ namespace ManageHospitalData
 {
     public class ManageHospitalDBContext : DbContext,IManageHospitalDBContext
     {
+        public ManageHospitalDBContext(DbContextOptions<ManageHospitalDBContext> options)
+        {
+
+        }
         public DbSet<Patience> Patiences { get; set; }
 
         public DbSet<Appointement> Appointements { get; set; }
