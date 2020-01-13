@@ -7,7 +7,7 @@ namespace ManageHospitalData.Entities
     {
         public Operation()
         {
-            Doctors = new HashSet<Doctors>();
+            Doctors = new HashSet<Doctor>();
         }
 
         public Guid Id { private set; get; }
@@ -16,8 +16,9 @@ namespace ManageHospitalData.Entities
         public string Price { set; get; }
         public string TotalStayNight { set; get; }
 
-        public ICollection<Doctors> Doctors { get; set; }
+        public ICollection<Doctor> Doctors { get; set; }
 
+        public OperationCategory OperationCategory { get; set; }
         public Room Room { get; set; }
     }
 

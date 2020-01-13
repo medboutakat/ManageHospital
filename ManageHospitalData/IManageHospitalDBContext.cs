@@ -14,7 +14,7 @@ namespace ManageHospitalData
         public DbSet<AppointementStatus> Statuss { get; set; }
 
 
-        public DbSet<Doctors> Doctors { get; set; }
+        public DbSet<Doctor> Doctors { get; set; }
         public DbSet<DoctorsCategory> DoctorCategories { get; set; }
 
         public DbSet<Material> Materials { get; set; }
@@ -22,6 +22,7 @@ namespace ManageHospitalData
         public DbSet<MaterialCategory> MaterialCategories { get; set; }
 
         public DbSet<Operation> Operations { get; set; }
+        public DbSet<OperationResult> OperationResults { get; set; }
         public DbSet<OperationCategory> OperationCategories { get; set; }
 
         public DbSet<Hospital> Hospitals { get; set; }

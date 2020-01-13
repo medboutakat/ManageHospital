@@ -8,7 +8,7 @@ namespace ManageHospitalData.Entities
     {
         public TestResult()
         {
-            Doctors = new HashSet<Doctors>();
+            Doctors = new HashSet<Doctor>();
         }
 
         public Guid Id { private set; get; }
@@ -17,6 +17,6 @@ namespace ManageHospitalData.Entities
         public Documents Documents { get; set; }
         public Test Test { get; set; }
         public string SentTo { get; set; }
-        ICollection<Doctors> Doctors { get; set; }
+        ICollection<Doctor> Doctors { get; set; }
     }
 }
