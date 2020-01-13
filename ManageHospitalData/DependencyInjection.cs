@@ -9,7 +9,7 @@ namespace ManageHospitalData
         public static IServiceCollection AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddDbContext<ManageHospitalDBContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("SysManageDatabase")));
+                options.UseSqlServer(configuration.GetConnectionString("ManageHospitalDB")));
 
             services.AddScoped<IManageHospitalDBContext>(provider => provider.GetService<ManageHospitalDBContext>());
 
