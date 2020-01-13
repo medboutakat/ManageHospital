@@ -2,9 +2,8 @@
 {
     public class Doctors : Person
     {
-        public DoctorsCategory DoctorsCategory { get; set; }
-
-    }
+        public DoctorsCategory DoctorsCategory { get; set; } 
+    } 
 
 
 }

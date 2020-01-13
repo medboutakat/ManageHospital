@@ -1,10 +1,13 @@
 ﻿using ManageHospitalData.Entities;
 using Microsoft.EntityFrameworkCore;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace ManageHospitalData
 {
-    public class ManageHospitalDBContext : DbContext,IManageHospitalDBContext
+    internal interface IManageHospitalDBContext
     {
+
         public DbSet<Patience> Patiences { get; set; }
 
         public DbSet<Appointement> Appointements { get; set; }
@@ -14,7 +17,7 @@ namespace ManageHospitalData
         public DbSet<Doctors> Doctors { get; set; }
         public DbSet<DoctorsCategory> DoctorCategories { get; set; }
 
-        public DbSet<Material>  Materials { get; set; }
+        public DbSet<Material> Materials { get; set; }
         public DbSet<MaterialStatus> MaterialStatuses { get; set; }
         public DbSet<MaterialCategory> MaterialCategories { get; set; }
 
@@ -28,12 +31,10 @@ namespace ManageHospitalData
         public DbSet<TestResult> TestResults { get; set; }
 
         public DbSet<Documents> Documents { get; set; }
-        public DbSet<Contact>  Contacts { get; set; }
+        public DbSet<Contact> Contacts { get; set; }
         public DbSet<Room> Rooms { get; set; }
-         
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(ManageHospitalDBContext).Assembly);
-        }
+
+
+        Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }
