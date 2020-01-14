@@ -48,11 +48,11 @@ namespace ManageHospital.WebUI
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy",
-                    builder => builder.AllowAnyOrigin());
-                    //.AllowAnyMethod()
-                    //.AllowAnyHeader()
-                    //.WithOrigins("*"/*http://localhost:4200"*/)
-                    //.AllowCredentials());
+                    builder =>builder.AllowAnyOrigin()
+                    .AllowAnyMethod()
+                    .AllowAnyHeader() 
+                    .AllowCredentials()
+                    );
             });
 
             // Customise default API behaviour
