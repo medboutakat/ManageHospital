@@ -4,7 +4,7 @@ namespace ManageHospitalData.Entities
 {
     public class Contact
     {
-        public Guid Id { private set; get; }
+        public int Id { private set; get; }
 
         public string Email { set; get; }
         public string Phone1 { set; get; }

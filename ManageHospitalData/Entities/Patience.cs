@@ -7,5 +7,4 @@
         public string Assurance { get; set; }
     }
 
-
 }

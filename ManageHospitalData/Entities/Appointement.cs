@@ -8,8 +8,12 @@
         public string CallTimeStamp { get; set; } //DateAppointement
         public string ReservationTimeStamp { get; set; } //Date Resesrvation
         public AppointementStatus Status { get; set; } //Accepted,NotAccepted,DelyedToAnnotherAppointement,Passed 
-        public string Subject { get; set; } // subject appointement (test,stay,radio, etc)
+        public string Subject { get; set; } // subject appointement (test,stay,radio, etc) 
+        public Patience Patience { get; set; } 
+        public Assutance Assutance { get; set; }
+        
     }
+
 
 
 }

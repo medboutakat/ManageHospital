@@ -2,7 +2,7 @@
 {
     public class Doctor : Person
     {
-        public DoctorsCategory DoctorsCategory { get; set; } 
+        public DoctorCategory DoctorCategory { get; set; } 
     } 
 
 

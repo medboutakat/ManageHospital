@@ -11,11 +11,11 @@ namespace ManageHospitalData
         public DbSet<Patience> Patiences { get; set; }
 
         public DbSet<Appointement> Appointements { get; set; }
-        public DbSet<AppointementStatus> Statuss { get; set; }
+        public DbSet<AppointementStatus> AppointementStatuss { get; set; }
 
 
         public DbSet<Doctor> Doctors { get; set; }
-        public DbSet<DoctorsCategory> DoctorCategories { get; set; }
+        public DbSet<DoctorCategory> DoctorCategories { get; set; }
 
         public DbSet<Material> Materials { get; set; }
         public DbSet<MaterialStatus> MaterialStatuses { get; set; }
@@ -34,6 +34,11 @@ namespace ManageHospitalData
         public DbSet<Documents> Documents { get; set; }
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Room> Rooms { get; set; }
+        public DbSet<RoomCategory> RoomCategories { get; set; }
+        
+        public DbSet<Assurance> Assurances { get; set; }
+
+         
 
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
