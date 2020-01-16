@@ -48,6 +48,21 @@
     <Compile Remove="Services\CurrentUserService.cs" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Remove="appsettings.json" />
+    <None Remove="Controllers\PatientController.cs" />
+    <None Remove="nswag.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="nswag.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
   <ItemGroup> 
     <ProjectReference Include="..\ManageHospitalData\ManageHospitalData.csproj" /> 
   </ItemGroup>

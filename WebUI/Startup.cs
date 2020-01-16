@@ -4,8 +4,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
-using FluentValidation.AspNetCore;
+using Microsoft.Extensions.Hosting; 
 using Microsoft.AspNetCore.Http;
 using ManageHospitalData;
 
@@ -51,7 +50,7 @@ namespace ManageHospital.WebUI
                     builder =>builder.AllowAnyOrigin()
                     .AllowAnyMethod()
                     .AllowAnyHeader() 
-                    .AllowCredentials()
+                    //.AllowCredentials()
                     );
             });
 
@@ -86,7 +85,10 @@ namespace ManageHospital.WebUI
             }
             else
             {
-                app.UseExceptionHandler("/Error");
+                app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
+
+                //app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }

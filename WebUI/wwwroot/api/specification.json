@@ -11,7 +11,7 @@
         "tags": [
           "Appointement"
         ],
-        "operationId": "Appointement_GetProductCategories",
+        "operationId": "Appointement_GetAppointementsAll",
         "responses": {
           "200": {
             "description": "",
@@ -32,7 +32,7 @@
         "tags": [
           "Appointement"
         ],
-        "operationId": "Appointement_PostProductCategorie",
+        "operationId": "Appointement_PostAppointements",
         "requestBody": {
           "x-name": "obj",
           "content": {
@@ -65,7 +65,7 @@
         "tags": [
           "Appointement"
         ],
-        "operationId": "Appointement_GetProductCategorie",
+        "operationId": "Appointement_GetAppointements",
         "parameters": [
           {
             "name": "Id",
@@ -96,7 +96,7 @@
         "tags": [
           "Appointement"
         ],
-        "operationId": "Appointement_PutProductCategorie",
+        "operationId": "Appointement_PutAppointements",
         "parameters": [
           {
             "name": "Id",
@@ -139,7 +139,7 @@
         "tags": [
           "Appointement"
         ],
-        "operationId": "Appointement_DeleteProductCategorie",
+        "operationId": "Appointement_DeleteAppointements",
         "parameters": [
           {
             "name": "Id",
@@ -172,7 +172,7 @@
         "tags": [
           "AppointementStatus"
         ],
-        "operationId": "AppointementStatus_GetProductCategories",
+        "operationId": "AppointementStatus_GetAppointementStatus",
         "responses": {
           "200": {
             "description": "",
@@ -333,7 +333,7 @@
         "tags": [
           "Assurance"
         ],
-        "operationId": "Assurance_GetProductCategories",
+        "operationId": "Assurance_GetAssurances",
         "responses": {
           "200": {
             "description": "",
@@ -515,7 +515,7 @@
         "tags": [
           "Contact"
         ],
-        "operationId": "Contact_GetProductCategories",
+        "operationId": "Contact_GetContacts",
         "responses": {
           "200": {
             "description": "",
@@ -676,7 +676,7 @@
         "tags": [
           "DoctorCategory"
         ],
-        "operationId": "DoctorCategory_GetProductCategories",
+        "operationId": "DoctorCategory_GetDoctorCategories",
         "responses": {
           "200": {
             "description": "",
@@ -837,7 +837,7 @@
         "tags": [
           "Doctor"
         ],
-        "operationId": "Doctor_GetProductCategories",
+        "operationId": "Doctor_GetDoctorsAll",
         "responses": {
           "200": {
             "description": "",
@@ -858,7 +858,7 @@
         "tags": [
           "Doctor"
         ],
-        "operationId": "Doctor_PostProductCategorie",
+        "operationId": "Doctor_PostDoctors",
         "requestBody": {
           "x-name": "obj",
           "content": {
@@ -891,7 +891,7 @@
         "tags": [
           "Doctor"
         ],
-        "operationId": "Doctor_GetProductCategorie",
+        "operationId": "Doctor_GetDoctors",
         "parameters": [
           {
             "name": "Id",
@@ -922,7 +922,7 @@
         "tags": [
           "Doctor"
         ],
-        "operationId": "Doctor_PutProductCategorie",
+        "operationId": "Doctor_PutDoctors",
         "parameters": [
           {
             "name": "Id",
@@ -965,7 +965,7 @@
         "tags": [
           "Doctor"
         ],
-        "operationId": "Doctor_DeleteProductCategorie",
+        "operationId": "Doctor_DeleteDoctors",
         "parameters": [
           {
             "name": "Id",
@@ -998,7 +998,7 @@
         "tags": [
           "MaterialCategory"
         ],
-        "operationId": "MaterialCategory_GetProductCategories",
+        "operationId": "MaterialCategory_GetMaterials",
         "responses": {
           "200": {
             "description": "",
@@ -1159,7 +1159,7 @@
         "tags": [
           "OperationCategory"
         ],
-        "operationId": "OperationCategory_GetProductCategories",
+        "operationId": "OperationCategory_GetOperationCategories",
         "responses": {
           "200": {
             "description": "",
@@ -1315,12 +1315,173 @@
         }
       }
     },
+    "/api/Patient": {
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "operationId": "Patient_GetPatientsAll",
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Patient"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          "Patient"
+        ],
+        "operationId": "Patient_PostPatients",
+        "requestBody": {
+          "x-name": "obj",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Patient"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 1
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Patient/{Id}": {
+      "get": {
+        "tags": [
+          "Patient"
+        ],
+        "operationId": "Patient_GetPatients",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          "Patient"
+        ],
+        "operationId": "Patient_PutPatients",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "requestBody": {
+          "x-name": "obj",
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Patient"
+              }
+            }
+          },
+          "required": true,
+          "x-position": 2
+        },
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Patient"
+        ],
+        "operationId": "Patient_DeletePatients",
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/octet-stream": {
+                "schema": {
+                  "type": "string",
+                  "format": "binary"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/RoomCategory": {
       "get": {
         "tags": [
           "RoomCategory"
         ],
-        "operationId": "RoomCategory_GetProductCategories",
+        "operationId": "RoomCategory_GetRoomCategoriesAll",
         "responses": {
           "200": {
             "description": "",
@@ -1341,7 +1502,7 @@
         "tags": [
           "RoomCategory"
         ],
-        "operationId": "RoomCategory_PostProductCategorie",
+        "operationId": "RoomCategory_PostRoomCategories",
         "requestBody": {
           "x-name": "obj",
           "content": {
@@ -1374,7 +1535,7 @@
         "tags": [
           "RoomCategory"
         ],
-        "operationId": "RoomCategory_GetProductCategorie",
+        "operationId": "RoomCategory_GetRoomCategories",
         "parameters": [
           {
             "name": "Id",
@@ -1405,7 +1566,7 @@
         "tags": [
           "RoomCategory"
         ],
-        "operationId": "RoomCategory_PutProductCategorie",
+        "operationId": "RoomCategory_PutRoomCategories",
         "parameters": [
           {
             "name": "Id",
@@ -1448,7 +1609,7 @@
         "tags": [
           "RoomCategory"
         ],
-        "operationId": "RoomCategory_DeleteProductCategorie",
+        "operationId": "RoomCategory_DeleteRoomCategories",
         "parameters": [
           {
             "name": "Id",
@@ -1519,7 +1680,7 @@
             "nullable": true,
             "oneOf": [
               {
-                "$ref": "#/components/schemas/Patience"
+                "$ref": "#/components/schemas/Patient"
               }
             ]
           },
@@ -1551,7 +1712,7 @@
           }
         }
       },
-      "Patience": {
+      "Patient": {
         "allOf": [
           {
             "$ref": "#/components/schemas/Person"

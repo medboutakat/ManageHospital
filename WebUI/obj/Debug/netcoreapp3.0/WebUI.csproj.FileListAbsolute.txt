@@ -200,12 +200,6 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\obj\Debug\netcoreap
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\obj\Debug\netcoreapp3.0\WebUI.RazorTargetAssemblyInfo.cache
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\obj\Debug\netcoreapp3.0\ManageHospital.WebUI.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\obj\Debug\netcoreapp3.0\ManageHospital.WebUI.pdb
-C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\appsettings.Development.json
-C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\appsettings.json
-C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\appsettings.Production.json
-C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\appsettings.Test.json
-C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\nswag.json
-C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\Properties\launchSettings.json
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\ManageHospital.WebUI.StaticWebAssets.xml
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\ManageHospital.WebUI.exe
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\ManageHospital.WebUI.deps.json
@@ -350,3 +344,5 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreap
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\ManageHospitalData.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\ManageHospitalData.pdb
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\obj\Debug\netcoreapp3.0\WebUI.csproj.CopyComplete
+C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\appsettings.json
+C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Debug\netcoreapp3.0\nswag.json

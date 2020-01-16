@@ -22,16 +22,16 @@ namespace ManageHospital.WebUI.Controllers
             _context = context;
         }
 
-        // GET: api/ProductCategories
+        // GET: api/RoomCategories
         [HttpGet]
-        public IEnumerable<RoomCategory> GetProductCategories()
+        public IEnumerable<RoomCategory> GetRoomCategories()
         {
             return _context.RoomCategories;
         }
 
-        // GET: api/ProductCategories/5
+        // GET: api/RoomCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> GetRoomCategories([FromRoute] int Id)
         {
             if (!ModelState.IsValid)
             {
@@ -48,9 +48,9 @@ namespace ManageHospital.WebUI.Controllers
             return Ok(obj);
         }
 
-        // PUT: api/ProductCategories/5
+        // PUT: api/RoomCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] int Id, [FromBody] RoomCategory obj)
+        public async Task<IActionResult> PutRoomCategories([FromRoute] int Id, [FromBody] RoomCategory obj)
         {
             if (!ModelState.IsValid)
             {
@@ -83,9 +83,9 @@ namespace ManageHospital.WebUI.Controllers
             return NoContent();
         }
 
-        // POST: api/ProductCategories
+        // POST: api/RoomCategories
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] RoomCategory obj)
+        public async Task<IActionResult> PostRoomCategories([FromBody] RoomCategory obj)
         {
 
 
@@ -97,12 +97,12 @@ namespace ManageHospital.WebUI.Controllers
             _context.RoomCategories.Add(obj);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProductCategories", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetRoomCategories", new { Id = obj.Id }, obj);
         }
 
-        // DELETE: api/ProductCategories/5
+        // DELETE: api/RoomCategories/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> DeleteRoomCategories([FromRoute] int Id)
         {
             if (!ModelState.IsValid)
             {

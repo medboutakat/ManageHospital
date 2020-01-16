@@ -13,32 +13,32 @@ namespace ManageHospital.WebUI.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [DisableCors]
-    public class OperationCategoryController : ControllerBase
+    public class PatientController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
 
-        public OperationCategoryController(ManageHospitalDBContext context)
+        public PatientController(ManageHospitalDBContext context)
         {
             _context = context;
         }
 
-        // GET: api/OperationCategories
+        // GET: api/Patients
         [HttpGet]
-        public IEnumerable<OperationCategory> GetOperationCategories()
+        public IEnumerable<Patient> GetPatients()
         {
-            return _context.OperationCategories;
+            return _context.Patients;
         }
 
-        // GET: api/OperationCategories/5
+        // GET: api/Patients/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> GetPatients([FromRoute] int Id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var obj = await _context.Appointements.FindAsync(Id);
+            var obj = await _context.Patients.FindAsync(Id);
 
             if (obj == null)
             {
@@ -48,9 +48,9 @@ namespace ManageHospital.WebUI.Controllers
             return Ok(obj);
         }
 
-        // PUT: api/OperationCategories/5
+        // PUT: api/Patientss/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] int Id, [FromBody] OperationCategory obj)
+        public async Task<IActionResult> PutPatients([FromRoute] int Id, [FromBody] Patient obj)
         {
             if (!ModelState.IsValid)
             {
@@ -83,9 +83,9 @@ namespace ManageHospital.WebUI.Controllers
             return NoContent();
         }
 
-        // POST: api/OperationCategories
+        // POST: api/Patientss
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] OperationCategory obj)
+        public async Task<IActionResult> PostPatients([FromBody] Patient obj)
         {
 
 
@@ -94,28 +94,28 @@ namespace ManageHospital.WebUI.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.OperationCategories.Add(obj);
+            _context.Patients.Add(obj);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetOperationCategories", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetPatients", new { Id = obj.Id }, obj);
         }
 
-        // DELETE: api/OperationCategories/5
+        // DELETE: api/Patientss/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> DeletePatients([FromRoute] int Id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var obj = await _context.OperationCategories.FindAsync(Id);
+            var obj = await _context.Patients.FindAsync(Id);
             if (obj == null)
             {
                 return NotFound();
             }
 
-            _context.OperationCategories.Remove(obj);
+            _context.Patients.Remove(obj);
             await _context.SaveChangesAsync();
 
             return Ok(obj);
@@ -123,7 +123,7 @@ namespace ManageHospital.WebUI.Controllers
 
         private bool Exists(int Id)
         {
-            return _context.OperationCategories.Any(e => e.Id == Id);
+            return _context.Patients.Any(e => e.Id == Id);
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace ManageHospitalData.Entities
 {
-    public class Patience : Person
+    public class Patient : Person
     {
         public int Age { get; set; }
         public string IdentityNo { get; set; }

@@ -10,7 +10,7 @@ namespace ManageHospitalData
 
         } 
 
-        public DbSet<Patience> Patiences { get; set; }
+        public DbSet<Patient> Patients { get; set; }
 
         public DbSet<Appointement> Appointements { get; set; }
         public DbSet<AppointementStatus> AppointementStatuss { get; set; }

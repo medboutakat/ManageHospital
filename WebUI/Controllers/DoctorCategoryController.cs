@@ -22,14 +22,14 @@ namespace ManageHospital.WebUI.Controllers
             _context = context;
         }
 
-        // GET: api/ProductCategories
+        // GET: api/DoctorCategories
         [HttpGet]
-        public IEnumerable<DoctorCategory> GetProductCategories()
+        public IEnumerable<DoctorCategory> GetDoctorCategories()
         {
             return _context.DoctorCategories;
         }
 
-        // GET: api/ProductCategories/5
+        // GET: api/DoctorCategories/5
         [HttpGet("{Id}")]
         public async Task<IActionResult> GetProductCategorie([FromRoute] int Id)
         {
@@ -48,7 +48,7 @@ namespace ManageHospital.WebUI.Controllers
             return Ok(obj);
         }
 
-        // PUT: api/ProductCategories/5
+        // PUT: api/DoctorCategories/5
         [HttpPut("{Id}")]
         public async Task<IActionResult> PutProductCategorie([FromRoute] int Id, [FromBody] DoctorCategory obj)
         {
@@ -83,7 +83,7 @@ namespace ManageHospital.WebUI.Controllers
             return NoContent();
         }
 
-        // POST: api/ProductCategories
+        // POST: api/DoctorCategories
         [HttpPost]
         public async Task<IActionResult> PostProductCategorie([FromBody] DoctorCategory obj)
         {
@@ -97,10 +97,10 @@ namespace ManageHospital.WebUI.Controllers
             _context.DoctorCategories.Add(obj);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProductCategories", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetDoctorCategories", new { Id = obj.Id }, obj);
         }
 
-        // DELETE: api/ProductCategories/5
+        // DELETE: api/DoctorCategories/5
         [HttpDelete("{Id}")]
         public async Task<IActionResult> DeleteProductCategorie([FromRoute] int Id)
         {

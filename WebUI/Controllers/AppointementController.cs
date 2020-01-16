@@ -24,14 +24,14 @@ namespace ManageHospital.WebUI.Controllers
 
         // GET: api/ProductCategories
         [HttpGet]
-        public IEnumerable<Appointement> GetProductCategories()
+        public IEnumerable<Appointement> GetAppointements()
         {
             return _context.Appointements;
         }
 
         // GET: api/ProductCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> GetAppointements([FromRoute] int Id)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +50,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // PUT: api/ProductCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] int Id, [FromBody] Appointement obj)
+        public async Task<IActionResult> PutAppointements([FromRoute] int Id, [FromBody] Appointement obj)
         {
             if (!ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // POST: api/ProductCategories
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] Appointement obj)
+        public async Task<IActionResult> PostAppointements([FromBody] Appointement obj)
         {
 
 
@@ -97,12 +97,12 @@ namespace ManageHospital.WebUI.Controllers
             _context.Appointements.Add(obj);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProductCategories", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetAppointements", new { Id = obj.Id }, obj);
         }
 
         // DELETE: api/ProductCategories/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> DeleteAppointements([FromRoute] int Id)
         {
             if (!ModelState.IsValid)
             {

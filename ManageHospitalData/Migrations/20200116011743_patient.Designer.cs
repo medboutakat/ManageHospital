@@ -4,14 +4,16 @@ using ManageHospitalData;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ManageHospitalData.Migrations
 {
     [DbContext(typeof(ManageHospitalDBContext))]
-    partial class ManageHospitalDBContextModelSnapshot : ModelSnapshot
+    [Migration("20200116011743_patient")]
+    partial class patient
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

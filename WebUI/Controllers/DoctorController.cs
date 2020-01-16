@@ -22,16 +22,16 @@ namespace ManageHospital.WebUI.Controllers
             _context = context;
         }
 
-        // GET: api/ProductCategories
+        // GET: api/Doctors
         [HttpGet]
-        public IEnumerable<Doctor> GetProductCategories()
+        public IEnumerable<Doctor> GetDoctors()
         {
             return _context.Doctors;
         }
 
-        // GET: api/ProductCategories/5
+        // GET: api/Doctors/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> GetDoctors([FromRoute] int Id)
         {
             if (!ModelState.IsValid)
             {
@@ -48,9 +48,9 @@ namespace ManageHospital.WebUI.Controllers
             return Ok(obj);
         }
 
-        // PUT: api/ProductCategories/5
+        // PUT: api/Doctors/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] int Id, [FromBody] Doctor obj)
+        public async Task<IActionResult> PutDoctors([FromRoute] int Id, [FromBody] Doctor obj)
         {
             if (!ModelState.IsValid)
             {
@@ -83,9 +83,9 @@ namespace ManageHospital.WebUI.Controllers
             return NoContent();
         }
 
-        // POST: api/ProductCategories
+        // POST: api/Doctors
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] Doctor obj)
+        public async Task<IActionResult> PostDoctors([FromBody] Doctor obj)
         {
 
 
@@ -97,12 +97,12 @@ namespace ManageHospital.WebUI.Controllers
             _context.Doctors.Add(obj);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetProductCategories", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetDoctors", new { Id = obj.Id }, obj);
         }
 
-        // DELETE: api/ProductCategories/5
+        // DELETE: api/Doctors/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> DeleteDoctors([FromRoute] int Id)
         {
             if (!ModelState.IsValid)
             {
