@@ -1,7 +1,16 @@
-﻿namespace ManageHospitalData.Entities
+﻿using System.Collections.Generic;
+
+namespace ManageHospitalData.Entities
 {
-    public class HospitalCategory: Settings
-    { 
+    public class HospitalCategory: NameRemark
+    {
+
+        public HospitalCategory()
+        {
+            Hospitals = new HashSet<Hospital>();
+        }
+          
+        public ICollection<Hospital>  Hospitals { get; set; }
     } 
 
 }

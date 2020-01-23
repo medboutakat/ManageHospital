@@ -36,9 +36,9 @@ namespace ManageHospitalData
         public DbSet<Room> Rooms { get; set; }
         public DbSet<RoomCategory> RoomCategories { get; set; }
         
-        public DbSet<Assurance> Assurances { get; set; }
-
-         
+        public DbSet<Ansurance> Assurances { get; set; }
+        public DbSet<User> Users { get; set; }
+        public DbSet<Role> Roles { get; set; }
 
 
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);

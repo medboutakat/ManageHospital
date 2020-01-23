@@ -2,7 +2,7 @@
 
 namespace ManageHospitalData.Entities
 {
-    public class Room : Settings
+    public class Room : NameRemark
     {
         public Room()
         {

@@ -16,6 +16,9 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="9.0.0" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="7.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.SpaServices.Extensions" Version="3.0.0" />
     <PackageReference Include="Microsoft.AspNetCore.ApiAuthorization.IdentityServer" Version="3.0.0" />
@@ -45,12 +48,13 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Remove="Services\CurrentUserService.cs" />
+    <Compile Remove="AppSettings.cs" />
+    <Compile Remove="Helpers\AutoMapperProfile.cs" />
+    <Compile Remove="Helpers\UserModel.cs" /> 
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="appsettings.json" />
-    <None Remove="Controllers\PatientController.cs" />
+    <None Remove="appsettings.json" /> 
     <None Remove="nswag.json" />
   </ItemGroup>
 
@@ -69,12 +73,11 @@
 
   <ItemGroup>
     <Folder Include="Common\" />
-    <Folder Include="Services\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
   
   <Target Name="NSwag" AfterTargets="Build" Condition="'$(Configuration)' == 'Debug'">
     <Copy SourceFiles="@(Reference)" DestinationFolder="$(OutDir)References" />
-    <Exec Command="$(NSwagExe_Core30) run /variables:Configuration=$(Configuration) /runtime:NetCore30" />
     <RemoveDir Directories="$(OutDir)References" />
   </Target>
 

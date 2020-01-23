@@ -24,7 +24,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // GET: api/Assurances
         [HttpGet]
-        public IEnumerable<Assurance> GetAssurances()
+        public IEnumerable<Ansurance> GetAssurances()
         {
             return _context.Assurances;
         }
@@ -50,7 +50,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // PUT: api/Assurances/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] int Id, [FromBody] Assurance obj)
+        public async Task<IActionResult> PutProductCategorie([FromRoute] int Id, [FromBody] Ansurance obj)
         {
             if (!ModelState.IsValid)
             {
@@ -85,7 +85,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // POST: api/Assurances
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] Assurance obj)
+        public async Task<IActionResult> PostProductCategorie([FromBody] Ansurance obj)
         {
 
 

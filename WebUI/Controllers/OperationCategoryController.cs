@@ -38,7 +38,7 @@ namespace ManageHospital.WebUI.Controllers
                 return BadRequest(ModelState);
             }
 
-            var obj = await _context.Appointements.FindAsync(Id);
+            var obj = await _context.OperationCategories.FindAsync(Id);
 
             if (obj == null)
             {

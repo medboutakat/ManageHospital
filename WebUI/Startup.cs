@@ -7,6 +7,11 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting; 
 using Microsoft.AspNetCore.Http;
 using ManageHospitalData;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using ManageHospital.WebUI.Services;
+using System;
+using AutoMapper;
 
 namespace ManageHospital.WebUI
 {
@@ -40,7 +45,10 @@ namespace ManageHospital.WebUI
             services
                 .AddControllersWithViews()
                 .AddNewtonsoftJson();
-                //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IManageHospitalDBContext>());
+            //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IManageHospitalDBContext>());
+
+
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddRazorPages();
 
@@ -65,6 +73,36 @@ namespace ManageHospital.WebUI
             ////{
             ////    configuration.RootPath = "ClientApp/dist";
             ////});
+
+            #region
+            // configure strongly typed settings objects
+            var appSettingsSection = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettingsSection);
+
+            // configure jwt authentication
+            var appSettings = appSettingsSection.Get<AppSettings>();
+            var key = Encoding.ASCII.GetBytes(appSettings.Secret);
+            services.AddAuthentication(x =>
+            {
+                x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(x =>
+            {
+                x.RequireHttpsMetadata = false;
+                x.SaveToken = true;
+                x.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = true,
+                    IssuerSigningKey = new SymmetricSecurityKey(key),
+                    ValidateIssuer = false,
+                    ValidateAudience = false
+                };
+            });
+
+            // configure DI for application services
+            services.AddScoped<IUserService, UserService>();
+            #endregion
 
             services.AddOpenApiDocument(configure =>
             {
@@ -159,5 +197,9 @@ namespace ManageHospital.WebUI
                 await context.Response.WriteAsync(sb.ToString());
             }));
         }
+    }
+    public class AppSettings
+    {
+        public string Secret { get; set; }
     }
 }

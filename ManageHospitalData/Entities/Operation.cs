@@ -10,7 +10,7 @@ namespace ManageHospitalData.Entities
             Doctors = new HashSet<Doctor>();
         }
 
-        public Guid Id { private set; get; }
+        public int Id { private set; get; }
 
         public DateTime Date { set; get; }
         public string Price { set; get; }

@@ -7,13 +7,13 @@
         public string Assurance { get; set; }
         public string CallTimeStamp { get; set; } //DateAppointement
         public string ReservationTimeStamp { get; set; } //Date Resesrvation
-        public AppointementStatus Status { get; set; } //Accepted,NotAccepted,DelyedToAnnotherAppointement,Passed 
         public string Subject { get; set; } // subject appointement (test,stay,radio, etc) 
-        public Patient Patience { get; set; } 
-        public Assutance Assutance { get; set; }
         
+        public int? StatusId { get; set; }
+        public AppointementStatus Status { get; set; } //Accepted,NotAccepted,DelyedToAnnotherAppointement,Passed 
+        public int? PatienceId { get; set; }
+        public Patient Patience { get; set; }
+        public int? AssutanceId { get; set; }
+        public Assutance Assutance { get; set; }
     }
-
-
-
 }

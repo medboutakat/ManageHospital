@@ -19,6 +19,26 @@ namespace ManageHospitalData.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+            modelBuilder.Entity("ManageHospitalData.Entities.Ansurance", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<Guid?>("DocumentsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DocumentsId");
+
+                    b.ToTable("Assurances");
+                });
+
             modelBuilder.Entity("ManageHospitalData.Entities.Appointement", b =>
                 {
                     b.Property<int>("Id")
@@ -79,26 +99,6 @@ namespace ManageHospitalData.Migrations
                     b.ToTable("AppointementStatuss");
                 });
 
-            modelBuilder.Entity("ManageHospitalData.Entities.Assurance", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<Guid?>("DocumentsId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("DocumentsId");
-
-                    b.ToTable("Assurances");
-                });
-
             modelBuilder.Entity("ManageHospitalData.Entities.Assutance", b =>
                 {
                     b.Property<int>("Id")
@@ -112,6 +112,9 @@ namespace ManageHospitalData.Migrations
                     b.Property<string>("Assurance")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ContactId")
+                        .HasColumnType("int");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
@@ -124,12 +127,9 @@ namespace ManageHospitalData.Migrations
                     b.Property<string>("Sexe")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("contactId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("contactId");
+                    b.HasIndex("ContactId");
 
                     b.ToTable("Assutance");
                 });
@@ -180,6 +180,9 @@ namespace ManageHospitalData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int?>("ContactId")
+                        .HasColumnType("int");
+
                     b.Property<int?>("DoctorCategoryId")
                         .HasColumnType("int");
 
@@ -189,22 +192,19 @@ namespace ManageHospitalData.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("OperationId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<int?>("OperationId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Sexe")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("contactId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
+
+                    b.HasIndex("ContactId");
 
                     b.HasIndex("DoctorCategoryId");
 
                     b.HasIndex("OperationId");
-
-                    b.HasIndex("contactId");
 
                     b.ToTable("Doctors");
                 });
@@ -254,20 +254,29 @@ namespace ManageHospitalData.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Assurance")
+                    b.Property<int>("CategoryId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ContactId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("CountryHealthId")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("CategoryId")
-                        .HasColumnType("int");
+                    b.Property<string>("History")
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("contactId")
-                        .HasColumnType("int");
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("CategoryId");
 
-                    b.HasIndex("contactId");
+                    b.HasIndex("ContactId");
 
                     b.ToTable("Hospitals");
                 });
@@ -364,9 +373,10 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Operation", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
@@ -412,9 +422,10 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.OperationResult", b =>
                 {
-                    b.Property<Guid>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
                     b.Property<DateTime>("DatePublish")
                         .HasColumnType("datetime2");
@@ -458,6 +469,9 @@ namespace ManageHospitalData.Migrations
                     b.Property<string>("Assurance")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("ContactId")
+                        .HasColumnType("int");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
@@ -470,14 +484,55 @@ namespace ManageHospitalData.Migrations
                     b.Property<string>("Sexe")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("contactId")
-                        .HasColumnType("int");
+                    b.HasKey("Id");
+
+                    b.HasIndex("ContactId");
+
+                    b.ToTable("Patients");
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.Role", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("contactId");
+                    b.ToTable("Roles");
 
-                    b.ToTable("Patients");
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "Admin",
+                            Remark = "Administrator"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "Patient",
+                            Remark = "Patient"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "Assusstance",
+                            Remark = "Assusstance"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "Doctor",
+                            Remark = "Doctor"
+                        });
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Room", b =>
@@ -571,6 +626,59 @@ namespace ManageHospitalData.Migrations
                     b.ToTable("TestResults");
                 });
 
+            modelBuilder.Entity("ManageHospitalData.Entities.User", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("ContactId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("LastName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Password")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<byte[]>("PasswordHash")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<byte[]>("PasswordSalt")
+                        .HasColumnType("varbinary(max)");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Sexe")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Token")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Username")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ContactId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.Ansurance", b =>
+                {
+                    b.HasOne("ManageHospitalData.Entities.Documents", "Documents")
+                        .WithMany()
+                        .HasForeignKey("DocumentsId");
+                });
+
             modelBuilder.Entity("ManageHospitalData.Entities.Appointement", b =>
                 {
                     b.HasOne("ManageHospitalData.Entities.Assutance", "Assutance")
@@ -582,58 +690,55 @@ namespace ManageHospitalData.Migrations
                         .HasForeignKey("PatienceId");
 
                     b.HasOne("ManageHospitalData.Entities.AppointementStatus", "Status")
-                        .WithMany()
+                        .WithMany("Appointements")
                         .HasForeignKey("StatusId");
-                });
-
-            modelBuilder.Entity("ManageHospitalData.Entities.Assurance", b =>
-                {
-                    b.HasOne("ManageHospitalData.Entities.Documents", "Documents")
-                        .WithMany()
-                        .HasForeignKey("DocumentsId");
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Assutance", b =>
                 {
                     b.HasOne("ManageHospitalData.Entities.Contact", "contact")
                         .WithMany()
-                        .HasForeignKey("contactId");
+                        .HasForeignKey("ContactId");
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Doctor", b =>
                 {
-                    b.HasOne("ManageHospitalData.Entities.DoctorCategory", "DoctorCategory")
+                    b.HasOne("ManageHospitalData.Entities.Contact", "contact")
                         .WithMany()
+                        .HasForeignKey("ContactId");
+
+                    b.HasOne("ManageHospitalData.Entities.DoctorCategory", "DoctorCategory")
+                        .WithMany("Doctors")
                         .HasForeignKey("DoctorCategoryId");
 
                     b.HasOne("ManageHospitalData.Entities.Operation", null)
                         .WithMany("Doctors")
                         .HasForeignKey("OperationId");
-
-                    b.HasOne("ManageHospitalData.Entities.Contact", "contact")
-                        .WithMany()
-                        .HasForeignKey("contactId");
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Hospital", b =>
                 {
                     b.HasOne("ManageHospitalData.Entities.HospitalCategory", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
+                        .WithMany("Hospitals")
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
-                    b.HasOne("ManageHospitalData.Entities.Contact", "contact")
+                    b.HasOne("ManageHospitalData.Entities.Contact", "Contact")
                         .WithMany()
-                        .HasForeignKey("contactId");
+                        .HasForeignKey("ContactId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Material", b =>
                 {
                     b.HasOne("ManageHospitalData.Entities.MaterialCategory", "MaterialCategory")
-                        .WithMany()
+                        .WithMany("Hospitals")
                         .HasForeignKey("MaterialCategoryId");
 
                     b.HasOne("ManageHospitalData.Entities.MaterialStatus", "MaterialStatus")
-                        .WithMany()
+                        .WithMany("Materials")
                         .HasForeignKey("MaterialStatusId");
 
                     b.HasOne("ManageHospitalData.Entities.Room", null)
@@ -644,7 +749,7 @@ namespace ManageHospitalData.Migrations
             modelBuilder.Entity("ManageHospitalData.Entities.Operation", b =>
                 {
                     b.HasOne("ManageHospitalData.Entities.OperationCategory", "OperationCategory")
-                        .WithMany()
+                        .WithMany("Operations")
                         .HasForeignKey("OperationCategoryId");
 
                     b.HasOne("ManageHospitalData.Entities.Room", "Room")
@@ -671,7 +776,7 @@ namespace ManageHospitalData.Migrations
                 {
                     b.HasOne("ManageHospitalData.Entities.Contact", "contact")
                         .WithMany()
-                        .HasForeignKey("contactId");
+                        .HasForeignKey("ContactId");
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Room", b =>
@@ -690,6 +795,19 @@ namespace ManageHospitalData.Migrations
                     b.HasOne("ManageHospitalData.Entities.Test", "Test")
                         .WithMany()
                         .HasForeignKey("TestId");
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.User", b =>
+                {
+                    b.HasOne("ManageHospitalData.Entities.Contact", "contact")
+                        .WithMany()
+                        .HasForeignKey("ContactId");
+
+                    b.HasOne("ManageHospitalData.Entities.Role", "Role")
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 #pragma warning restore 612, 618
         }

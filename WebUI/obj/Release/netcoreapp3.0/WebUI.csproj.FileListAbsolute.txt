@@ -154,3 +154,4 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\obj\Release\netcore
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\obj\Release\netcoreapp3.0\ManageHospital.WebUI.pdb
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\appsettings.json
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\nswag.json
+C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

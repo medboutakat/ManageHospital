@@ -1,6 +1,6 @@
 ﻿namespace ManageHospitalData.Entities
 {
-    public class RoomCategory : Settings
+    public class RoomCategory : NameRemark
     { 
     }
 
