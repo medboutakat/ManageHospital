@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace ManageHospitalData
 {
-    internal interface IManageHospitalDBContext
+    public interface IManageHospitalDBContext
     {
 
         public DbSet<Patient> Patients { get; set; }
