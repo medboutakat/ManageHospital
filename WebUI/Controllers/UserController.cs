@@ -1,8 +1,7 @@
-﻿using AutoMapper;
-using ManageHospital.WebUI;
-using ManageHospital.WebUI.Models;
-using ManageHospital.WebUI.Services;
+﻿using AutoMapper; 
+using ManageHospital.WebUI.Models; 
 using ManageHospitalData.Entities;
+using ManageHospitalService.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;

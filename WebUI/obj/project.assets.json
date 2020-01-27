@@ -3738,6 +3738,19 @@
         "runtime": {
           "bin/placeholder/ManageHospitalData.dll": {}
         }
+      },
+      "ManageHospitalService/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.0",
+        "dependencies": {
+          "ManageHospitalData": "1.0.0"
+        },
+        "compile": {
+          "bin/placeholder/ManageHospitalService.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ManageHospitalService.dll": {}
+        }
       }
     }
   },
@@ -11932,6 +11945,11 @@
       "type": "project",
       "path": "../ManageHospitalData/ManageHospitalData.csproj",
       "msbuildProject": "../ManageHospitalData/ManageHospitalData.csproj"
+    },
+    "ManageHospitalService/1.0.0": {
+      "type": "project",
+      "path": "../ManageHospitalService/ManageHospitalService.csproj",
+      "msbuildProject": "../ManageHospitalService/ManageHospitalService.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -11940,6 +11958,7 @@
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 7.0.0",
       "FluentValidation.AspNetCore >= 8.5.0",
       "ManageHospitalData >= 1.0.0",
+      "ManageHospitalService >= 1.0.0",
       "Microsoft.AspNetCore.ApiAuthorization.IdentityServer >= 3.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.0.0",
       "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore >= 3.0.0",
@@ -11990,6 +12009,9 @@
           "projectReferences": {
             "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalData\\ManageHospitalData.csproj": {
               "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalData\\ManageHospitalData.csproj"
+            },
+            "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalService\\ManageHospitalService.csproj": {
+              "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalService\\ManageHospitalService.csproj"
             }
           }
         }

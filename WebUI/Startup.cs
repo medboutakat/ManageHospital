@@ -8,10 +8,10 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Http;
 using ManageHospitalData;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using ManageHospital.WebUI.Services;
+using Microsoft.IdentityModel.Tokens; 
 using System;
 using AutoMapper;
+using ManageHospitalService.Services;
 
 namespace ManageHospital.WebUI
 {

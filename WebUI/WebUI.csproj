@@ -101,8 +101,7 @@
     <None Remove="Models\TestResult.cs" />
     <None Remove="Models\User.cs" /> 
     <None Remove="nswag.json" /> 
-    <None Remove="Services\CurrentUserService.cs" /> 
-    <None Remove="Services\UserService.cs" />
+    <None Remove="Services\CurrentUserService.cs" />
   </ItemGroup>
 
   <ItemGroup>
@@ -116,6 +115,7 @@
 
   <ItemGroup> 
     <ProjectReference Include="..\ManageHospitalData\ManageHospitalData.csproj" /> 
+    <ProjectReference Include="..\ManageHospitalService\ManageHospitalService.csproj" /> 
   </ItemGroup>
 
   <ItemGroup>
