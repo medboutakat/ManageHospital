@@ -1,3 +1,5 @@
+C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\appsettings.json
+C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\nswag.json
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\ManageHospital.WebUI.StaticWebAssets.xml
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\ManageHospital.WebUI.exe
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\ManageHospital.WebUI.deps.json
@@ -6,6 +8,7 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcore
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\ManageHospital.WebUI.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\ManageHospital.WebUI.pdb
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\AutoMapper.dll
+C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\FluentValidation.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\FluentValidation.AspNetCore.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\FluentValidation.DependencyInjectionExtensions.dll
@@ -152,6 +155,3 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\obj\Release\netcore
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\obj\Release\netcoreapp3.0\WebUI.csproj.CopyComplete
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\obj\Release\netcoreapp3.0\ManageHospital.WebUI.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\obj\Release\netcoreapp3.0\ManageHospital.WebUI.pdb
-C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\appsettings.json
-C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\nswag.json
-C:\Users\admin\source\repos\medboutakat\ManageHospital\WebUI\bin\Release\netcoreapp3.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

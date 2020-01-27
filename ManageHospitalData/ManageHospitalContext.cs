@@ -1,5 +1,6 @@
 ﻿using ManageHospitalData.Entities;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace ManageHospitalData
 {
@@ -46,22 +47,22 @@ namespace ManageHospitalData
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ManageHospitalDBContext).Assembly);
-
+          
             modelBuilder.Entity<Role>().HasData(
-                new Role { Id = 1, Name = "Admin", Remark = "Administrator" }
+                new Role { Id = StaticObject.AdminId, Name = "Admin", Remark = "Administrator" }
+            );
+            
+            modelBuilder.Entity<Role>().HasData(
+                          new Role { Id = Guid.NewGuid(), Name = "Patient", Remark = "Patient" }
             );
 
             modelBuilder.Entity<Role>().HasData(
-                          new Role { Id = 2, Name = "Patient", Remark = "Patient" }
-                       );
-
-            modelBuilder.Entity<Role>().HasData(
-               new Role { Id = 3, Name = "Assusstance", Remark = "Assusstance" }
+               new Role { Id = Guid.NewGuid(), Name = "Assusstance", Remark = "Assusstance" }
             );
 
             modelBuilder.Entity<Role>().HasData(
-            new Role { Id = 4, Name = "Doctor", Remark = "Doctor" }
-         );
+            new Role { Id = Guid.NewGuid(), Name = "Doctor", Remark = "Doctor" }
+            );
         }
     }
 }

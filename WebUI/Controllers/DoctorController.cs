@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
 
-namespace ManageHospital.WebUI.Controllers
+namespace  ManageHospital.WebUI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -31,7 +31,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // GET: api/Doctors/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetDoctors([FromRoute] int Id)
+        public async Task<IActionResult> GetDoctors([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +50,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // PUT: api/Doctors/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutDoctors([FromRoute] int Id, [FromBody] Doctor obj)
+        public async Task<IActionResult> PutDoctors([FromRoute] Guid Id, [FromBody] Doctor obj)
         {
             if (!ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // DELETE: api/Doctors/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteDoctors([FromRoute] int Id)
+        public async Task<IActionResult> DeleteDoctors([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -121,7 +121,7 @@ namespace ManageHospital.WebUI.Controllers
             return Ok(obj);
         }
 
-        private bool Exists(int Id)
+        private bool Exists(Guid Id)
         {
             return _context.Doctors.Any(e => e.Id == Id);
         }

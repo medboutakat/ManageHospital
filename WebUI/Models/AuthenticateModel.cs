@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Globalization;
 
-namespace WebApi.Models
+namespace   ManageHospital.WebUI.Models
 {
     public class AuthenticateModel
     { 
@@ -9,20 +9,7 @@ namespace WebApi.Models
          
         public string Password { get; set; }
     }
-    public class UserModel
-    {
-        //[Required]
-        public string FirstName { get; set; }
-
-        //[Required]
-        public string LastName { get; set; }
-
-        //[Required]
-        public string Username { get; set; }
-
-        //[Required]
-        public string Password { get; set; }
-    }
+ 
 
     public class AppException : Exception
     {

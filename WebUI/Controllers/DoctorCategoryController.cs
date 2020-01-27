@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
 
-namespace ManageHospital.WebUI.Controllers
+namespace  ManageHospital.WebUI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -31,7 +31,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // GET: api/DoctorCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> GetProductCategorie([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +50,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // PUT: api/DoctorCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] int Id, [FromBody] DoctorCategory obj)
+        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] DoctorCategory obj)
         {
             if (!ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // DELETE: api/DoctorCategories/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> DeleteProductCategorie([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -121,7 +121,7 @@ namespace ManageHospital.WebUI.Controllers
             return Ok(obj);
         }
 
-        private bool Exists(int Id)
+        private bool Exists(Guid Id)
         {
             return _context.DoctorCategories.Any(e => e.Id == Id);
         }

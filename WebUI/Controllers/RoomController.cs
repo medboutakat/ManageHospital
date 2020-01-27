@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
 
-namespace ManageHospital.WebUI.Controllers
+namespace  ManageHospital.WebUI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -31,7 +31,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // GET: api/Rooms/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetRooms([FromRoute] int Id)
+        public async Task<IActionResult> GetRooms([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +50,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // PUT: api/Roomss/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutRooms([FromRoute] int Id, [FromBody] Room obj)
+        public async Task<IActionResult> PutRooms([FromRoute] Guid Id, [FromBody] Room obj)
         {
             if (!ModelState.IsValid)
             {
@@ -102,7 +102,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // DELETE: api/Roomss/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteRooms([FromRoute] int Id)
+        public async Task<IActionResult> DeleteRooms([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -121,7 +121,7 @@ namespace ManageHospital.WebUI.Controllers
             return Ok(obj);
         }
 
-        private bool Exists(int Id)
+        private bool Exists(Guid Id)
         {
             return _context.Rooms.Any(e => e.Id == Id);
         }

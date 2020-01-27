@@ -9,7 +9,7 @@ namespace ManageHospitalData.Entities
         { 
         }
 
-        public int Id { private set; get; }
+        public Guid Id { private set; get; }
 
         public DateTime DatePublish { set; get; }
         public Documents Documents { get; set; }

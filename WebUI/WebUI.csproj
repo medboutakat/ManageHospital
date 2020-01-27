@@ -49,13 +49,60 @@
 
   <ItemGroup>
     <Compile Remove="AppSettings.cs" />
+    <Compile Remove="Class.cs" />
     <Compile Remove="Helpers\AutoMapperProfile.cs" />
     <Compile Remove="Helpers\UserModel.cs" /> 
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="appsettings.json" /> 
-    <None Remove="nswag.json" />
+    <None Remove="appsettings.json" />
+    <None Remove="Controllers\AppointementController.cs" />
+    <None Remove="Controllers\AppointementStatusController.cs" />
+    <None Remove="Controllers\AssuranceController.cs" />
+    <None Remove="Controllers\ContactController.cs" />
+    <None Remove="Controllers\DoctorCategoryController.cs" />
+    <None Remove="Controllers\DoctorController.cs" />
+    <None Remove="Controllers\HospitalCategoryController.cs" />
+    <None Remove="Controllers\HospitalController.cs" />
+    <None Remove="Controllers\MaterialCategoryController.cs" />
+    <None Remove="Controllers\MaterialController.cs" />
+    <None Remove="Controllers\OperationCategoryController.cs" />
+    <None Remove="Controllers\OperationController.cs" />
+    <None Remove="Controllers\OperationResultController.cs" />
+    <None Remove="Controllers\PatientController.cs" />
+    <None Remove="Controllers\RoomCategoryController.cs" />
+    <None Remove="Controllers\RoomController.cs" />
+    <None Remove="Controllers\UserController.cs" />
+    <None Remove="Models\Ansurance.cs" />
+    <None Remove="Models\Appointement.cs" />
+    <None Remove="Models\AppointementStatus.cs" />
+    <None Remove="Models\Assutance.cs" />
+    <None Remove="Models\AuthenticateModel.cs" />
+    <None Remove="Models\Contact.cs" />
+    <None Remove="Models\Doctors.cs" />
+    <None Remove="Models\DoctorsCategory.cs" />
+    <None Remove="Models\Documents.cs" />
+    <None Remove="Models\Hospital.cs" />
+    <None Remove="Models\HospitalCategory.cs" />
+    <None Remove="Models\Material.cs" />
+    <None Remove="Models\MaterialCategory.cs" />
+    <None Remove="Models\MaterialStatus.cs" />
+    <None Remove="Models\NameRemark.cs" />
+    <None Remove="Models\Operation.cs" />
+    <None Remove="Models\OperationCategory.cs" />
+    <None Remove="Models\OperationResult.cs" />
+    <None Remove="Models\Patience.cs" />
+    <None Remove="Models\Person.cs" />
+    <None Remove="Models\Role.cs" />
+    <None Remove="Models\Room.cs" />
+    <None Remove="Models\RoomCategory.cs" />
+    <None Remove="Models\Settings.cs" />
+    <None Remove="Models\Test.cs" />
+    <None Remove="Models\TestResult.cs" />
+    <None Remove="Models\User.cs" /> 
+    <None Remove="nswag.json" /> 
+    <None Remove="Services\CurrentUserService.cs" /> 
+    <None Remove="Services\UserService.cs" />
   </ItemGroup>
 
   <ItemGroup>

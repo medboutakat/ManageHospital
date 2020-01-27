@@ -7,8 +7,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
+using  ManageHospital.WebUI.Models;
+using AutoMapper;
 
-namespace ManageHospital.WebUI.Controllers
+namespace  ManageHospital.WebUI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,22 +18,26 @@ namespace ManageHospital.WebUI.Controllers
     public class AppointementController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
-
-        public AppointementController(ManageHospitalDBContext context)
+        private readonly IMapper _mapper;
+        public AppointementController(ManageHospitalDBContext context , IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/ProductCategories
         [HttpGet]
-        public IEnumerable<Appointement> GetAppointements()
+        public IEnumerable<AppointementModel> GetAppointements()
         {
-            return _context.Appointements;
+            var appi = _context.Appointements.AsEnumerable(); 
+            var appointements = _mapper.Map<IEnumerable<AppointementModel>>(appi);
+
+            return appointements;
         }
 
         // GET: api/ProductCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetAppointements([FromRoute] int Id)
+        public async Task<IActionResult> GetAppointements([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -50,7 +56,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // PUT: api/ProductCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutAppointements([FromRoute] int Id, [FromBody] Appointement obj)
+        public async Task<IActionResult> PutAppointements([FromRoute] Guid Id, [FromBody] Appointement obj)
         {
             if (!ModelState.IsValid)
             {
@@ -102,7 +108,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // DELETE: api/ProductCategories/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteAppointements([FromRoute] int Id)
+        public async Task<IActionResult> DeleteAppointements([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -121,7 +127,7 @@ namespace ManageHospital.WebUI.Controllers
             return Ok(obj);
         }
 
-        private bool Exists(int Id)
+        private bool Exists(Guid Id)
         {
             return _context.Appointements.Any(e => e.Id == Id);
         }

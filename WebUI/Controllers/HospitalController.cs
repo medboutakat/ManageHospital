@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
+using AutoMapper;
+using  ManageHospital.WebUI.Models;
 
-namespace ManageHospital.WebUI.Controllers
+namespace  ManageHospital.WebUI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -16,22 +18,26 @@ namespace ManageHospital.WebUI.Controllers
     public class HospitalController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
+        private readonly IMapper _mapper;
 
-        public HospitalController(ManageHospitalDBContext context)
+        public HospitalController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/OperationCategories
         [HttpGet]
-        public IEnumerable<Hospital> GetOperationCategories()
+        public IEnumerable<HospitalModel> GetOperationCategories()
         {
-            return _context.Hospitals;
+            var data = _context.Hospitals.AsEnumerable();
+            var dataModel = _mapper.Map<IEnumerable<HospitalModel>>(data);
+            return dataModel;
         }
 
         // GET: api/OperationCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> GetProductCategorie([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -39,30 +45,39 @@ namespace ManageHospital.WebUI.Controllers
             }
 
             var obj = await _context.Hospitals.FindAsync(Id);
+            if (obj != null)
+            {
+                obj.HospitalCategory = await _context.HospitalCategories.FindAsync(obj.HospitalCategoryId);
+                obj.Contact = await _context.Contacts.FindAsync(obj.ContactId);
+            }
 
-            if (obj == null)
+            var dataModel = _mapper.Map<HospitalModel>(obj);
+
+            if (dataModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(obj);
+            return Ok(dataModel);
         }
 
         // PUT: api/OperationCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] int Id, [FromBody] Hospital obj)
+        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] HospitalModel obj)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (Id != obj.Id)
+            var data = _mapper.Map<Hospital>(obj);
+
+            if (Id != data.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(obj).State = EntityState.Modified;
+            _context.Entry(data).State = EntityState.Modified;
 
             try
             {
@@ -85,7 +100,7 @@ namespace ManageHospital.WebUI.Controllers
 
         // POST: api/OperationCategories
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] Hospital obj)
+        public async Task<IActionResult> PostProductCategorie([FromBody] HospitalModel obj)
         {
 
 
@@ -94,15 +109,19 @@ namespace ManageHospital.WebUI.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Hospitals.Add(obj);
+            var data = _mapper.Map<Hospital>(obj);
+            _context.Hospitals.Add(data);
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetOperationCategories", new { Id = obj.Id }, obj);
+            var dataModel = _mapper.Map<HospitalModel>(obj);
+            //, dataModel
+            return CreatedAtAction("GetProductCategorie", new { Id = obj.Id },obj);
         }
 
         // DELETE: api/OperationCategories/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] int Id)
+        public async Task<IActionResult> DeleteProductCategorie([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -121,7 +140,7 @@ namespace ManageHospital.WebUI.Controllers
             return Ok(obj);
         }
 
-        private bool Exists(int Id)
+        private bool Exists(Guid Id)
         {
             return _context.Hospitals.Any(e => e.Id == Id);
         }

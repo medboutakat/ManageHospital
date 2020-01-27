@@ -21,15 +21,17 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Ansurance", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("DocumentsId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remark")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -41,16 +43,15 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Appointement", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Assurance")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("AssutanceId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("AssutanceId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CallTimeStamp")
                         .HasColumnType("nvarchar(max)");
@@ -58,14 +59,14 @@ namespace ManageHospitalData.Migrations
                     b.Property<string>("IdentityNo")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PatienceId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("PatienceId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("ReservationTimeStamp")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("StatusId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("StatusId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Subject")
                         .HasColumnType("nvarchar(max)");
@@ -83,10 +84,9 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.AppointementStatus", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -101,10 +101,9 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Assutance", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -112,8 +111,8 @@ namespace ManageHospitalData.Migrations
                     b.Property<string>("Assurance")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ContactId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("ContactId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -136,10 +135,9 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Contact", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Adress1")
                         .HasColumnType("nvarchar(max)");
@@ -175,16 +173,15 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Doctor", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("ContactId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("ContactId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("DoctorCategoryId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("DoctorCategoryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -192,8 +189,8 @@ namespace ManageHospitalData.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("OperationId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("OperationId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Sexe")
                         .HasColumnType("nvarchar(max)");
@@ -211,10 +208,9 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.DoctorCategory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -249,22 +245,21 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Hospital", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ContactId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("ContactId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("CountryHealthId")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("History")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid>("HospitalCategoryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -274,19 +269,18 @@ namespace ManageHospitalData.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CategoryId");
-
                     b.HasIndex("ContactId");
+
+                    b.HasIndex("HospitalCategoryId");
 
                     b.ToTable("Hospitals");
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.HospitalCategory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -301,16 +295,15 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Material", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("MaterialCategoryId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("MaterialCategoryId")
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("MaterialStatusId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("MaterialStatusId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -321,8 +314,8 @@ namespace ManageHospitalData.Migrations
                     b.Property<string>("Remark")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RoomId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("RoomId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
 
@@ -337,10 +330,9 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.MaterialCategory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -355,10 +347,9 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.MaterialStatus", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -373,22 +364,21 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Operation", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("Date")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("OperationCategoryId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("OperationCategoryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Price")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RoomId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("RoomId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("TotalStayNight")
                         .HasColumnType("nvarchar(max)");
@@ -404,10 +394,9 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.OperationCategory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -422,16 +411,15 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.OperationResult", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<DateTime>("DatePublish")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("DoctorsId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("DoctorsId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("DocumentsId")
                         .HasColumnType("uniqueidentifier");
@@ -458,10 +446,9 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Patient", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Age")
                         .HasColumnType("int");
@@ -469,8 +456,8 @@ namespace ManageHospitalData.Migrations
                     b.Property<string>("Assurance")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ContactId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("ContactId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -493,10 +480,9 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Role", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -511,25 +497,25 @@ namespace ManageHospitalData.Migrations
                     b.HasData(
                         new
                         {
-                            Id = 1,
+                            Id = new Guid("252161ac-17da-453e-894c-b993c0d21925"),
                             Name = "Admin",
                             Remark = "Administrator"
                         },
                         new
                         {
-                            Id = 2,
+                            Id = new Guid("18b521ab-8ca5-4c7d-8110-9aabd3a445cf"),
                             Name = "Patient",
                             Remark = "Patient"
                         },
                         new
                         {
-                            Id = 3,
+                            Id = new Guid("4b689146-61c9-477b-9a76-ae976ed36691"),
                             Name = "Assusstance",
                             Remark = "Assusstance"
                         },
                         new
                         {
-                            Id = 4,
+                            Id = new Guid("9432d219-f4d8-4b48-adf6-66ae6a64217b"),
                             Name = "Doctor",
                             Remark = "Doctor"
                         });
@@ -537,10 +523,9 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Room", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -548,8 +533,8 @@ namespace ManageHospitalData.Migrations
                     b.Property<string>("Remark")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("RoomCategoryId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("RoomCategoryId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("RoomNumber")
                         .HasColumnType("int");
@@ -563,10 +548,9 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.RoomCategory", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
@@ -628,13 +612,12 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("uniqueidentifier");
 
-                    b.Property<int?>("ContactId")
-                        .HasColumnType("int");
+                    b.Property<Guid?>("ContactId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
@@ -651,8 +634,8 @@ namespace ManageHospitalData.Migrations
                     b.Property<byte[]>("PasswordSalt")
                         .HasColumnType("varbinary(max)");
 
-                    b.Property<int>("RoleId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Sexe")
                         .HasColumnType("nvarchar(max)");
@@ -718,15 +701,15 @@ namespace ManageHospitalData.Migrations
 
             modelBuilder.Entity("ManageHospitalData.Entities.Hospital", b =>
                 {
-                    b.HasOne("ManageHospitalData.Entities.HospitalCategory", "Category")
-                        .WithMany("Hospitals")
-                        .HasForeignKey("CategoryId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("ManageHospitalData.Entities.Contact", "Contact")
                         .WithMany()
                         .HasForeignKey("ContactId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ManageHospitalData.Entities.HospitalCategory", "HospitalCategory")
+                        .WithMany("Hospitals")
+                        .HasForeignKey("HospitalCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

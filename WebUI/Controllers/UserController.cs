@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
-using ManageHospital.WebUI;
-using ManageHospital.WebUI.Services;
+using  ManageHospital.WebUI;
+using  ManageHospital.WebUI.Models;
+using  ManageHospital.WebUI.Services;
 using ManageHospitalData.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -11,10 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text;
-using WebApi.Models;
+using System.Text; 
 
-namespace WebUI.Controllers
+namespace  ManageHospital.WebUI.Controllers
 {
 
     [Route("api/[controller]")]
@@ -109,7 +109,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(int id, [FromBody]UserModel model)
+        public IActionResult Update(Guid id, [FromBody]UserModel model)
         {
             // map model to entity and set id
             var user = _mapper.Map<User>(model);

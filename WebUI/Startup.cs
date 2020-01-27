@@ -38,6 +38,8 @@ namespace ManageHospital.WebUI
             services.AddHealthChecks()
                 .AddDbContextCheck<ManageHospitalDBContext>();
 
+
+
             //services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             services.AddHttpContextAccessor();
@@ -46,6 +48,7 @@ namespace ManageHospital.WebUI
                 .AddControllersWithViews()
                 .AddNewtonsoftJson();
             //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IManageHospitalDBContext>());
+
 
 
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());

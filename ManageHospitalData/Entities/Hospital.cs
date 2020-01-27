@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ManageHospitalData.Entities
 {
@@ -19,16 +21,18 @@ namespace ManageHospitalData.Entities
             //TestResults = new HashSet<TestResult>();
         }
 
-        public int Id { get; set; }
+        public Guid Id { get; set; }
         public string CountryHealthId { get; set; } 
         public string Name { get; set; }
         public string Remark { get; set; }
         public string History { get; set; }
 
-        public int CategoryId { get; set; }
-        public HospitalCategory Category { get; set; }
+        public Guid HospitalCategoryId { get; set; }
+        [Required]
+        public HospitalCategory HospitalCategory { get; set; }
 
-        public int ContactId { get; set; }
+        public Guid ContactId { get; set; }
+        [Required]
         public Contact Contact { get; set; }
 
 
