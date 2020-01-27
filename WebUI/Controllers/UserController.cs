@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using  ManageHospital.WebUI;
-using  ManageHospital.WebUI.Models;
-using  ManageHospital.WebUI.Services;
+using ManageHospital.WebUI;
+using ManageHospital.WebUI.Models;
+using ManageHospital.WebUI.Services;
 using ManageHospitalData.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
@@ -12,9 +12,9 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text; 
+using System.Text;
 
-namespace  ManageHospital.WebUI.Controllers
+namespace ManageHospital.WebUI.Controllers
 {
 
     [Route("api/[controller]")]
@@ -27,13 +27,12 @@ namespace  ManageHospital.WebUI.Controllers
         private readonly AppSettings _appSettings;
 
         public UsersController(
-            IUserService userService,
-            IMapper mapper,
-            IOptions<AppSettings> appSettings)
+            IUserService userService, 
+            IOptions<AppSettings> appSettings, IMapper mapper)
         {
             _userService = userService;
             _mapper = mapper;
-            _appSettings = appSettings.Value;
+            _appSettings = appSettings.Value; 
         }
 
         [AllowAnonymous]
@@ -67,7 +66,7 @@ namespace  ManageHospital.WebUI.Controllers
                 Username = user.Username,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Role =new Role() { Name = user.Role.Name },
+                Role = new Role() { Name = user.Role.Name },
                 Token = tokenString
             });
         }

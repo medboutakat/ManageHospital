@@ -46,17 +46,20 @@ namespace  ManageHospital.WebUI.Controllers
 
             var obj = await _context.Appointements.FindAsync(Id);
 
+
             if (obj == null)
             {
                 return NotFound();
             }
 
-            return Ok(obj);
+            var dataModel = _mapper.Map<AppointementModel>(obj);
+
+            return Ok(dataModel);
         }
 
         // PUT: api/ProductCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutAppointements([FromRoute] Guid Id, [FromBody] Appointement obj)
+        public async Task<IActionResult> PutAppointements([FromRoute] Guid Id, [FromBody] AppointementModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -68,7 +71,8 @@ namespace  ManageHospital.WebUI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(obj).State = EntityState.Modified;
+            var dataModel = _mapper.Map<Appointement>(obj);
+            _context.Entry(dataModel).State = EntityState.Modified;
 
             try
             {
@@ -91,7 +95,7 @@ namespace  ManageHospital.WebUI.Controllers
 
         // POST: api/ProductCategories
         [HttpPost]
-        public async Task<IActionResult> PostAppointements([FromBody] Appointement obj)
+        public async Task<IActionResult> PostAppointements([FromBody] AppointementModel obj)
         {
 
 
@@ -99,8 +103,8 @@ namespace  ManageHospital.WebUI.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            _context.Appointements.Add(obj);
+            var dataModel = _mapper.Map<Appointement>(obj);
+            _context.Appointements.Add(dataModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAppointements", new { Id = obj.Id }, obj);

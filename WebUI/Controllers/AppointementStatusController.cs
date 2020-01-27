@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
+using AutoMapper;
+using ManageHospital.WebUI.Models;
 
 namespace  ManageHospital.WebUI.Controllers
 {
@@ -16,17 +18,21 @@ namespace  ManageHospital.WebUI.Controllers
     public class AppointementStatusController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
+        private readonly IMapper _mapper;
 
-        public AppointementStatusController(ManageHospitalDBContext context)
+        public AppointementStatusController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/AppointementStatus
         [HttpGet]
-        public IEnumerable<AppointementStatus> GetAppointementStatus()
+        public IEnumerable<AppointementStatusModel> GetAppointementStatus()
         {
-            return _context.AppointementStatuss;
+            var data = _context.AppointementStatuss.AsEnumerable();
+            var dataModel = _mapper.Map<IEnumerable<AppointementStatusModel>>(data);
+            return dataModel; 
         }
 
         // GET: api/AppointementStatus/5
@@ -44,13 +50,13 @@ namespace  ManageHospital.WebUI.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(obj);
+            var dataModel = _mapper.Map<AppointementStatusModel>(obj);
+            return Ok(dataModel);
         }
 
         // PUT: api/AppointementStatus/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] AppointementStatus obj)
+        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] AppointementStatusModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -61,8 +67,9 @@ namespace  ManageHospital.WebUI.Controllers
             {
                 return BadRequest();
             }
+            var dataModel = _mapper.Map<AppointementStatus>(obj);
 
-            _context.Entry(obj).State = EntityState.Modified;
+            _context.Entry(dataModel).State = EntityState.Modified;
 
             try
             {
@@ -85,7 +92,7 @@ namespace  ManageHospital.WebUI.Controllers
 
         // POST: api/AppointementStatus
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] AppointementStatus obj)
+        public async Task<IActionResult> PostProductCategorie([FromBody] AppointementStatusModel obj)
         {
 
 
@@ -94,10 +101,13 @@ namespace  ManageHospital.WebUI.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.AppointementStatuss.Add(obj);
+            var dataModel = _mapper.Map<AppointementStatus>(obj);
+
+            _context.AppointementStatuss.Add(dataModel);
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAppointementStatus", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetAppointementStatus", new { Id = obj.Id }, dataModel);
         }
 
         // DELETE: api/AppointementStatus/5

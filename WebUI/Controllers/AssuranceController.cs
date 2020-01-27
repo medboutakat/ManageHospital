@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
+using AutoMapper;
+using ManageHospital.WebUI.Models;
 
 namespace  ManageHospital.WebUI.Controllers
 {
@@ -16,22 +18,24 @@ namespace  ManageHospital.WebUI.Controllers
     public class AnssuranceController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
+        private readonly IMapper _mapper;
 
-        public AnssuranceController(ManageHospitalDBContext context)
+        public AnssuranceController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Assurances
         [HttpGet]
-        public IEnumerable<Ansurance> GetAssurances()
-        {
-            return _context.Assurances;
+        public IEnumerable<AnsuranceModel> GetAnssurances()
+        { 
+            return _mapper.Map<IEnumerable<AnsuranceModel>>(_context.Assurances); 
         }
 
         // GET: api/Assurances/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> GetObject([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -45,12 +49,13 @@ namespace  ManageHospital.WebUI.Controllers
                 return NotFound();
             }
 
-            return Ok(obj);
+            var dataModel = _mapper.Map<AnsuranceModel>(obj);
+            return Ok(dataModel); 
         }
 
         // PUT: api/Assurances/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] Ansurance obj)
+        public async Task<IActionResult> PutObject([FromRoute] Guid Id, [FromBody] Ansurance obj)
         {
             if (!ModelState.IsValid)
             {
@@ -85,7 +90,7 @@ namespace  ManageHospital.WebUI.Controllers
 
         // POST: api/Assurances
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] Ansurance obj)
+        public async Task<IActionResult> PostObject([FromBody] Ansurance obj)
         {
 
 
@@ -102,7 +107,7 @@ namespace  ManageHospital.WebUI.Controllers
 
         // DELETE: api/Assurances/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> DeleteObject([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {

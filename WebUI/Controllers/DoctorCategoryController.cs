@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
+using AutoMapper;
+using ManageHospital.WebUI.Models;
 
 namespace  ManageHospital.WebUI.Controllers
 {
@@ -16,17 +18,19 @@ namespace  ManageHospital.WebUI.Controllers
     public class DoctorCategoryController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
+        private readonly IMapper _mapper;
 
-        public DoctorCategoryController(ManageHospitalDBContext context)
+        public DoctorCategoryController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/DoctorCategories
         [HttpGet]
-        public IEnumerable<DoctorCategory> GetDoctorCategories()
+        public IEnumerable<DoctorCategoryModel> GetDoctorCategories()
         {
-            return _context.DoctorCategories;
+            return _mapper.Map<IEnumerable<DoctorCategoryModel>>(_context.DoctorCategories); 
         }
 
         // GET: api/DoctorCategories/5
@@ -44,8 +48,8 @@ namespace  ManageHospital.WebUI.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(obj);
+            var dataModel = _mapper.Map<DoctorCategoryModel>(obj);
+            return Ok(dataModel); 
         }
 
         // PUT: api/DoctorCategories/5

@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
 using AutoMapper;
-using  ManageHospital.WebUI.Models;
+using ManageHospital.WebUI.Models;
 
-namespace  ManageHospital.WebUI.Controllers
+namespace ManageHospital.WebUI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -30,14 +30,12 @@ namespace  ManageHospital.WebUI.Controllers
         [HttpGet]
         public IEnumerable<HospitalModel> GetOperationCategories()
         {
-            var data = _context.Hospitals.AsEnumerable();
-            var dataModel = _mapper.Map<IEnumerable<HospitalModel>>(data);
-            return dataModel;
+            return _mapper.Map<IEnumerable<HospitalModel>>(_context.Hospitals);
         }
 
         // GET: api/OperationCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> GetObject([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -50,14 +48,13 @@ namespace  ManageHospital.WebUI.Controllers
                 obj.HospitalCategory = await _context.HospitalCategories.FindAsync(obj.HospitalCategoryId);
                 obj.Contact = await _context.Contacts.FindAsync(obj.ContactId);
             }
-
-            var dataModel = _mapper.Map<HospitalModel>(obj);
-
-            if (dataModel == null)
+             
+            if (obj == null)
             {
                 return NotFound();
             }
 
+            var dataModel = _mapper.Map<HospitalModel>(obj);
             return Ok(dataModel);
         }
 
@@ -116,7 +113,7 @@ namespace  ManageHospital.WebUI.Controllers
 
             var dataModel = _mapper.Map<HospitalModel>(obj);
             //, dataModel
-            return CreatedAtAction("GetProductCategorie", new { Id = obj.Id },obj);
+            return CreatedAtAction("GetProductCategorie", new { Id = obj.Id }, obj);
         }
 
         // DELETE: api/OperationCategories/5

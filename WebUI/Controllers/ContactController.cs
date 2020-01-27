@@ -7,6 +7,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
+using AutoMapper;
+using ManageHospital.WebUI.Models;
 
 namespace  ManageHospital.WebUI.Controllers
 {
@@ -16,17 +18,19 @@ namespace  ManageHospital.WebUI.Controllers
     public class ContactController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
+        private readonly IMapper _mapper;
 
-        public ContactController(ManageHospitalDBContext context)
+        public ContactController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Contacts
         [HttpGet]
-        public IEnumerable<Contact> GetContacts()
+        public IEnumerable<ContactModel> GetContacts()
         {
-            return _context.Contacts;
+            return _mapper.Map<IEnumerable<ContactModel>>(_context.Contacts);
         }
 
         // GET: api/Contacts/5
@@ -45,7 +49,8 @@ namespace  ManageHospital.WebUI.Controllers
                 return NotFound();
             }
 
-            return Ok(obj);
+            var dataModel = _mapper.Map<ContactModel>(obj);
+            return Ok(dataModel); 
         }
 
         // PUT: api/Contacts/5
