@@ -17,5 +17,8 @@ namespace ManageHospitalData.Entities
         public Patient Patience { get; set; }
         public Guid? AssutanceId { get; set; }
         public Assutance Assutance { get; set; }
+
+        public Guid? HospitalId { get; set; }
+        public Hospital Hospital { get; set; } 
     }
 }

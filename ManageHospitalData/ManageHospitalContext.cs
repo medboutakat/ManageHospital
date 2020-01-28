@@ -44,14 +44,17 @@ namespace ManageHospitalData
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
 
+        public DbSet<City> Cities { get; set; }
+        public DbSet<Region> Regions { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ManageHospitalDBContext).Assembly);
-          
+
             modelBuilder.Entity<Role>().HasData(
                 new Role { Id = StaticObject.AdminId, Name = "Admin", Remark = "Administrator" }
             );
-            
+
             modelBuilder.Entity<Role>().HasData(
                           new Role { Id = Guid.NewGuid(), Name = "Patient", Remark = "Patient" }
             );
@@ -63,6 +66,8 @@ namespace ManageHospitalData
             modelBuilder.Entity<Role>().HasData(
             new Role { Id = Guid.NewGuid(), Name = "Doctor", Remark = "Doctor" }
             );
+
+
         }
     }
 }

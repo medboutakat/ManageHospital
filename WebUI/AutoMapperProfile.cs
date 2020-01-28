@@ -53,7 +53,13 @@ namespace  ManageHospital.WebUI
             //ForMember(d => d.HospitalCategory, act => act.MapFrom(src => src.HospitalCategoryModel));
 
             CreateMap<HospitalCategory, HospitalCategoryModel>();
-            CreateMap<HospitalCategoryModel, HospitalCategory>(); 
+            CreateMap<HospitalCategoryModel, HospitalCategory>();
+
+            CreateMap<Region, RegionModel>();
+            CreateMap<RegionModel, Region>();
+
+            CreateMap<City, CityModel>();
+            CreateMap<CityModel, City>();
         }
     }
 

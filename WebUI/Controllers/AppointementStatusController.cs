@@ -28,7 +28,7 @@ namespace  ManageHospital.WebUI.Controllers
 
         // GET: api/AppointementStatus
         [HttpGet]
-        public IEnumerable<AppointementStatusModel> GetAppointementStatus()
+        public IEnumerable<AppointementStatusModel> GetObjects()
         {
             var data = _context.AppointementStatuss.AsEnumerable();
             var dataModel = _mapper.Map<IEnumerable<AppointementStatusModel>>(data);
@@ -37,7 +37,7 @@ namespace  ManageHospital.WebUI.Controllers
 
         // GET: api/AppointementStatus/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> GetObject([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -56,7 +56,7 @@ namespace  ManageHospital.WebUI.Controllers
 
         // PUT: api/AppointementStatus/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] AppointementStatusModel obj)
+        public async Task<IActionResult> PutObject([FromRoute] Guid Id, [FromBody] AppointementStatusModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace  ManageHospital.WebUI.Controllers
 
         // POST: api/AppointementStatus
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] AppointementStatusModel obj)
+        public async Task<IActionResult> PostObject([FromBody] AppointementStatusModel obj)
         {
 
 
@@ -107,12 +107,12 @@ namespace  ManageHospital.WebUI.Controllers
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAppointementStatus", new { Id = obj.Id }, dataModel);
+            return CreatedAtAction("GetObject", new { Id = obj.Id }, dataModel);
         }
 
         // DELETE: api/AppointementStatus/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> DeleteObject([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {

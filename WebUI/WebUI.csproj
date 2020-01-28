@@ -51,7 +51,9 @@
     <Compile Remove="AppSettings.cs" />
     <Compile Remove="Class.cs" />
     <Compile Remove="Helpers\AutoMapperProfile.cs" />
-    <Compile Remove="Helpers\UserModel.cs" /> 
+    <Compile Remove="Helpers\UserModel.cs" />
+    <Compile Remove="Models\City.cs" />
+    <Compile Remove="Models\Region.cs" /> 
   </ItemGroup>
 
   <ItemGroup>
@@ -59,6 +61,7 @@
     <None Remove="Controllers\AppointementController.cs" />
     <None Remove="Controllers\AppointementStatusController.cs" />
     <None Remove="Controllers\AssuranceController.cs" />
+    <None Remove="Controllers\CitiesController.cs" />
     <None Remove="Controllers\ContactController.cs" />
     <None Remove="Controllers\DoctorCategoryController.cs" />
     <None Remove="Controllers\DoctorController.cs" />
@@ -70,6 +73,7 @@
     <None Remove="Controllers\OperationController.cs" />
     <None Remove="Controllers\OperationResultController.cs" />
     <None Remove="Controllers\PatientController.cs" />
+    <None Remove="Controllers\RegionController.cs" />
     <None Remove="Controllers\RoomCategoryController.cs" />
     <None Remove="Controllers\RoomController.cs" />
     <None Remove="Controllers\UserController.cs" />
@@ -93,6 +97,7 @@
     <None Remove="Models\OperationResult.cs" />
     <None Remove="Models\Patience.cs" />
     <None Remove="Models\Person.cs" />
+    <None Remove="Models\Region.cs" />
     <None Remove="Models\Role.cs" />
     <None Remove="Models\Room.cs" />
     <None Remove="Models\RoomCategory.cs" />

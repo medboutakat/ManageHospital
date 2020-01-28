@@ -9,3 +9,4 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\obj
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\obj\Debug\netcoreapp3.0\ManageHospitalService.csproj.CopyComplete
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\obj\Debug\netcoreapp3.0\ManageHospitalService.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\obj\Debug\netcoreapp3.0\ManageHospitalService.pdb
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\bin\Debug\netcoreapp3.0\Other\RegionAndCities.sql
