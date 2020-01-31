@@ -8,6 +8,7 @@ namespace ManageHospitalData.Entities
     {
         public Hospital()
         {
+            #region
             //Materials = new HashSet<Material>();
             //Doctors = new HashSet<Doctor>();
             //Rooms = new HashSet<Room>();
@@ -19,23 +20,25 @@ namespace ManageHospitalData.Entities
             //Roles = new HashSet<Role>();
             //Tests = new HashSet<Test>();
             //TestResults = new HashSet<TestResult>();
+            #endregion
         }
 
         public Guid Id { get; set; }
-        public string CountryHealthId { get; set; } 
+        public string CountryHealthId { get; set; }
+    
         public string Name { get; set; }
         public string Remark { get; set; }
         public string History { get; set; }
 
         public Guid HospitalCategoryId { get; set; }
-        [Required]
+      
         public HospitalCategory HospitalCategory { get; set; }
 
         public Guid ContactId { get; set; }
-        [Required]
+    
         public Contact Contact { get; set; }
 
-
+        #region 
         //public ICollection<Material> Materials { get; set; }
         //public ICollection<Doctor> Doctors { get; set; }
         //public ICollection<Room> Rooms { get; set; }
@@ -47,6 +50,7 @@ namespace ManageHospitalData.Entities
         //public ICollection<TestResult> TestResults { get; set; }
         //public ICollection<User> Users { get; set; }
         //public ICollection<Role> Roles { get; set; }
+        #endregion
 
     }
 }

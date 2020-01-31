@@ -1,0 +1,12 @@
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\bin\Release\netcoreapp3.0\Other\RegionAndCities.sql
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\bin\Release\netcoreapp3.0\ManageHospitalService.deps.json
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\bin\Release\netcoreapp3.0\ManageHospitalService.dll
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\bin\Release\netcoreapp3.0\ManageHospitalService.pdb
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\bin\Release\netcoreapp3.0\ManageHospitalData.dll
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\bin\Release\netcoreapp3.0\ManageHospitalData.pdb
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\obj\Release\netcoreapp3.0\ManageHospitalService.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\obj\Release\netcoreapp3.0\ManageHospitalService.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\obj\Release\netcoreapp3.0\ManageHospitalService.AssemblyInfo.cs
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\obj\Release\netcoreapp3.0\ManageHospitalService.csproj.CopyComplete
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\obj\Release\netcoreapp3.0\ManageHospitalService.dll
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalService\obj\Release\netcoreapp3.0\ManageHospitalService.pdb

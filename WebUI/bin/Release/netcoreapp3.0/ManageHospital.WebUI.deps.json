@@ -28,6 +28,7 @@
           "AutoMapper.Extensions.Microsoft.DependencyInjection": "7.0.0",
           "FluentValidation.AspNetCore": "8.5.0",
           "ManageHospitalData": "1.0.0",
+          "ManageHospitalService": "1.0.0",
           "Microsoft.AspNetCore.ApiAuthorization.IdentityServer": "3.0.0",
           "Microsoft.AspNetCore.Authentication.JwtBearer": "3.0.0",
           "Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore": "3.0.0",
@@ -2962,6 +2963,17 @@
         },
         "compile": {
           "ManageHospitalData.dll": {}
+        }
+      },
+      "ManageHospitalService/1.0.0": {
+        "dependencies": {
+          "ManageHospitalData": "1.0.0"
+        },
+        "runtime": {
+          "ManageHospitalService.dll": {}
+        },
+        "compile": {
+          "ManageHospitalService.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery/3.0.0.0": {
@@ -6338,6 +6350,11 @@
       "hashPath": "system.xml.xpath.xdocument.4.0.1.nupkg.sha512"
     },
     "ManageHospitalData/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "ManageHospitalService/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
