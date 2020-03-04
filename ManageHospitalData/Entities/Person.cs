@@ -10,7 +10,5 @@ namespace ManageHospitalData.Entities
         public string Sexe { set; get; }
         public Guid? ContactId { set; get; }
         public Contact contact { get; set; }
-    }
-
-
+    } 
 }

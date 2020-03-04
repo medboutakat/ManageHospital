@@ -52,7 +52,6 @@
     <Compile Remove="Class.cs" />
     <Compile Remove="Helpers\AutoMapperProfile.cs" />
     <Compile Remove="Helpers\UserModel.cs" />
-    <Compile Remove="Models\CityModel.cs" />
     <Compile Remove="Models\Region.cs" /> 
   </ItemGroup>
 

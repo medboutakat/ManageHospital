@@ -1,6 +1,6 @@
 ﻿namespace  ManageHospital.WebUI.Models
 {
-    public class PatientModel : PersonModel
+    public class PatientModel : UserModel
     {
         public int Age { get; set; }
         public string IdentityNo { get; set; }

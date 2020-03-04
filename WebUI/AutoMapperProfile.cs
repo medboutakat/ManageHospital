@@ -18,48 +18,31 @@ namespace  ManageHospital.WebUI
                 opt => opt.MapFrom(src => src.LastName));
 
             CreateMap<UserModel, User>();
+             
+            CreateMap<Assutance, AssutanceModel>().ReverseMap();
 
-            CreateMap<Assutance, AssutanceModel>();
-            CreateMap<AppointementModel, Appointement>();
+            CreateMap<Appointement, AppointementModel>().ReverseMap();
 
-            CreateMap<Assutance, AssutanceModel>();
-            CreateMap<AssutanceModel, Assutance>();
+            CreateMap<AppointementStatus, AppointementStatusModel>().ReverseMap();
 
-            CreateMap<Appointement, AppointementModel>();
-            CreateMap<AppointementModel, Appointement>();
+            CreateMap<Contact, ContactModel>().ReverseMap();
 
-            CreateMap<AppointementStatus, AppointementStatusModel>();
-            CreateMap<AppointementStatusModel, AppointementStatus>();
+            CreateMap<Doctor, DoctorModel>().ReverseMap(); 
 
-            CreateMap<Contact, ContactModel>();
-            CreateMap<ContactModel, Contact>();
+            CreateMap<DoctorCategory, DoctorCategoryModel>().ReverseMap(); 
 
-
-            CreateMap<Doctor, DoctorModel>();
-            CreateMap<DoctorModel, Doctor>();
-
-
-            CreateMap<DoctorCategory, DoctorCategoryModel>();
-            CreateMap<DoctorCategoryModel, DoctorCategory>();
-
-
-
-            CreateMap<Documents, DocumentsModel>();
-            CreateMap<DocumentsModel, Documents>();
+            CreateMap<Documents, DocumentsModel>().ReverseMap(); 
 
             CreateMap<Hospital, HospitalModel>();
             CreateMap<HospitalModel, Hospital>().
                 ForMember(d => d.Contact, act => act.MapFrom(src => src.ContactModel));
             //ForMember(d => d.HospitalCategory, act => act.MapFrom(src => src.HospitalCategoryModel));
 
-            CreateMap<HospitalCategory, HospitalCategoryModel>();
-            CreateMap<HospitalCategoryModel, HospitalCategory>();
+            CreateMap<HospitalCategory, HospitalCategoryModel>().ReverseMap();
 
-            CreateMap<Region, RegionModel>();
-            CreateMap<RegionModel, Region>();
+            CreateMap<Region, RegionModel>().ReverseMap();
 
-            CreateMap<City, CityModel>();
-            CreateMap<CityModel, City>();
+            CreateMap<City, CityModel>().ReverseMap();
         }
     }
 

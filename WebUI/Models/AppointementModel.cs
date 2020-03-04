@@ -16,5 +16,8 @@ namespace  ManageHospital.WebUI.Models
         public int? PatienceId { get; set; }
         public int? AssutanceId { get; set; }
         public AssutanceModel AssutanceModel { get; set; }
+
+        public Guid? HospitalId { get; set; }
+        public HospitalModel HospitalModel { get; set; } 
     }
 }

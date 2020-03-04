@@ -15,6 +15,5 @@ namespace ManageHospitalData.Entities
 
         public Guid RoleId { get; set; }
         public Role Role { get; set; }
-
     }
 }
