@@ -50,18 +50,24 @@
   <ItemGroup>
     <Compile Remove="AppSettings.cs" />
     <Compile Remove="Class.cs" />
+    <Compile Remove="Controllers\AppSettingsController.cs" />
     <Compile Remove="Helpers\AutoMapperProfile.cs" />
     <Compile Remove="Helpers\UserModel.cs" />
-    <Compile Remove="Models\Region.cs" /> 
+    <Compile Remove="Models\Region.cs" />
+    <Compile Remove="Models\RequestModel.cs" />
+    <Compile Remove="Models\RequestStatusModel.cs" />
+    <Compile Remove="Models\ResponseModel.cs" /> 
   </ItemGroup>
 
   <ItemGroup>
     <None Remove="appsettings.json" />
     <None Remove="Controllers\AppointementController.cs" />
     <None Remove="Controllers\AppointementStatusController.cs" />
+    <None Remove="Controllers\AppSettingsController.cs" />
     <None Remove="Controllers\AssuranceController.cs" />
     <None Remove="Controllers\CitiesController.cs" />
     <None Remove="Controllers\ContactController.cs" />
+    <None Remove="Controllers\DoctorCategoryController - Copy.cs" />
     <None Remove="Controllers\DoctorCategoryController.cs" />
     <None Remove="Controllers\DoctorController.cs" />
     <None Remove="Controllers\HospitalCategoryController.cs" />

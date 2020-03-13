@@ -42,7 +42,15 @@ namespace  ManageHospital.WebUI
 
             CreateMap<Region, RegionModel>().ReverseMap();
 
+
             CreateMap<City, CityModel>().ReverseMap();
+
+
+            //CreateMap<Request, RequestModel>().ReverseMap();
+
+            //CreateMap<RequestStatus, RequestStatusModel>().ReverseMap();
+
+            //CreateMap<Response, ResponseModel>().ReverseMap();
         }
     }
 
