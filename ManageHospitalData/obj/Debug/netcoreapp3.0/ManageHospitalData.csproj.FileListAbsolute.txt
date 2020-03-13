@@ -4,7 +4,6 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\bin\De
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\bin\Debug\netcoreapp3.0\ManageHospitalData.runtimeconfig.dev.json
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\bin\Debug\netcoreapp3.0\ManageHospitalData.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\bin\Debug\netcoreapp3.0\ManageHospitalData.pdb
-C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\obj\Debug\netcoreapp3.0\ManageHospitalData.csprojAssemblyReference.cache
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\obj\Debug\netcoreapp3.0\ManageHospitalData.AssemblyInfoInputs.cache
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\obj\Debug\netcoreapp3.0\ManageHospitalData.AssemblyInfo.cs
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\obj\Debug\netcoreapp3.0\ManageHospitalData.dll

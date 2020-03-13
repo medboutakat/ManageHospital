@@ -29,7 +29,8 @@ namespace  ManageHospital.WebUI.Controllers
         [HttpGet]
         public IEnumerable<RequestStatusModel> GetAll()
         {
-            return _mapper.Map<IEnumerable<RequestStatusModel>>(_context.DoctorCategories); 
+
+            return _mapper.Map<IEnumerable<RequestStatusModel>>(_context.DoctorCategories);
         }
 
         // GET: api/DoctorCategories/5

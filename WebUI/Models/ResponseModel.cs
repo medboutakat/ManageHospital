@@ -1,15 +1,14 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ManageHospital.WebUI.Models
 {
-    public class ResponseModel
-    { 
+    internal class ResponseModel
+    {
         //public ResponseModel()
         //{ 
         //    Requests = new HashSet<RequestModel>();
-        //}
-
+        //} 
         //public ICollection<RequestModel> RequestModels { get; set; }
 
         public Guid Id { get; set; }

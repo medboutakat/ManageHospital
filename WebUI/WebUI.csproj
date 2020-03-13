@@ -51,6 +51,7 @@
     <Compile Remove="AppSettings.cs" />
     <Compile Remove="Class.cs" />
     <Compile Remove="Controllers\AppSettingsController.cs" />
+    <Compile Remove="Controllers\RequestStatusController.cs" />
     <Compile Remove="Helpers\AutoMapperProfile.cs" />
     <Compile Remove="Helpers\UserModel.cs" />
     <Compile Remove="Models\Region.cs" />
@@ -67,7 +68,6 @@
     <None Remove="Controllers\AssuranceController.cs" />
     <None Remove="Controllers\CitiesController.cs" />
     <None Remove="Controllers\ContactController.cs" />
-    <None Remove="Controllers\DoctorCategoryController - Copy.cs" />
     <None Remove="Controllers\DoctorCategoryController.cs" />
     <None Remove="Controllers\DoctorController.cs" />
     <None Remove="Controllers\HospitalCategoryController.cs" />
@@ -79,6 +79,7 @@
     <None Remove="Controllers\OperationResultController.cs" />
     <None Remove="Controllers\PatientController.cs" />
     <None Remove="Controllers\RegionController.cs" />
+    <None Remove="Controllers\RequestStatusController.cs" />
     <None Remove="Controllers\RoomCategoryController.cs" />
     <None Remove="Controllers\RoomController.cs" />
     <None Remove="Controllers\UserController.cs" />
