@@ -28,14 +28,14 @@ namespace  ManageHospital.WebUI.Controllers
 
         // GET: api/DoctorCategories
         [HttpGet]
-        public IEnumerable<DoctorCategoryModel> GetDoctorCategories()
+        public IEnumerable<DoctorCategoryModel> GetAll()
         {
             return _mapper.Map<IEnumerable<DoctorCategoryModel>>(_context.DoctorCategories); 
         }
 
         // GET: api/DoctorCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> GetById([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -54,7 +54,7 @@ namespace  ManageHospital.WebUI.Controllers
 
         // PUT: api/DoctorCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] DoctorCategory obj)
+        public async Task<IActionResult> Put([FromRoute] Guid Id, [FromBody] DoctorCategory obj)
         {
             if (!ModelState.IsValid)
             {
@@ -89,7 +89,7 @@ namespace  ManageHospital.WebUI.Controllers
 
         // POST: api/DoctorCategories
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] DoctorCategory obj)
+        public async Task<IActionResult> Post([FromBody] DoctorCategoryModel obj)
         {
 
 
@@ -98,15 +98,16 @@ namespace  ManageHospital.WebUI.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.DoctorCategories.Add(obj);
+            var dataModel = _mapper.Map<DoctorCategory>(obj);
+            _context.DoctorCategories.Add(dataModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetDoctorCategories", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetById", new { Id = obj.Id }, dataModel);
         }
 
         // DELETE: api/DoctorCategories/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> Delete([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
