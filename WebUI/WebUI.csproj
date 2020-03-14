@@ -42,8 +42,12 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
+    <Compile Remove="Models\New folder\**" />
     <Content Remove="$(SpaRoot)**" />
+    <Content Remove="Models\New folder\**" />
+    <EmbeddedResource Remove="Models\New folder\**" />
     <None Remove="$(SpaRoot)**" />
+    <None Remove="Models\New folder\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -54,10 +58,7 @@
     <Compile Remove="Controllers\RequestStatusController.cs" />
     <Compile Remove="Helpers\AutoMapperProfile.cs" />
     <Compile Remove="Helpers\UserModel.cs" />
-    <Compile Remove="Models\Region.cs" />
-    <Compile Remove="Models\RequestModel.cs" />
-    <Compile Remove="Models\RequestStatusModel.cs" />
-    <Compile Remove="Models\ResponseModel.cs" /> 
+    <Compile Remove="Models\Region.cs" /> 
   </ItemGroup>
 
   <ItemGroup>
@@ -98,12 +99,18 @@
     <None Remove="Models\MaterialModel.cs" />
     <None Remove="Models\MaterialStatusModel.cs" />
     <None Remove="Models\NameRemarkModel.cs" />
+    <None Remove="Models\New folder\RequestModel.cs" />
+    <None Remove="Models\New folder\RequestStatusModel.cs" />
+    <None Remove="Models\New folder\ResponseModel.cs" />
     <None Remove="Models\OperationCategoryModel.cs" />
     <None Remove="Models\OperationModel.cs" />
     <None Remove="Models\OperationResultModel.cs" />
     <None Remove="Models\Patiencemodel.cs" />
     <None Remove="Models\PersonModel.cs" />
     <None Remove="Models\Region.cs" />
+    <None Remove="Models\RequestModel.cs" />
+    <None Remove="Models\RequestStatusModel.cs" />
+    <None Remove="Models\ResponseModel.cs" />
     <None Remove="Models\RoleModel.cs" />
     <None Remove="Models\RoomCategoryModel.cs" />
     <None Remove="Models\Roommodel.cs" />

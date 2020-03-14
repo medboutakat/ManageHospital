@@ -1,5 +1,5 @@
 ﻿using System;
-using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 namespace ManageHospital.WebUI.Models
 {
@@ -9,13 +9,12 @@ namespace ManageHospital.WebUI.Models
         public string Name { get; set; }
         public string Remark { get; set; }
 
-        //public RequestStatusModel()
-        //{
-        //    RequestModels = new HashSet<RequestModels>();
-        //}
+        public RequestStatusModel()
+        {
+            RequestModels = new HashSet<RequestModel>();
+        }
 
-        //public ICollection<RequestModel> RequestModels { get; set; }
+        public ICollection<RequestModel> RequestModels { get; set; }
+
     }
-
-
 }
