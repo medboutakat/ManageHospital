@@ -1,20 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
 using AutoMapper;
 using ManageHospital.WebUI.Models;
 
-namespace  ManageHospital.WebUI.Controllers
+namespace ManageHospital.WebUI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class OperationController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
@@ -29,7 +28,7 @@ namespace  ManageHospital.WebUI.Controllers
         // GET: api/OperationCategories
         [HttpGet]
         public IEnumerable<OperationModel> GetOperations()
-        { 
+        {
             return _mapper.Map<IEnumerable<OperationModel>>(_context.Operations);
         }
 
@@ -49,12 +48,12 @@ namespace  ManageHospital.WebUI.Controllers
                 return NotFound();
             }
             var dataModel = _mapper.Map<OperationModel>(obj);
-            return Ok(dataModel);  
+            return Ok(dataModel);
         }
 
         // PUT: api/OperationCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] Operation obj)
+        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] OperationModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -66,7 +65,8 @@ namespace  ManageHospital.WebUI.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(obj).State = EntityState.Modified;
+            var dataModel = _mapper.Map<Operation>(obj);
+            _context.Entry(dataModel).State = EntityState.Modified;
 
             try
             {
@@ -89,7 +89,7 @@ namespace  ManageHospital.WebUI.Controllers
 
         // POST: api/OperationCategories
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] Operation obj)
+        public async Task<IActionResult> PostProductCategorie([FromBody] OperationModel obj)
         {
 
 
@@ -98,7 +98,8 @@ namespace  ManageHospital.WebUI.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Operations.Add(obj);
+            var dataModel = _mapper.Map<Operation>(obj);
+            _context.Operations.Add(dataModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetOperations", new { Id = obj.Id }, obj);

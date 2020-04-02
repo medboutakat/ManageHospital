@@ -1,14 +1,15 @@
 ﻿using AutoMapper;
-using  ManageHospital.WebUI.Models;
+using ManageHospital.WebUI.Models;
 using ManageHospitalData.Entities;
 
-namespace  ManageHospital.WebUI
+namespace ManageHospital.WebUI
 {
     public class AutoMapper : Profile
     {
         public AutoMapper()
         {
-
+            CreateMap<Contact, ContactModel>().ReverseMap();
+             
             CreateMap<User, UserModel>()
             .ForMember(dest =>
                 dest.FirstName,
@@ -17,25 +18,27 @@ namespace  ManageHospital.WebUI
                 dest.LastName,
                 opt => opt.MapFrom(src => src.LastName));
 
-            CreateMap<UserModel, User>();
-             
+            CreateMap<UserModel, User>()
+            .ForMember(d => d.contact, act => act.MapFrom(src => src.ContactModel));
+
             CreateMap<Assutance, AssutanceModel>().ReverseMap();
 
             CreateMap<Appointement, AppointementModel>().ReverseMap();
 
             CreateMap<AppointementStatus, AppointementStatusModel>().ReverseMap();
 
-            CreateMap<Contact, ContactModel>().ReverseMap();
+            CreateMap<Doctor, DoctorModel>().ReverseMap()
+                .ForMember(d => d.contact, act => act.MapFrom(src => src.ContactModel));
 
-            CreateMap<Doctor, DoctorModel>().ReverseMap(); 
+            CreateMap<DoctorCategory, DoctorCategoryModel>().ReverseMap();
 
-            CreateMap<DoctorCategory, DoctorCategoryModel>().ReverseMap(); 
-
-            CreateMap<Documents, DocumentsModel>().ReverseMap(); 
+            CreateMap<Documents, DocumentsModel>().ReverseMap();
 
             CreateMap<Hospital, HospitalModel>();
+
             CreateMap<HospitalModel, Hospital>().
                 ForMember(d => d.Contact, act => act.MapFrom(src => src.ContactModel));
+
             //ForMember(d => d.HospitalCategory, act => act.MapFrom(src => src.HospitalCategoryModel));
 
             CreateMap<HospitalCategory, HospitalCategoryModel>().ReverseMap();
@@ -43,14 +46,16 @@ namespace  ManageHospital.WebUI
             CreateMap<Region, RegionModel>().ReverseMap();
 
 
-            CreateMap<City, CityModel>().ReverseMap();
+            CreateMap<Operation, OperationModel>().ReverseMap();
+
+            CreateMap<OperationCategory, OperationCategoryModel>().ReverseMap();
 
 
-            //CreateMap<Request, RequestModel>().ReverseMap();
+            CreateMap<Request, RequestModel>().ReverseMap();
 
-            //CreateMap<RequestStatus, RequestStatusModel>().ReverseMap();
+            CreateMap<RequestStatus, RequestStatusModel>().ReverseMap();
 
-            //CreateMap<Response, ResponseModel>().ReverseMap();
+            CreateMap<Response, ResponseModel>().ReverseMap();
         }
     }
 

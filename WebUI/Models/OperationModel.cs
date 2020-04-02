@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace   ManageHospital.WebUI.Models
+namespace ManageHospital.WebUI.Models
 {
     public class OperationModel
     {
@@ -10,7 +10,7 @@ namespace   ManageHospital.WebUI.Models
             DoctorsModel = new HashSet<DoctorModel>();
         }
 
-        public Guid Id { private set; get; }
+        public Guid Id { set; get; }
 
         public DateTime Date { set; get; }
         public string Price { set; get; }
@@ -18,9 +18,8 @@ namespace   ManageHospital.WebUI.Models
 
         public ICollection<DoctorModel> DoctorsModel { get; set; }
 
+        public Guid? OperationCategoryId { get; set; }
         public OperationCategoryModel OperationCategoryModel { get; set; }
         public RoomModel RoomModel { get; set; }
     }
-
-
 }

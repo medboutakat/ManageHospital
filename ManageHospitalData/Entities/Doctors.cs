@@ -4,6 +4,4 @@
     {
         public DoctorCategory DoctorCategory { get; set; } 
     } 
-
-
 }

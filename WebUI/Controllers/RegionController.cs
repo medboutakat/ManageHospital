@@ -13,8 +13,7 @@ using ManageHospital.WebUI.Models;
 namespace  ManageHospital.WebUI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class RegionController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;

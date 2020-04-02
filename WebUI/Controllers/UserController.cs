@@ -17,8 +17,7 @@ namespace ManageHospital.WebUI.Controllers
 {
 
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class UsersController : ControllerBase
     {
         private IUserService _userService;

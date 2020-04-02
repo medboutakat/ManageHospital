@@ -17,7 +17,8 @@ namespace ManageHospitalData.Entities
         public string TotalStayNight { set; get; }
 
         public ICollection<Doctor> Doctors { get; set; }
-
+         
+        public Guid? OperationCategoryId { get; set; }
         public OperationCategory OperationCategory { get; set; }
         public Room Room { get; set; }
     }

@@ -14,8 +14,7 @@ using System.IO;
 namespace ManageHospital.WebUI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class HospitalController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;

@@ -13,8 +13,7 @@ using AutoMapper;
 namespace ManageHospital.WebUI.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class AppointementController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
