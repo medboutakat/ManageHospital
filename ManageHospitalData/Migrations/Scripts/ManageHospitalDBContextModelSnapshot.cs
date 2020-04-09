@@ -219,9 +219,6 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("OperationId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<string>("Sexe")
                         .HasColumnType("nvarchar(max)");
 
@@ -230,8 +227,6 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.HasIndex("ContactId");
 
                     b.HasIndex("DoctorCategoryId");
-
-                    b.HasIndex("OperationId");
 
                     b.ToTable("Doctors");
                 });
@@ -251,6 +246,27 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.HasKey("Id");
 
                     b.ToTable("DoctorCategories");
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.DoctorOperation", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("DoctorId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("OperationId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DoctorId");
+
+                    b.HasIndex("OperationId");
+
+                    b.ToTable("DoctorOperation");
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Documents", b =>
@@ -518,19 +534,19 @@ namespace ManageHospitalData.Migrations.Scripts
                         },
                         new
                         {
-                            Id = new Guid("ffe08933-a2d9-4f9b-899e-1ad2d3357a70"),
+                            Id = new Guid("16579d27-c0c2-4171-b773-bf90e91dc7d6"),
                             Name = "Patient",
                             Remark = "Patient"
                         },
                         new
                         {
-                            Id = new Guid("3381a03c-8c28-40bb-a56b-7b928a57afc9"),
+                            Id = new Guid("73766854-1664-4fc9-873f-e7dd1a3ec7da"),
                             Name = "Assusstance",
                             Remark = "Assusstance"
                         },
                         new
                         {
-                            Id = new Guid("032247f2-b429-4d58-acb5-e72a6296dd79"),
+                            Id = new Guid("f294aa5a-3573-431c-9f9c-f5cd118fa327"),
                             Name = "Doctor",
                             Remark = "Doctor"
                         });
@@ -748,9 +764,16 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.HasOne("ManageHospitalData.Entities.DoctorCategory", "DoctorCategory")
                         .WithMany("Doctors")
                         .HasForeignKey("DoctorCategoryId");
+                });
 
-                    b.HasOne("ManageHospitalData.Entities.Operation", null)
-                        .WithMany("Doctors")
+            modelBuilder.Entity("ManageHospitalData.Entities.DoctorOperation", b =>
+                {
+                    b.HasOne("ManageHospitalData.Entities.Doctor", "Doctor")
+                        .WithMany("DoctorOperations")
+                        .HasForeignKey("DoctorId");
+
+                    b.HasOne("ManageHospitalData.Entities.Operation", "Operation")
+                        .WithMany("DoctorOperations")
                         .HasForeignKey("OperationId");
                 });
 

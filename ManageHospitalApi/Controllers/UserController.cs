@@ -1,8 +1,7 @@
 ﻿using AutoMapper;
-using ManageHospitalApi;
-using ManageHospitalApi.Models;
+using ManageHospitalModels.Models;
 using ManageHospitalApi.Services;
-using ManageHospitalData.Entities;
+using ManageHospitalData.Entities; 
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -12,14 +11,13 @@ using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
-using System.Text; 
+using System.Text;
 
 namespace ManageHospitalApi.Controllers
 {
 
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
@@ -27,13 +25,12 @@ namespace ManageHospitalApi.Controllers
         private readonly AppSettings _appSettings;
 
         public UsersController(
-            IUserService userService,
-            IMapper mapper,
-            IOptions<AppSettings> appSettings)
+            IUserService userService, 
+            IOptions<AppSettings> appSettings, IMapper mapper)
         {
             _userService = userService;
             _mapper = mapper;
-            _appSettings = appSettings.Value;
+            _appSettings = appSettings.Value; 
         }
 
         [AllowAnonymous]
@@ -67,7 +64,7 @@ namespace ManageHospitalApi.Controllers
                 Username = user.Username,
                 FirstName = user.FirstName,
                 LastName = user.LastName,
-                Role =new Role() { Name = user.Role.Name },
+                Role = new Role() { Name = user.Role.Name },
                 Token = tokenString
             });
         }

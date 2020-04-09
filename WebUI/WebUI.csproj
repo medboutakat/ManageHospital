@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <RootNamespace>ManageHospital.WebUI</RootNamespace>
     <AssemblyName>ManageHospital.WebUI</AssemblyName>
     <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
@@ -42,12 +42,8 @@
 
   <ItemGroup>
     <!-- Don't publish the SPA source files, but do show them in the project files list -->
-    <Compile Remove="Models\New folder\**" />
     <Content Remove="$(SpaRoot)**" />
-    <Content Remove="Models\New folder\**" />
-    <EmbeddedResource Remove="Models\New folder\**" />
     <None Remove="$(SpaRoot)**" />
-    <None Remove="Models\New folder\**" />
     <None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
   </ItemGroup>
 
@@ -57,8 +53,7 @@
     <Compile Remove="Controllers\AppSettingsController.cs" />
     <Compile Remove="Controllers\RequestStatusController.cs" />
     <Compile Remove="Helpers\AutoMapperProfile.cs" />
-    <Compile Remove="Helpers\UserModel.cs" />
-    <Compile Remove="Models\Region.cs" /> 
+    <Compile Remove="Helpers\UserModel.cs" /> 
   </ItemGroup>
 
   <ItemGroup>
@@ -83,41 +78,7 @@
     <None Remove="Controllers\RequestStatusController.cs" />
     <None Remove="Controllers\RoomCategoryController.cs" />
     <None Remove="Controllers\RoomController.cs" />
-    <None Remove="Controllers\UserController.cs" />
-    <None Remove="Models\AnsuranceModel.cs" />
-    <None Remove="Models\AppointementModel.cs" />
-    <None Remove="Models\AppointementStatusModel.cs" />
-    <None Remove="Models\AssutanceModel.cs" />
-    <None Remove="Models\AuthenticateModel.cs" />
-    <None Remove="Models\ContactModel.cs" />
-    <None Remove="Models\DoctorsCategoryModel.cs" />
-    <None Remove="Models\DoctorsModel.cs" />
-    <None Remove="Models\DocumentsModel.cs" />
-    <None Remove="Models\HospitalCategorymodel.cs" />
-    <None Remove="Models\HospitalModel.cs" />
-    <None Remove="Models\MaterialCategoryModel.cs" />
-    <None Remove="Models\MaterialModel.cs" />
-    <None Remove="Models\MaterialStatusModel.cs" />
-    <None Remove="Models\NameRemarkModel.cs" />
-    <None Remove="Models\New folder\RequestModel.cs" />
-    <None Remove="Models\New folder\RequestStatusModel.cs" />
-    <None Remove="Models\New folder\ResponseModel.cs" />
-    <None Remove="Models\OperationCategoryModel.cs" />
-    <None Remove="Models\OperationModel.cs" />
-    <None Remove="Models\OperationResultModel.cs" />
-    <None Remove="Models\Patiencemodel.cs" />
-    <None Remove="Models\PersonModel.cs" />
-    <None Remove="Models\Region.cs" />
-    <None Remove="Models\RequestModel.cs" />
-    <None Remove="Models\RequestStatusModel.cs" />
-    <None Remove="Models\ResponseModel.cs" />
-    <None Remove="Models\RoleModel.cs" />
-    <None Remove="Models\RoomCategoryModel.cs" />
-    <None Remove="Models\Roommodel.cs" />
-    <None Remove="Models\SettingsModel.cs" />
-    <None Remove="Models\TestModel.cs" />
-    <None Remove="Models\TestResultModel.cs" />
-    <None Remove="Models\Usermodel.cs" /> 
+    <None Remove="Controllers\UserController.cs" /> 
     <None Remove="nswag.json" /> 
     <None Remove="Services\CurrentUserService.cs" />
   </ItemGroup>
@@ -133,6 +94,7 @@
 
   <ItemGroup> 
     <ProjectReference Include="..\ManageHospitalData\ManageHospitalData.csproj" /> 
+    <ProjectReference Include="..\ManageHospitalModels\ManageHospitalModels.csproj" /> 
     <ProjectReference Include="..\ManageHospitalService\ManageHospitalService.csproj" /> 
   </ItemGroup>
 

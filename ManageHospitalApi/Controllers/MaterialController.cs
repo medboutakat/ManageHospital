@@ -7,26 +7,29 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
+using AutoMapper;
+using ManageHospitalModels.Models;
 
-namespace ManageHospitalApi.Controllers
+namespace  ManageHospitalApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class MaterialController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
+        private readonly IMapper _mapper;
 
-        public MaterialController(ManageHospitalDBContext context)
+        public MaterialController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/OperationCategories
         [HttpGet]
-        public IEnumerable<Material> GetMaterials()
+        public IEnumerable<MaterialModel> GetMaterials()
         {
-            return _context.Materials;
+            return _mapper.Map<IEnumerable<MaterialModel>>(_context.Materials); 
         }
 
         // GET: api/OperationCategories/5
@@ -44,8 +47,8 @@ namespace ManageHospitalApi.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(obj);
+            var dataModel = _mapper.Map<MaterialModel>(obj);
+            return Ok(dataModel); 
         }
 
         // PUT: api/OperationCategories/5

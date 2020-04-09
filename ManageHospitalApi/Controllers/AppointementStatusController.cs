@@ -3,35 +3,39 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks; 
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
-using Microsoft.AspNetCore.Cors;
+using Microsoft.EntityFrameworkCore;  
 using ManageHospitalData;
 using ManageHospitalData.Entities;
+using AutoMapper; 
+using ManageHospitalModels.Models;
 
-namespace ManageHospitalApi.Controllers
+namespace  ManageHospitalApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class AppointementStatusController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
+        private readonly IMapper _mapper;
 
-        public AppointementStatusController(ManageHospitalDBContext context)
+        public AppointementStatusController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/AppointementStatus
         [HttpGet]
-        public IEnumerable<AppointementStatus> GetAppointementStatus()
+        public IEnumerable<AppointementStatusModel> GetObjects()
         {
-            return _context.AppointementStatuss;
+            var data = _context.AppointementStatuss.AsEnumerable();
+            var dataModel = _mapper.Map<IEnumerable<AppointementStatusModel>>(data);
+            return dataModel; 
         }
 
         // GET: api/AppointementStatus/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> GetObject([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -44,13 +48,13 @@ namespace ManageHospitalApi.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(obj);
+            var dataModel = _mapper.Map<AppointementStatusModel>(obj);
+            return Ok(dataModel);
         }
 
         // PUT: api/AppointementStatus/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] AppointementStatus obj)
+        public async Task<IActionResult> PutObject([FromRoute] Guid Id, [FromBody] AppointementStatusModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -61,8 +65,9 @@ namespace ManageHospitalApi.Controllers
             {
                 return BadRequest();
             }
+            var dataModel = _mapper.Map<AppointementStatus>(obj);
 
-            _context.Entry(obj).State = EntityState.Modified;
+            _context.Entry(dataModel).State = EntityState.Modified;
 
             try
             {
@@ -85,7 +90,7 @@ namespace ManageHospitalApi.Controllers
 
         // POST: api/AppointementStatus
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] AppointementStatus obj)
+        public async Task<IActionResult> PostObject([FromBody] AppointementStatusModel obj)
         {
 
 
@@ -94,15 +99,18 @@ namespace ManageHospitalApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.AppointementStatuss.Add(obj);
+            var dataModel = _mapper.Map<AppointementStatus>(obj);
+
+            _context.AppointementStatuss.Add(dataModel);
+
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAppointementStatus", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetObject", new { Id = obj.Id }, dataModel);
         }
 
         // DELETE: api/AppointementStatus/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> DeleteObject([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {

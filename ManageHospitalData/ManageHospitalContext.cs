@@ -25,6 +25,7 @@ namespace ManageHospitalData
         public DbSet<MaterialCategory> MaterialCategories { get; set; }
 
         public DbSet<Operation> Operations { get; set; }
+        public DbSet<DoctorOperation> DoctorOperations { get; set; }
         public DbSet<OperationResult> OperationResults { get; set; }
         public DbSet<OperationCategory> OperationCategories { get; set; }
 
@@ -46,6 +47,8 @@ namespace ManageHospitalData
 
         public DbSet<City> Cities { get; set; }
         public DbSet<Region> Regions { get; set; }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
 using AutoMapper;
-using ManageHospital.WebUI.Models;
+using ManageHospitalModels.Models;
 
 namespace  ManageHospital.WebUI.Controllers
 {

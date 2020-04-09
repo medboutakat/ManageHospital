@@ -1,37 +1,40 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
+using AutoMapper;
+using ManageHospitalModels.Models;
 
 namespace ManageHospitalApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [DisableCors]
     public class OperationController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
+        private readonly IMapper _mapper;
 
-        public OperationController(ManageHospitalDBContext context)
+        public OperationController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/OperationCategories
         [HttpGet]
-        public IEnumerable<Operation> GetOperations()
+        public IEnumerable<OperationModel> GetOperations()
         {
-            return _context.Operations;
+            return _mapper.Map<IEnumerable<OperationModel>>(_context.Operations);
         }
 
         // GET: api/OperationCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetOperations([FromRoute] Guid Id)
+        public async Task<IActionResult> GetObject([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -44,13 +47,13 @@ namespace ManageHospitalApi.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(obj);
+            var dataModel = _mapper.Map<OperationModel>(obj);
+            return Ok(dataModel);
         }
 
         // PUT: api/OperationCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] Operation obj)
+        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] OperationModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -62,7 +65,8 @@ namespace ManageHospitalApi.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(obj).State = EntityState.Modified;
+            var dataModel = _mapper.Map<Operation>(obj);
+            _context.Entry(dataModel).State = EntityState.Modified;
 
             try
             {
@@ -85,7 +89,7 @@ namespace ManageHospitalApi.Controllers
 
         // POST: api/OperationCategories
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] Operation obj)
+        public async Task<IActionResult> Post([FromBody] OperationModel obj)
         {
 
 
@@ -94,7 +98,19 @@ namespace ManageHospitalApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Operations.Add(obj);
+            var dataModel = _mapper.Map<Operation>(obj);
+
+            _context.Operations.Add(dataModel);
+
+            foreach (var item in obj.DoctorIds)
+            {
+                _context.DoctorOperations.Add(new DoctorOperation
+                {
+                    DoctorId = item,
+                    OperationId = obj.Id
+                });
+            }
+
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetOperations", new { Id = obj.Id }, obj);

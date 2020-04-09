@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
 using AutoMapper;
-using ManageHospital.WebUI.Models;
+using ManageHospitalModels.Models;
 using System.IO;
 
 namespace ManageHospital.WebUI.Controllers
@@ -106,23 +106,23 @@ namespace ManageHospital.WebUI.Controllers
                 return BadRequest(ModelState);
             }
             // Getting Image
-            var imageCover = obj.ImageCover;
-            var imageProfile = obj.ImageProfile;
-            // Saving Image on Server
-            if (imageCover?.Length > 0)
-            {
-                using (var fileStream = new FileStream(imageCover.FileName, FileMode.Create))
-                {
-                    imageCover.CopyTo(fileStream);
-                }
-            }
-            if (imageProfile?.Length > 0)
-            {
-                using (var fileStream = new FileStream(imageProfile.FileName, FileMode.Create))
-                {
-                    imageProfile.CopyTo(fileStream);
-                }
-            }
+            //var imageCover = obj.ImageCover;
+            //var imageProfile = obj.ImageProfile;
+            //// Saving Image on Server
+            //if (imageCover?.Length > 0)
+            //{
+            //    using (var fileStream = new FileStream(imageCover.FileName, FileMode.Create))
+            //    {
+            //        imageCover.CopyTo(fileStream);
+            //    }
+            //}
+            //if (imageProfile?.Length > 0)
+            //{
+            //    using (var fileStream = new FileStream(imageProfile.FileName, FileMode.Create))
+            //    {
+            //        imageProfile.CopyTo(fileStream);
+            //    }
+            //}
             var data = _mapper.Map<Hospital>(obj);
 
             _context.Hospitals.Add(data);

@@ -1,35 +1,90 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
-using ManageHospitalApi.Models;
+using ManageHospitalModels.Models;
 using AutoMapper;
 
 namespace ManageHospitalApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class AppointementController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
         private readonly IMapper _mapper;
-        public AppointementController(ManageHospitalDBContext context , IMapper mapper)
+        public AppointementController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
+        [HttpGet]
+        [Route("GetAndSort")]
+        public List<Appointement> Index(string sortField, string currentSortField, string currentSortOrder, string currentFilter, string SearchString, int? pageNo)
+        {
+            var appi = _context.Appointements.ToList();
+            if (SearchString != null)
+            {
+                pageNo = 1;
+            }
+            else
+            {
+                SearchString = currentFilter;
+            }
+            if (!String.IsNullOrEmpty(SearchString))
+            {
+                appi = appi.Where(s => s.IdentityNo.Contains(SearchString)).ToList();
+            }
+            int pageSize = 10;
+            var apiQUiry = appi.AsQueryable<Appointement>();
+            var data = PagingList<Appointement>.CreateAsync(apiQUiry, pageNo ?? 1, pageSize);
+           
+            var dt = this.SortAppointement(data , sortField, currentSortField, currentSortOrder);
+            return dt;
+        }
+        private List<Appointement> SortAppointement(List<Appointement> employees, string sortField, string currentSortField, string currentSortOrder)
+        {
+            var sortOrder = "";
+            var _sortField = "";
+            if (string.IsNullOrEmpty(sortField))
+            {
+                _sortField = "Id";
+                sortOrder = "Asc";
+            }
+            else
+            {
+                if (currentSortField == sortField)
+                {
+                    sortOrder = currentSortOrder == "Asc" ? "Desc" : "Asc"; 
+                }
+                else
+                {
+                    sortOrder = "Asc";
+                }
+                _sortField = sortField;
+            }
+            var propertyInfo = typeof(Appointement).GetProperty(sortField);
+            if (sortOrder == "Asc")
+            {
+                employees = employees.OrderBy(s => propertyInfo.GetValue(s, null)).ToList();
+            }
+            else
+            {
+                employees = employees.OrderByDescending(s => propertyInfo.GetValue(s, null)).ToList();
+            }
+            return employees;
+        }
         // GET: api/ProductCategories
         [HttpGet]
         public IEnumerable<AppointementModel> GetAppointements()
         {
-            var appi = _context.Appointements.AsEnumerable(); 
+            var appi = _context.Appointements.AsEnumerable();
             var appointements = _mapper.Map<IEnumerable<AppointementModel>>(appi);
 
             return appointements;
@@ -46,17 +101,20 @@ namespace ManageHospitalApi.Controllers
 
             var obj = await _context.Appointements.FindAsync(Id);
 
+
             if (obj == null)
             {
                 return NotFound();
             }
 
-            return Ok(obj);
+            var dataModel = _mapper.Map<AppointementModel>(obj);
+
+            return Ok(dataModel);
         }
 
         // PUT: api/ProductCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutAppointements([FromRoute] Guid Id, [FromBody] Appointement obj)
+        public async Task<IActionResult> PutAppointements([FromRoute] Guid Id, [FromBody] AppointementModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -68,7 +126,8 @@ namespace ManageHospitalApi.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(obj).State = EntityState.Modified;
+            var dataModel = _mapper.Map<Appointement>(obj);
+            _context.Entry(dataModel).State = EntityState.Modified;
 
             try
             {
@@ -91,7 +150,7 @@ namespace ManageHospitalApi.Controllers
 
         // POST: api/ProductCategories
         [HttpPost]
-        public async Task<IActionResult> PostAppointements([FromBody] Appointement obj)
+        public async Task<IActionResult> PostAppointements([FromBody] AppointementModel obj)
         {
 
 
@@ -99,8 +158,8 @@ namespace ManageHospitalApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-
-            _context.Appointements.Add(obj);
+            var dataModel = _mapper.Map<Appointement>(obj);
+            _context.Appointements.Add(dataModel);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetAppointements", new { Id = obj.Id }, obj);

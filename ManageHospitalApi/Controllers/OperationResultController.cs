@@ -1,32 +1,36 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
+using AutoMapper;
+using ManageHospitalModels.Models;
 
 namespace ManageHospitalApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class OperationResultController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
+        private readonly IMapper _mapper;
 
-        public OperationResultController(ManageHospitalDBContext context)
+
+        public OperationResultController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/OperationResults
         [HttpGet]
-        public IEnumerable<OperationResult> GetOperationResults()
+        public IEnumerable<OperationResultModel> GetOperationResults()
         {
-            return _context.OperationResults;
+            return _mapper.Map<IEnumerable<OperationResultModel>>(_context.OperationResults);
         }
 
         // GET: api/OperationResults/5
@@ -44,8 +48,8 @@ namespace ManageHospitalApi.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(obj);
+            var dataModel = _mapper.Map<OperationResultModel>(obj);
+            return Ok(dataModel);
         }
 
         // PUT: api/OperationResultss/5

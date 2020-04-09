@@ -64,3 +64,4 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\obj\Rel
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\obj\Release\netcoreapp3.0\ManageHospitalApi.csproj.CopyComplete
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\obj\Release\netcoreapp3.0\ManageHospitalApi.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\obj\Release\netcoreapp3.0\ManageHospitalApi.pdb
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\bin\Release\netcoreapp3.0\Other\RegionAndCities.sql

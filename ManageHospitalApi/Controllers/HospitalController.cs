@@ -8,13 +8,13 @@ using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
 using AutoMapper;
-using ManageHospitalApi.Models;
+using ManageHospitalModels.Models;
+using System.IO; 
 
 namespace ManageHospitalApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class HospitalController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
@@ -30,14 +30,12 @@ namespace ManageHospitalApi.Controllers
         [HttpGet]
         public IEnumerable<HospitalModel> GetOperationCategories()
         {
-            var data = _context.Hospitals.AsEnumerable();
-            var dataModel = _mapper.Map<IEnumerable<HospitalModel>>(data);
-            return dataModel;
+            return _mapper.Map<IEnumerable<HospitalModel>>(_context.Hospitals);
         }
 
         // GET: api/OperationCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> GetObject([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -50,14 +48,13 @@ namespace ManageHospitalApi.Controllers
                 obj.HospitalCategory = await _context.HospitalCategories.FindAsync(obj.HospitalCategoryId);
                 obj.Contact = await _context.Contacts.FindAsync(obj.ContactId);
             }
-
-            var dataModel = _mapper.Map<HospitalModel>(obj);
-
-            if (dataModel == null)
+             
+            if (obj == null)
             {
                 return NotFound();
             }
 
+            var dataModel = _mapper.Map<HospitalModel>(obj);
             return Ok(dataModel);
         }
 
@@ -108,15 +105,33 @@ namespace ManageHospitalApi.Controllers
             {
                 return BadRequest(ModelState);
             }
-
+            // Getting Image
+            //var imageCover = obj.ImageCover;
+            //var imageProfile = obj.ImageProfile;
+            //// Saving Image on Server
+            //if (imageCover?.Length > 0)
+            //{
+            //    using (var fileStream = new FileStream(imageCover?.FileName, FileMode.Create))
+            //    {
+            //        imageCover.CopyTo(fileStream);
+            //    }
+            //}
+            //if (imageProfile?.Length > 0)
+            //{
+            //    using (var fileStream = new FileStream(imageProfile?.FileName, FileMode.Create))
+            //    {
+            //        imageProfile.CopyTo(fileStream);
+            //    }
+            //}
             var data = _mapper.Map<Hospital>(obj);
+
             _context.Hospitals.Add(data);
 
             await _context.SaveChangesAsync();
 
             var dataModel = _mapper.Map<HospitalModel>(obj);
             //, dataModel
-            return CreatedAtAction("GetProductCategorie", new { Id = obj.Id },obj);
+            return CreatedAtAction("GetProductCategorie", new { Id = obj.Id }, obj);
         }
 
         // DELETE: api/OperationCategories/5

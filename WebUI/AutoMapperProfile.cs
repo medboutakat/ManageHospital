@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ManageHospital.WebUI.Models;
+using ManageHospitalModels.Models;
 using ManageHospitalData.Entities;
 
 namespace ManageHospital.WebUI

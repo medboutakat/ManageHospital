@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETCoreApp,Version=v3.0": {
+    ".NETCoreApp,Version=v3.1": {
       "AutoMapper/9.0.0": {
         "type": "package",
         "dependencies": {
@@ -3737,6 +3737,16 @@
         },
         "runtime": {
           "bin/placeholder/ManageHospitalData.dll": {}
+        }
+      },
+      "ManageHospitalModels/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v3.1",
+        "compile": {
+          "bin/placeholder/ManageHospitalModels.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/ManageHospitalModels.dll": {}
         }
       },
       "ManageHospitalService/1.0.0": {
@@ -11946,6 +11956,11 @@
       "path": "../ManageHospitalData/ManageHospitalData.csproj",
       "msbuildProject": "../ManageHospitalData/ManageHospitalData.csproj"
     },
+    "ManageHospitalModels/1.0.0": {
+      "type": "project",
+      "path": "../ManageHospitalModels/ManageHospitalModels.csproj",
+      "msbuildProject": "../ManageHospitalModels/ManageHospitalModels.csproj"
+    },
     "ManageHospitalService/1.0.0": {
       "type": "project",
       "path": "../ManageHospitalService/ManageHospitalService.csproj",
@@ -11953,11 +11968,12 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETCoreApp,Version=v3.0": [
+    ".NETCoreApp,Version=v3.1": [
       "AutoMapper >= 9.0.0",
       "AutoMapper.Extensions.Microsoft.DependencyInjection >= 7.0.0",
       "FluentValidation.AspNetCore >= 8.5.0",
       "ManageHospitalData >= 1.0.0",
+      "ManageHospitalModels >= 1.0.0",
       "ManageHospitalService >= 1.0.0",
       "Microsoft.AspNetCore.ApiAuthorization.IdentityServer >= 3.0.0",
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 3.0.0",
@@ -11998,17 +12014,20 @@
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "netcoreapp3.0"
+        "netcoreapp3.1"
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "netcoreapp3.0": {
+        "netcoreapp3.1": {
           "projectReferences": {
             "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalData\\ManageHospitalData.csproj": {
               "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalData\\ManageHospitalData.csproj"
+            },
+            "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalModels\\ManageHospitalModels.csproj": {
+              "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalModels\\ManageHospitalModels.csproj"
             },
             "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalService\\ManageHospitalService.csproj": {
               "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalService\\ManageHospitalService.csproj"
@@ -12023,7 +12042,7 @@
       }
     },
     "frameworks": {
-      "netcoreapp3.0": {
+      "netcoreapp3.1": {
         "dependencies": {
           "AutoMapper": {
             "target": "Package",
@@ -12104,24 +12123,6 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.0.1, 3.0.1]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Host.win-x64",
-            "version": "[3.0.2, 3.0.2]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.0.0, 3.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.0.0, 3.0.0]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.AspNetCore.App": {
             "privateAssets": "none"

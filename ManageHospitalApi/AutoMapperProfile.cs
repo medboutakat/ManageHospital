@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using ManageHospitalApi.Models;
+using ManageHospitalModels.Models;
 using ManageHospitalData.Entities;
 
 namespace ManageHospitalApi
@@ -8,6 +8,7 @@ namespace ManageHospitalApi
     {
         public AutoMapper()
         {
+            CreateMap<Contact, ContactModel>().ReverseMap();
 
             CreateMap<User, UserModel>()
             .ForMember(dest =>
@@ -17,44 +18,44 @@ namespace ManageHospitalApi
                 dest.LastName,
                 opt => opt.MapFrom(src => src.LastName));
 
-            CreateMap<UserModel, User>();
+            CreateMap<UserModel, User>()
+            .ForMember(d => d.contact, act => act.MapFrom(src => src.ContactModel));
 
-            CreateMap<Assutance, AssutanceModel>();
-            CreateMap<AppointementModel, Appointement>();
+            CreateMap<Assutance, AssutanceModel>().ReverseMap();
 
-            CreateMap<Assutance, AssutanceModel>();
-            CreateMap<AssutanceModel, Assutance>();
+            CreateMap<Appointement, AppointementModel>().ReverseMap();
 
-            CreateMap<Appointement, AppointementModel>();
-            CreateMap<AppointementModel, Appointement>();
+            CreateMap<AppointementStatus, AppointementStatusModel>().ReverseMap();
 
-            CreateMap<AppointementStatus, AppointementStatusModel>();
-            CreateMap<AppointementStatusModel, AppointementStatus>();
+            CreateMap<Doctor, DoctorModel>().ReverseMap()
+                .ForMember(d => d.contact, act => act.MapFrom(src => src.ContactModel));
 
-            CreateMap<Contact, ContactModel>();
-            CreateMap<ContactModel, Contact>();
+            CreateMap<DoctorCategory, DoctorCategoryModel>().ReverseMap();
 
-
-            CreateMap<Doctor, DoctorModel>();
-            CreateMap<DoctorModel, Doctor>();
-
-
-            CreateMap<DoctorCategory, DoctorCategoryModel>();
-            CreateMap<DoctorCategoryModel, DoctorCategory>();
-
-
-
-            CreateMap<Documents, DocumentsModel>();
-            CreateMap<DocumentsModel, Documents>();
+            CreateMap<Documents, DocumentsModel>().ReverseMap();
 
             CreateMap<Hospital, HospitalModel>();
+
             CreateMap<HospitalModel, Hospital>().
                 ForMember(d => d.Contact, act => act.MapFrom(src => src.ContactModel));
-              //ForMember(d => d.HospitalCategory, act => act.MapFrom(src => src.HospitalCategoryModel));
 
-            CreateMap<HospitalCategory, HospitalCategoryModel>();
-            CreateMap<HospitalCategoryModel, HospitalCategory>();
+            //ForMember(d => d.HospitalCategory, act => act.MapFrom(src => src.HospitalCategoryModel));
 
+            CreateMap<HospitalCategory, HospitalCategoryModel>().ReverseMap();
+
+            CreateMap<Region, RegionModel>().ReverseMap();
+
+
+            CreateMap<Operation, OperationModel>().ReverseMap();
+
+            CreateMap<OperationCategory, OperationCategoryModel>().ReverseMap();
+
+
+            CreateMap<Request, RequestModel>().ReverseMap();
+
+            CreateMap<RequestStatus, RequestStatusModel>().ReverseMap();
+
+            CreateMap<Response, ResponseModel>().ReverseMap();
 
 
 

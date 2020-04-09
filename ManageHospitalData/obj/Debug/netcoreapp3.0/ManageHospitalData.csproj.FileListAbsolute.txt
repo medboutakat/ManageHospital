@@ -8,4 +8,3 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\obj\De
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\obj\Debug\netcoreapp3.0\ManageHospitalData.AssemblyInfo.cs
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\obj\Debug\netcoreapp3.0\ManageHospitalData.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\obj\Debug\netcoreapp3.0\ManageHospitalData.pdb
-C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalData\obj\Debug\netcoreapp3.0\ManageHospitalData.csprojAssemblyReference.cache

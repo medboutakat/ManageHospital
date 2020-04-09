@@ -7,26 +7,29 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
+using AutoMapper;
+using ManageHospitalModels.Models;
 
-namespace ManageHospitalApi.Controllers
+namespace  ManageHospitalApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController]
-    [DisableCors]
+    [ApiController] 
     public class DoctorController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
+        private readonly IMapper _mapper;
 
-        public DoctorController(ManageHospitalDBContext context)
+        public DoctorController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
+            _mapper = mapper;
         }
 
         // GET: api/Doctors
         [HttpGet]
-        public IEnumerable<Doctor> GetDoctors()
+        public IEnumerable<DoctorModel> GetDoctors()
         {
-            return _context.Doctors;
+            return _mapper.Map<IEnumerable<DoctorModel>>(_context.Doctors); 
         }
 
         // GET: api/Doctors/5
@@ -44,8 +47,8 @@ namespace ManageHospitalApi.Controllers
             {
                 return NotFound();
             }
-
-            return Ok(obj);
+            var dataModel = _mapper.Map<DoctorModel>(obj);
+            return Ok(dataModel); 
         }
 
         // PUT: api/Doctors/5
