@@ -12,6 +12,7 @@ namespace ManageHospitalData.Entities
         public decimal Qte { get; set; }
         public decimal Price { get; set; }
         public decimal Tax { get; set; }
-        public decimal Total { set; get; } 
+        public decimal Total { set; get; }
+        public Guid InvoiceId { set; get; }
     }
 }

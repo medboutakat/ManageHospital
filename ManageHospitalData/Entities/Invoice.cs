@@ -11,11 +11,11 @@ namespace ManageHospitalData.Entities
             InvoiceDetails = new HashSet<InvoiceDetail>();
         }
 
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         public string Code { get; set; }
         public DateTime Date { get; set; }
 
-        public double TotalAmont { get; set; }
+        public decimal TotalAmont { get; set; }
         public decimal Expedition { get; set; }
         public decimal Livraison { get; set; }
         public decimal Remise { get; set; }

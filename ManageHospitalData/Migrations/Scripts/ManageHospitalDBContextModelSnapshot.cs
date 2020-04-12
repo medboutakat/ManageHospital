@@ -266,7 +266,7 @@ namespace ManageHospitalData.Migrations.Scripts
 
                     b.HasIndex("OperationId");
 
-                    b.ToTable("DoctorOperation");
+                    b.ToTable("DoctorOperations");
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Documents", b =>
@@ -337,6 +337,69 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.HasKey("Id");
 
                     b.ToTable("HospitalCategories");
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.Invoice", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Code")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("Expedition")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Livraison")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Remise")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("TotalAmont")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Invoices");
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.InvoiceDetail", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("InvoiceId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal>("Price")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Product")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("Qte")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Tax")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<decimal>("Total")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("InvoiceId");
+
+                    b.ToTable("InvoiceDetails");
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Material", b =>
@@ -534,19 +597,19 @@ namespace ManageHospitalData.Migrations.Scripts
                         },
                         new
                         {
-                            Id = new Guid("16579d27-c0c2-4171-b773-bf90e91dc7d6"),
+                            Id = new Guid("af9efd7d-f283-4e18-98f5-f1397c1848c9"),
                             Name = "Patient",
                             Remark = "Patient"
                         },
                         new
                         {
-                            Id = new Guid("73766854-1664-4fc9-873f-e7dd1a3ec7da"),
+                            Id = new Guid("2e902387-3acf-43c9-a134-ff754abe895b"),
                             Name = "Assusstance",
                             Remark = "Assusstance"
                         },
                         new
                         {
-                            Id = new Guid("f294aa5a-3573-431c-9f9c-f5cd118fa327"),
+                            Id = new Guid("14c3a12f-0dcb-4471-9a4c-fc272db73f49"),
                             Name = "Doctor",
                             Remark = "Doctor"
                         });
@@ -790,6 +853,13 @@ namespace ManageHospitalData.Migrations.Scripts
                         .HasForeignKey("HospitalCategoryId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.InvoiceDetail", b =>
+                {
+                    b.HasOne("ManageHospitalData.Entities.Invoice", null)
+                        .WithMany("InvoiceDetails")
+                        .HasForeignKey("InvoiceId");
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Material", b =>

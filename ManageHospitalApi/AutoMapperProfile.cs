@@ -58,7 +58,15 @@ namespace ManageHospitalApi
             CreateMap<Response, ResponseModel>().ReverseMap();
 
 
+            CreateMap<Invoice, InvoiceModel>().ReverseMap(). 
+                ForMember(d => d.InvoiceDetails, act => act.MapFrom(src => src.InvoiceDetails)); 
+            
+            CreateMap<InvoiceDetail, InvoiceDetailModel>().ReverseMap();
 
+
+            CreateMap<Material, MaterialModel>().ReverseMap();
+
+            CreateMap<MaterialCategory, MaterialCategoryModel>().ReverseMap();
 
         }
     }
