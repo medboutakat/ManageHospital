@@ -45,13 +45,15 @@ namespace ManageHospitalApi
 
             CreateMap<Region, RegionModel>().ReverseMap();
 
+            CreateMap<City, CityModel>().ReverseMap();
 
             CreateMap<Operation, OperationModel>().ReverseMap();
 
             CreateMap<OperationCategory, OperationCategoryModel>().ReverseMap();
 
 
-            CreateMap<Request, RequestModel>().ReverseMap();
+            CreateMap<Request, RequestModel>().ReverseMap().ReverseMap(); 
+
 
             CreateMap<RequestStatus, RequestStatusModel>().ReverseMap();
 
