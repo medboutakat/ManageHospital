@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ManageHospitalData.Entities
 {
-    class Settings
+    public class Settings
     {
         public Guid Id { get; set; }
         public string Group { get; set; }

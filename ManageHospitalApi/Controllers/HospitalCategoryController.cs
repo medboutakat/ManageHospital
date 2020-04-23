@@ -53,7 +53,7 @@ namespace  ManageHospitalApi.Controllers
 
         // PUT: api/OperationCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] HospitalCategory obj)
+        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] HospitalCategoryModel obj)
         {
             if (!ModelState.IsValid)
             {

@@ -9,7 +9,8 @@ using ManageHospitalData;
 using ManageHospitalData.Entities;
 using AutoMapper;
 using ManageHospitalModels.Models;
-using System.IO; 
+using System.IO;
+using Microsoft.AspNetCore.Http;
 
 namespace ManageHospitalApi.Controllers
 {
@@ -28,7 +29,7 @@ namespace ManageHospitalApi.Controllers
 
         // GET: api/OperationCategories
         [HttpGet]
-        public IEnumerable<HospitalModel> GetOperationCategories()
+        public IEnumerable<HospitalModel> GetObjects()
         {
             return _mapper.Map<IEnumerable<HospitalModel>>(_context.Hospitals);
         }
@@ -60,7 +61,7 @@ namespace ManageHospitalApi.Controllers
 
         // PUT: api/OperationCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] HospitalModel obj)
+        public async Task<IActionResult> PutObject([FromRoute] Guid Id, [FromBody] HospitalModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -97,7 +98,7 @@ namespace ManageHospitalApi.Controllers
 
         // POST: api/OperationCategories
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] HospitalModel obj)
+        public async Task<IActionResult> PostObject([FromBody] HospitalModel obj)
         {
 
 
@@ -134,9 +135,35 @@ namespace ManageHospitalApi.Controllers
             return CreatedAtAction("GetProductCategorie", new { Id = obj.Id }, obj);
         }
 
+
+        [HttpPost("AddHospital")]
+        public async Task<string> Addhospital(IFormFile file, int userId)
+        {
+            //if (file == null || file.Length == 0)
+            //    throw new UserFriendlyException("Please select profile picture");
+
+            var folderName = Path.Combine("Resources", "ProfilePics");
+            var filePath = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+
+            if (!Directory.Exists(filePath))
+            {
+                Directory.CreateDirectory(filePath);
+            }
+
+            var uniqueFileName = $"{userId}_profilepic.png";
+            var dbPath = Path.Combine(folderName, uniqueFileName);
+
+            using (var fileStream = new FileStream(Path.Combine(filePath, uniqueFileName), FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+
+            return dbPath;
+        }
+
         // DELETE: api/OperationCategories/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> DeleteObject([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {

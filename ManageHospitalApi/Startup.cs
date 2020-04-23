@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,14 +11,17 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.JsonPatch.Operations;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens; 
+using Microsoft.IdentityModel.Tokens;
+using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace ManageHospitalApi
-{ 
+{
     public class Startup
     {
         private IServiceCollection _services;
@@ -76,6 +80,7 @@ namespace ManageHospitalApi
             ////{
             ////    configuration.RootPath = "ClientApp/dist";
             ////});
+            services.AddDirectoryBrowser();
 
             #region
             // configure strongly typed settings objects
@@ -140,8 +145,22 @@ namespace ManageHospitalApi
 
             app.UseCors("CorsPolicy");
 
-            app.UseStaticFiles();
-            ////app.UseSpaStaticFiles();
+            app.UseStaticFiles(); // For the wwwroot folder
+
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Resources")),
+                RequestPath = "/MyImages"
+            });
+
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            {
+                FileProvider = new PhysicalFileProvider(
+                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
+                RequestPath = "/MyImages"
+            });
+
 
             app.UseOpenApi();
 
@@ -178,6 +197,7 @@ namespace ManageHospitalApi
             ////    }
             ////});
         }
+ 
 
         private void RegisteredServicesPage(IApplicationBuilder app)
         {

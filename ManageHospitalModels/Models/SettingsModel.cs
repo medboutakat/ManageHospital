@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace   ManageHospitalModels.Models
+namespace ManageHospitalModels.Models
 {
-    class SettingsModel
+    public class SettingsModel
     {
         public Guid Id { get; set; }
         public string Group { get; set; }

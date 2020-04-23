@@ -50,6 +50,8 @@ namespace ManageHospitalData
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
+        public DbSet<Settings> Settings { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ManageHospitalDBContext).Assembly);

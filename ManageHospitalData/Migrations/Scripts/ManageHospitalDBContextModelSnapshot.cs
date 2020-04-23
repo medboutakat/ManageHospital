@@ -15,7 +15,7 @@ namespace ManageHospitalData.Migrations.Scripts
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.0.0")
+                .HasAnnotation("ProductVersion", "3.1.1")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -301,6 +301,9 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.Property<string>("CountryHealthId")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("CovePath")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("History")
                         .HasColumnType("nvarchar(max)");
 
@@ -308,6 +311,9 @@ namespace ManageHospitalData.Migrations.Scripts
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PictureProfilePath")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Remark")
@@ -377,7 +383,7 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid?>("InvoiceId")
+                    b.Property<Guid>("InvoiceId")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<decimal>("Price")
@@ -597,19 +603,19 @@ namespace ManageHospitalData.Migrations.Scripts
                         },
                         new
                         {
-                            Id = new Guid("af9efd7d-f283-4e18-98f5-f1397c1848c9"),
+                            Id = new Guid("aee933a3-cfd7-4a57-9fcd-c979862feafe"),
                             Name = "Patient",
                             Remark = "Patient"
                         },
                         new
                         {
-                            Id = new Guid("2e902387-3acf-43c9-a134-ff754abe895b"),
+                            Id = new Guid("05e31779-040b-4fbc-8c8a-a7dfbdd34d57"),
                             Name = "Assusstance",
                             Remark = "Assusstance"
                         },
                         new
                         {
-                            Id = new Guid("14c3a12f-0dcb-4471-9a4c-fc272db73f49"),
+                            Id = new Guid("cec4cd20-4a76-41d5-8990-c62a3ca4fbe3"),
                             Name = "Doctor",
                             Remark = "Doctor"
                         });
@@ -655,6 +661,32 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.HasKey("Id");
 
                     b.ToTable("RoomCategories");
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.Settings", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Display")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Group")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ParseType")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Value")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Settings");
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Test", b =>
@@ -859,7 +891,9 @@ namespace ManageHospitalData.Migrations.Scripts
                 {
                     b.HasOne("ManageHospitalData.Entities.Invoice", null)
                         .WithMany("InvoiceDetails")
-                        .HasForeignKey("InvoiceId");
+                        .HasForeignKey("InvoiceId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Material", b =>

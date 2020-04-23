@@ -29,6 +29,8 @@ namespace ManageHospitalData.Entities
         public string Name { get; set; }
         public string Remark { get; set; }
         public string History { get; set; }
+        public string CovePath { get; set; }
+        public string PictureProfilePath { get; set; }
 
         public Guid HospitalCategoryId { get; set; }
       
