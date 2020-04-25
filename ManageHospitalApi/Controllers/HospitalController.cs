@@ -113,14 +113,14 @@ namespace ManageHospitalApi.Controllers
             {
                 using (var fileStream = new FileStream(imageCover?.FileName, FileMode.Create))
                 {
-                    imageCover.CopyTo(fileStream);
+                    //imageCover.CopyTo(fileStream);
                 }
             }
             if (imageProfile != null)
             {
                 using (var fileStream = new FileStream(imageProfile?.FileName, FileMode.Create))
                 {
-                    imageProfile.CopyTo(fileStream);
+                    //imageProfile.CopyTo(fileStream);
                 }
             }
             var data = _mapper.Map<Hospital>(model);
