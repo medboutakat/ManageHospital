@@ -17,8 +17,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens;
-using Swashbuckle.AspNetCore.SwaggerGen;
+using Microsoft.IdentityModel.Tokens; 
 
 namespace ManageHospitalApi
 {
@@ -80,6 +79,9 @@ namespace ManageHospitalApi
             ////{
             ////    configuration.RootPath = "ClientApp/dist";
             ////});
+            ///
+
+            ///derictory ressource
             services.AddDirectoryBrowser();
 
             #region

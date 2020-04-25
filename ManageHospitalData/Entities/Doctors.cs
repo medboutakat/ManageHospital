@@ -9,8 +9,10 @@ namespace ManageHospitalData.Entities
         {
             this.DoctorOperations = new HashSet<DoctorOperation>();
         }
+
+        public ICollection<DoctorOperation> DoctorOperations { get; set; }
+
         public DoctorCategory DoctorCategory { get; set; }
          
-        public ICollection<DoctorOperation> DoctorOperations { get; set; }
     }
 }

@@ -8,7 +8,7 @@ namespace  ManageHospitalModels.Models
         public string FirstName { set; get; }
         public string LastName { set; get; }
         public string Sexe { set; get; }
-        public int? ContactId { set; get; }
+        public Guid? ContactId { set; get; }
         public ContactModel ContactModel { get; set; }
     } 
 }
