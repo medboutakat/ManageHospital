@@ -15,7 +15,7 @@ using Microsoft.AspNetCore.Http;
 namespace ManageHospitalApi.Controllers
 {
     [Route("api/[controller]")]
-    [ApiController] 
+    [ApiController]
     public class HospitalController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
@@ -49,7 +49,7 @@ namespace ManageHospitalApi.Controllers
                 obj.HospitalCategory = await _context.HospitalCategories.FindAsync(obj.HospitalCategoryId);
                 obj.Contact = await _context.Contacts.FindAsync(obj.ContactId);
             }
-             
+
             if (obj == null)
             {
                 return NotFound();
@@ -98,69 +98,43 @@ namespace ManageHospitalApi.Controllers
 
         // POST: api/OperationCategories
         [HttpPost]
-        public async Task<IActionResult> PostObject([FromBody] HospitalModel obj)
+        public async Task<IActionResult> PostObject([FromForm]HospitalDto obj)
         {
-
-
+            var model = obj as HospitalModel;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
-            // Getting Image
-            //var imageCover = obj.ImageCover;
-            //var imageProfile = obj.ImageProfile;
-            //// Saving Image on Server
-            //if (imageCover?.Length > 0)
-            //{
-            //    using (var fileStream = new FileStream(imageCover?.FileName, FileMode.Create))
-            //    {
-            //        imageCover.CopyTo(fileStream);
-            //    }
-            //}
-            //if (imageProfile?.Length > 0)
-            //{
-            //    using (var fileStream = new FileStream(imageProfile?.FileName, FileMode.Create))
-            //    {
-            //        imageProfile.CopyTo(fileStream);
-            //    }
-            //}
-            var data = _mapper.Map<Hospital>(obj);
+            //Getting Image
+            var imageCover = obj.ImageCoverForm;
+            var imageProfile = obj.ImageProfileForm;
+            //Saving Image on Server
+            if (imageCover != null)
+            {
+                using (var fileStream = new FileStream(imageCover?.FileName, FileMode.Create))
+                {
+                    imageCover.CopyTo(fileStream);
+                }
+            }
+            if (imageProfile != null)
+            {
+                using (var fileStream = new FileStream(imageProfile?.FileName, FileMode.Create))
+                {
+                    imageProfile.CopyTo(fileStream);
+                }
+            }
+            var data = _mapper.Map<Hospital>(model);
 
             _context.Hospitals.Add(data);
 
             await _context.SaveChangesAsync();
 
             var dataModel = _mapper.Map<HospitalModel>(obj);
-            //, dataModel
-            return CreatedAtAction("GetProductCategorie", new { Id = obj.Id }, obj);
-        }
 
+            return CreatedAtAction("GetObject", new { Id = obj.Id }, dataModel);
+        } 
 
-        [HttpPost("AddHospital")]
-        public async Task<string> Addhospital(IFormFile file, int userId)
-        {
-            //if (file == null || file.Length == 0)
-            //    throw new UserFriendlyException("Please select profile picture");
-
-            var folderName = Path.Combine("Resources", "ProfilePics");
-            var filePath = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-
-            if (!Directory.Exists(filePath))
-            {
-                Directory.CreateDirectory(filePath);
-            }
-
-            var uniqueFileName = $"{userId}_profilepic.png";
-            var dbPath = Path.Combine(folderName, uniqueFileName);
-
-            using (var fileStream = new FileStream(Path.Combine(filePath, uniqueFileName), FileMode.Create))
-            {
-                await file.CopyToAsync(fileStream);
-            }
-
-            return dbPath;
-        }
-
+    
         // DELETE: api/OperationCategories/5
         [HttpDelete("{Id}")]
         public async Task<IActionResult> DeleteObject([FromRoute] Guid Id)

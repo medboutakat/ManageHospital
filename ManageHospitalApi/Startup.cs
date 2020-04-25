@@ -82,7 +82,7 @@ namespace ManageHospitalApi
             ///
 
             ///derictory ressource
-            services.AddDirectoryBrowser();
+            //services.AddDirectoryBrowser();
 
             #region
             // configure strongly typed settings objects
@@ -149,19 +149,17 @@ namespace ManageHospitalApi
 
             app.UseStaticFiles(); // For the wwwroot folder
 
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Resources")),
-                RequestPath = "/MyImages"
-            });
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Resources")), 
+            //});
 
-            app.UseDirectoryBrowser(new DirectoryBrowserOptions
-            {
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
-                RequestPath = "/MyImages"
-            });
+            //app.UseDirectoryBrowser(new DirectoryBrowserOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider(
+            //        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
+            //});
 
 
             app.UseOpenApi();

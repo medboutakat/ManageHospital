@@ -4,4 +4,7 @@
 
 /.vs/MangedHostpital/v16
 /.vs/ManageHospital/v16
-/ManageHospitalData/bin/Debug/netcoreapp3.0
+/ManageHospitalData/bin
+/ManageHospitalApi/bin 
+/ManageHospitalData/obj 
+/ManageHospitalApi/obj

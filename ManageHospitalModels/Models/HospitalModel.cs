@@ -26,9 +26,9 @@ namespace   ManageHospitalModels.Models
         [Required]
         public ContactModel ContactModel { get; set; }
 
-        public byte ImageProfile { get; set; }
+        public string CovePath { get; set; }
 
-        public byte ImageCover { get; set; } 
+        public string PictureProfilePath { get; set; }
 
     }
 }
