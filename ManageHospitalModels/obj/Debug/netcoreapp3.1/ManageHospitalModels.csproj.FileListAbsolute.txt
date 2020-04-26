@@ -5,3 +5,4 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalModels\bin\
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalModels\bin\Debug\netcoreapp3.1\ManageHospitalModels.pdb
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalModels\obj\Debug\netcoreapp3.1\ManageHospitalModels.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalModels\obj\Debug\netcoreapp3.1\ManageHospitalModels.pdb
+C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalModels\obj\Debug\netcoreapp3.1\ManageHospitalModels.csprojAssemblyReference.cache

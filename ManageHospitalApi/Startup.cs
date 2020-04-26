@@ -44,7 +44,7 @@ namespace ManageHospitalApi
             services.AddHealthChecks()
                 .AddDbContextCheck<ManageHospitalDBContext>();
 
-            //services.AddScoped<ICurrentUserService, CurrentUserService>();
+            services.AddScoped<ICurrentUserService, CurrentUserService>();
 
             services.AddHttpContextAccessor();
 
@@ -53,8 +53,9 @@ namespace ManageHospitalApi
                 .AddNewtonsoftJson();
             //.AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<IManageHospitalDBContext>());
 
+            services.AddDirectoryBrowser();
 
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); 
 
             services.AddRazorPages();
 
@@ -79,12 +80,9 @@ namespace ManageHospitalApi
             ////{
             ////    configuration.RootPath = "ClientApp/dist";
             ////});
-            ///
+            /// 
 
-            ///derictory ressource
-            //services.AddDirectoryBrowser();
-
-            #region
+            #region JWT
             // configure strongly typed settings objects
             var appSettingsSection = Configuration.GetSection("AppSettings");
             services.Configure<AppSettings>(appSettingsSection);
@@ -147,20 +145,13 @@ namespace ManageHospitalApi
 
             app.UseCors("CorsPolicy");
 
-            app.UseStaticFiles(); // For the wwwroot folder
+            app.UseStaticFiles();
 
-            //app.UseStaticFiles(new StaticFileOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(
-            //        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Resources")), 
-            //});
-
-            //app.UseDirectoryBrowser(new DirectoryBrowserOptions
-            //{
-            //    FileProvider = new PhysicalFileProvider(
-            //        Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "images")),
-            //});
-
+            app.UseDirectoryBrowser(new DirectoryBrowserOptions()
+            {
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images")),
+                RequestPath = new PathString("/MyImages")
+            });
 
             app.UseOpenApi();
 

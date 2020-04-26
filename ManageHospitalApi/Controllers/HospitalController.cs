@@ -11,6 +11,7 @@ using AutoMapper;
 using ManageHospitalModels.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Hosting;
 
 namespace ManageHospitalApi.Controllers
 {
@@ -20,11 +21,13 @@ namespace ManageHospitalApi.Controllers
     {
         private readonly ManageHospitalDBContext _context;
         private readonly IMapper _mapper;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public HospitalController(ManageHospitalDBContext context, IMapper mapper)
+        public HospitalController(ManageHospitalDBContext context, IMapper mapper, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _mapper = mapper;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: api/OperationCategories
@@ -98,30 +101,11 @@ namespace ManageHospitalApi.Controllers
 
         // POST: api/OperationCategories
         [HttpPost]
-        public async Task<IActionResult> PostObject([FromForm]HospitalDto obj)
+        public async Task<IActionResult> PostObject([FromBody]HospitalModel model)
         {
-            var model = obj as HospitalModel;
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
-            }
-            //Getting Image
-            var imageCover = obj.ImageCoverForm;
-            var imageProfile = obj.ImageProfileForm;
-            //Saving Image on Server
-            if (imageCover != null)
-            {
-                using (var fileStream = new FileStream(imageCover?.FileName, FileMode.Create))
-                {
-                    //imageCover.CopyTo(fileStream);
-                }
-            }
-            if (imageProfile != null)
-            {
-                using (var fileStream = new FileStream(imageProfile?.FileName, FileMode.Create))
-                {
-                    //imageProfile.CopyTo(fileStream);
-                }
             }
             var data = _mapper.Map<Hospital>(model);
 
@@ -129,12 +113,62 @@ namespace ManageHospitalApi.Controllers
 
             await _context.SaveChangesAsync();
 
-            var dataModel = _mapper.Map<HospitalModel>(obj);
+            var dataModel = _mapper.Map<HospitalModel>(model);
 
-            return CreatedAtAction("GetObject", new { Id = obj.Id }, dataModel);
-        } 
+            return CreatedAtAction("GetObject", new { Id = model.Id }, dataModel);
+        }
 
-    
+        [HttpPut("UpdateImages/{Id}")]
+        public async Task<IActionResult> UpdateImages([FromRoute] Guid id, [FromForm]HospitalImages obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var time = DateTime.Now.Ticks.ToString();
+
+            var hosp = _context.Hospitals.FirstOrDefault(e => e.Id == id);
+            if (hosp == null)
+                hosp = new Hospital();
+
+            //Getting Image
+            var imageCover = obj.ImageCoverForm;
+            var imageProfile = obj.ImageProfileForm;
+            //Saving Image on Server
+
+            var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images");
+
+            if (imageCover != null)
+            {
+
+                var fileName = "img" + time + imageCover?.FileName;
+                string fullPath = Path.Combine(imagePath, fileName); 
+                using (var fileStream = new FileStream(fullPath, FileMode.Create))
+                {
+                    hosp.CovePath = Path.Combine(@"images", fileName);
+                }
+            }
+            if (imageProfile != null)
+            {
+                var fileName = "img" + time + imageProfile?.FileName;
+                string fullPath = Path.Combine(imagePath, fileName); 
+                using (var fileStream = new FileStream(fullPath, FileMode.Create))
+                {
+                    hosp.PictureProfilePath = Path.Combine(@"images", fileName);
+                }
+            }
+
+
+            _context.Entry(hosp).State = EntityState.Modified;
+
+            await _context.SaveChangesAsync();
+
+            var dataModel = _mapper.Map<HospitalModel>(hosp);
+
+            return CreatedAtAction("GetObject", new { Id = hosp.Id }, dataModel);
+        }
+
+
         // DELETE: api/OperationCategories/5
         [HttpDelete("{Id}")]
         public async Task<IActionResult> DeleteObject([FromRoute] Guid Id)

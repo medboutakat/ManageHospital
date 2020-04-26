@@ -1,14 +1,15 @@
 using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Logging; 
+using Microsoft.Extensions.Logging;
 using Microsoft.EntityFrameworkCore;
 using System;
-using System.Reflection; 
-using System.Threading.Tasks; 
+using System.Reflection;
+using System.Threading.Tasks;
 using Microsoft.Extensions.Configuration;
 using ManageHospitalData;
-using Microsoft.Extensions.Hosting; 
+using Microsoft.Extensions.Hosting;
+using System.IO;
 
 namespace ManageHospitalApi
 {
@@ -69,6 +70,8 @@ namespace ManageHospitalApi
                         config.AddCommandLine(args);
                     }
                 })
-                .UseStartup<Startup>();
+             
+            .UseContentRoot(Directory.GetCurrentDirectory()) 
+            .UseStartup<Startup>();
     }
 }

@@ -68,7 +68,6 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\obj\Rel
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\obj\Release\netcoreapp3.1\ManageHospitalApi.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\obj\Release\netcoreapp3.1\ManageHospitalApi.pdb
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\bin\Release\netcoreapp3.1\libman.json
-C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\bin\Release\netcoreapp3.1\wwwroot\images\New Text Document (2).txt
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\bin\Release\netcoreapp3.1\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\bin\Release\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\bin\Release\netcoreapp3.1\Microsoft.Bcl.HashCode.dll

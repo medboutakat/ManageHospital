@@ -171,4 +171,3 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\bin\Deb
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\obj\Debug\netcoreapp3.1\ManageHospitalApi.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\obj\Debug\netcoreapp3.1\ManageHospitalApi.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\bin\Debug\netcoreapp3.1\libman.json
-C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalApi\bin\Debug\netcoreapp3.1\wwwroot\images\New Text Document (2).txt
