@@ -6,3 +6,11 @@ C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalModels\bin\
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalModels\obj\Debug\netcoreapp3.1\ManageHospitalModels.dll
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalModels\obj\Debug\netcoreapp3.1\ManageHospitalModels.pdb
 C:\Users\admin\source\repos\medboutakat\ManageHospital\ManageHospitalModels\obj\Debug\netcoreapp3.1\ManageHospitalModels.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\medboutakat\ManageHospital1\ManageHospitalModels\bin\Debug\netcoreapp3.1\ManageHospitalModels.deps.json
+C:\Users\admin\source\repos\medboutakat\ManageHospital1\ManageHospitalModels\bin\Debug\netcoreapp3.1\ManageHospitalModels.dll
+C:\Users\admin\source\repos\medboutakat\ManageHospital1\ManageHospitalModels\bin\Debug\netcoreapp3.1\ManageHospitalModels.pdb
+C:\Users\admin\source\repos\medboutakat\ManageHospital1\ManageHospitalModels\obj\Debug\netcoreapp3.1\ManageHospitalModels.AssemblyInfoInputs.cache
+C:\Users\admin\source\repos\medboutakat\ManageHospital1\ManageHospitalModels\obj\Debug\netcoreapp3.1\ManageHospitalModels.AssemblyInfo.cs
+C:\Users\admin\source\repos\medboutakat\ManageHospital1\ManageHospitalModels\obj\Debug\netcoreapp3.1\ManageHospitalModels.dll
+C:\Users\admin\source\repos\medboutakat\ManageHospital1\ManageHospitalModels\obj\Debug\netcoreapp3.1\ManageHospitalModels.pdb
+C:\Users\admin\source\repos\medboutakat\ManageHospital1\ManageHospitalModels\obj\Debug\netcoreapp3.1\ManageHospitalModels.csprojAssemblyReference.cache

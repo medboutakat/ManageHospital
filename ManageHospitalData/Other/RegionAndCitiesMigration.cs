@@ -10,15 +10,9 @@ namespace ManageHospitalData.Migrations.Scripts
     [DbContext(typeof(ManageHospitalDBContext))]
     [Migration("20220128192026_RegionAndCitiesMigration")]
     public partial class RegionAndCitiesMigration : Migration
-    {
-        //private const string MIGRATION_SQL_SCRIPT_FILE_NAME = @"Migrations\Scripts\RegionAndCities.sql";
-        //private const string MIGRATION_SQL_SCRIPT_FILE_NAME = @"Scripts\RegionAndCities.sql";
-
+    { 
         protected override void Up(MigrationBuilder migrationBuilder)
-        {
-            ////string sql = Path.Combine(Directory.GetParent(Directory.GetCurrentDirectory()).FullName, MIGRATION_SQL_SCRIPT_FILE_NAME);
-            //string sql = Path.Combine(MIGRATION_SQL_SCRIPT_FILE_NAME);
-            //migrationBuilder.Sql(File.ReadAllText(sql));
+        { 
             migrationBuilder.Sql(regions);
             migrationBuilder.Sql(cities);
         }

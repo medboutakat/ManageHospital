@@ -43,6 +43,14 @@ namespace ManageHospitalData
         public DbSet<City> Cities { get; set; }
         public DbSet<Region> Regions { get; set; }
 
+
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+
+        public DbSet<Settings> Settings { get; set; }
+
+
         Task<int> SaveChangesAsync(CancellationToken cancellationToken);
     }
 }

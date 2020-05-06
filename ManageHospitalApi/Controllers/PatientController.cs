@@ -35,7 +35,7 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/Patients/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetPatients([FromRoute] Guid Id)
+        public async Task<IActionResult> GetById([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace  ManageHospitalApi.Controllers
             _context.Patients.Add(obj);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetPatients", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetById", new { Id = obj.Id }, obj);
         }
 
         // DELETE: api/Patientss/5

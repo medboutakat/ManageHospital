@@ -71,7 +71,7 @@ namespace ManageHospitalApi.Controllers
 
         [AllowAnonymous]
         [HttpPost("register")]
-        public IActionResult Register([FromBody]UserModel model)
+        public IActionResult Register([FromBody]RegisterModel model)
         {
             // map model to entity
             var user = _mapper.Map<User>(model);

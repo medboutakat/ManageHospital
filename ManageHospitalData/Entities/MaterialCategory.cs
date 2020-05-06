@@ -7,9 +7,9 @@ namespace ManageHospitalData.Entities
     {
         public MaterialCategory()
         {
-            Hospitals = new HashSet<Material>();
+            Materials = new HashSet<Material>();
         }
 
-        public ICollection<Material> Hospitals { get; set; }
+        public ICollection<Material> Materials { get; set; }
     }
 }

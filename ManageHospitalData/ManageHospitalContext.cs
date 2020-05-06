@@ -50,6 +50,11 @@ namespace ManageHospitalData
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceDetail> InvoiceDetails { get; set; }
 
+
+        public DbSet<Product> Products { get; set; }
+        public DbSet<ProductCategory> ProductCategories { get; set; }
+        public DbSet<ProductImage> ProductImages { get; set; }
+
         public DbSet<Settings> Settings { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -70,8 +75,7 @@ namespace ManageHospitalData
 
             modelBuilder.Entity<Role>().HasData(
             new Role { Id = Guid.NewGuid(), Name = "Doctor", Remark = "Doctor" }
-            );
-
+            ); 
 
         }
     }

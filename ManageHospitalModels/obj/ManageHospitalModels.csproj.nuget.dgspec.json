@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalModels\\ManageHospitalModels.csproj": {}
+    "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalModels\\ManageHospitalModels.csproj": {}
   },
   "projects": {
-    "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalModels\\ManageHospitalModels.csproj": {
+    "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalModels\\ManageHospitalModels.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalModels\\ManageHospitalModels.csproj",
+        "projectUniqueName": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalModels\\ManageHospitalModels.csproj",
         "projectName": "ManageHospitalModels",
-        "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalModels\\ManageHospitalModels.csproj",
+        "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalModels\\ManageHospitalModels.csproj",
         "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalModels\\obj\\",
+        "outputPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalModels\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",

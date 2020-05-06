@@ -6306,11 +6306,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalData\\ManageHospitalData.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalData\\ManageHospitalData.csproj",
       "projectName": "ManageHospitalData",
-      "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalData\\ManageHospitalData.csproj",
+      "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalData\\ManageHospitalData.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalData\\obj\\",
+      "outputPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalData\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

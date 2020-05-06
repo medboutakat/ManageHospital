@@ -6256,11 +6256,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalService\\ManageHospitalService.csproj",
+      "projectUniqueName": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalService\\ManageHospitalService.csproj",
       "projectName": "ManageHospitalService",
-      "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalService\\ManageHospitalService.csproj",
+      "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalService\\ManageHospitalService.csproj",
       "packagesPath": "C:\\Users\\admin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalService\\obj\\",
+      "outputPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalService\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -6281,8 +6281,8 @@
       "frameworks": {
         "netcoreapp3.0": {
           "projectReferences": {
-            "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalData\\ManageHospitalData.csproj": {
-              "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital\\ManageHospitalData\\ManageHospitalData.csproj"
+            "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalData\\ManageHospitalData.csproj": {
+              "projectPath": "C:\\Users\\admin\\source\\repos\\medboutakat\\ManageHospital1\\ManageHospitalData\\ManageHospitalData.csproj"
             }
           }
         }

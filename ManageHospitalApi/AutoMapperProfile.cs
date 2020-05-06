@@ -18,6 +18,9 @@ namespace ManageHospitalApi
                 dest.LastName,
                 opt => opt.MapFrom(src => src.LastName));
 
+
+            CreateMap<RegisterModel, User>().ReverseMap();
+
             CreateMap<UserModel, User>()
             .ForMember(d => d.contact, act => act.MapFrom(src => src.ContactModel));
 
@@ -33,6 +36,7 @@ namespace ManageHospitalApi
             CreateMap<DoctorCategory, DoctorCategoryModel>().ReverseMap();
 
             CreateMap<Documents, DocumentsModel>().ReverseMap();
+
 
             CreateMap<Hospital, HospitalModel>();
 
@@ -51,6 +55,9 @@ namespace ManageHospitalApi
 
             CreateMap<OperationCategory, OperationCategoryModel>().ReverseMap();
 
+            CreateMap<Product, ProductModel>().ReverseMap();
+
+            CreateMap<ProductCategory, ProductCategoryModel>().ReverseMap();
 
             CreateMap<Request, RequestModel>().ReverseMap().ReverseMap(); 
 

@@ -10,14 +10,14 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ManageHospitalData.Migrations.Scripts
 {
     [DbContext(typeof(ManageHospitalDBContext))]
-    [Migration("20200422005551_addsettings")]
-    partial class addsettings
+    [Migration("20200502000440_mig2")]
+    partial class mig2
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.1")
+                .HasAnnotation("ProductVersion", "3.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
@@ -391,7 +391,10 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<string>("Product")
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("ProductName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<decimal>("Qte")
@@ -406,6 +409,8 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.HasKey("Id");
 
                     b.HasIndex("InvoiceId");
+
+                    b.HasIndex("ProductId");
 
                     b.ToTable("InvoiceDetails");
                 });
@@ -561,6 +566,106 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.ToTable("OperationResults");
                 });
 
+            modelBuilder.Entity("ManageHospitalData.Entities.Product", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("Discontinued")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("ProductCategoryId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("QuantityPerUnit")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<short?>("ReorderLevel")
+                        .HasColumnType("smallint");
+
+                    b.Property<Guid?>("SupplierId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<decimal?>("UnitPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<short?>("UnitsInStock")
+                        .HasColumnType("smallint");
+
+                    b.Property<short?>("UnitsOnOrder")
+                        .HasColumnType("smallint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductCategoryId");
+
+                    b.ToTable("Products");
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.ProductCategory", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Remark")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("ProductCategories");
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.ProductImage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Created")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime?>("LastModified")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("LastModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Path")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("ProductId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("ProductImages");
+                });
+
             modelBuilder.Entity("ManageHospitalData.Entities.Region", b =>
                 {
                     b.Property<int>("Id")
@@ -605,19 +710,19 @@ namespace ManageHospitalData.Migrations.Scripts
                         },
                         new
                         {
-                            Id = new Guid("aee933a3-cfd7-4a57-9fcd-c979862feafe"),
+                            Id = new Guid("174957da-6b6c-496f-99ba-61b30fd4c4a1"),
                             Name = "Patient",
                             Remark = "Patient"
                         },
                         new
                         {
-                            Id = new Guid("05e31779-040b-4fbc-8c8a-a7dfbdd34d57"),
+                            Id = new Guid("5bb66173-49bf-4d44-88af-1033334bd5e9"),
                             Name = "Assusstance",
                             Remark = "Assusstance"
                         },
                         new
                         {
-                            Id = new Guid("cec4cd20-4a76-41d5-8990-c62a3ca4fbe3"),
+                            Id = new Guid("db763a24-7df6-4cf4-9573-089ddfe996b4"),
                             Name = "Doctor",
                             Remark = "Doctor"
                         });
@@ -896,12 +1001,18 @@ namespace ManageHospitalData.Migrations.Scripts
                         .HasForeignKey("InvoiceId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.HasOne("ManageHospitalData.Entities.Product", "Product")
+                        .WithMany("InvoiceDetails")
+                        .HasForeignKey("ProductId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Material", b =>
                 {
                     b.HasOne("ManageHospitalData.Entities.MaterialCategory", "MaterialCategory")
-                        .WithMany("Hospitals")
+                        .WithMany("Materials")
                         .HasForeignKey("MaterialCategoryId");
 
                     b.HasOne("ManageHospitalData.Entities.MaterialStatus", "MaterialStatus")
@@ -937,6 +1048,20 @@ namespace ManageHospitalData.Migrations.Scripts
                     b.HasOne("ManageHospitalData.Entities.Test", "Test")
                         .WithMany()
                         .HasForeignKey("TestId");
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.Product", b =>
+                {
+                    b.HasOne("ManageHospitalData.Entities.ProductCategory", "ProductCategory")
+                        .WithMany("Products")
+                        .HasForeignKey("ProductCategoryId");
+                });
+
+            modelBuilder.Entity("ManageHospitalData.Entities.ProductImage", b =>
+                {
+                    b.HasOne("ManageHospitalData.Entities.Product", null)
+                        .WithMany("ProductImages")
+                        .HasForeignKey("ProductId");
                 });
 
             modelBuilder.Entity("ManageHospitalData.Entities.Room", b =>

@@ -3,18 +3,18 @@ using System.Collections.Generic;
 
 namespace ManageHospitalData.Entities
 {
-    public class AppointementStatus
+    public class RequestStatus
     {
         public Guid Id { get; set; }
         public string Name { get; set; }
         public string Remark { get; set; }
 
-        public AppointementStatus()
+        public RequestStatus()
         {
-            Appointements = new HashSet<Appointement>();
+            Requests = new HashSet<Request>();
         }
 
-        public ICollection<Appointement> Appointements { get; set; }
+        public ICollection<Request> Requests { get; set; }
     }
 
 
