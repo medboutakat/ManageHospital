@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
 using ManageHospitalModels.Models;
 using ManageHospitalApi.Services;
-using ManageHospitalData.Entities; 
+using ManageHospitalData.Entities;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Mvc;
@@ -17,7 +17,7 @@ namespace ManageHospitalApi.Controllers
 {
 
     [Route("api/[controller]")]
-    [ApiController] 
+    [ApiController]
     public class UsersController : ControllerBase
     {
         private IUserService _userService;
@@ -25,12 +25,12 @@ namespace ManageHospitalApi.Controllers
         private readonly AppSettings _appSettings;
 
         public UsersController(
-            IUserService userService, 
+            IUserService userService,
             IOptions<AppSettings> appSettings, IMapper mapper)
         {
             _userService = userService;
             _mapper = mapper;
-            _appSettings = appSettings.Value; 
+            _appSettings = appSettings.Value;
         }
 
         [AllowAnonymous]
@@ -74,12 +74,15 @@ namespace ManageHospitalApi.Controllers
         public IActionResult Register([FromBody]RegisterModel model)
         {
             // map model to entity
-            var user = _mapper.Map<User>(model);
 
             try
             {
+                var userType = GetUserType(model.UserType);
+                var user = _mapper.Map(model, typeof(RegisterModel), userType);
+
                 // create user
-                _userService.Create(user, model.Password);
+                _userService.Create((User)user, model.Password);
+
                 return Ok();
             }
             catch (AppException ex)
@@ -87,6 +90,18 @@ namespace ManageHospitalApi.Controllers
                 // return error message if there was an exception
                 return BadRequest(new { message = ex.Message });
             }
+        }
+
+        private Type GetUserType(string userType)
+        {
+            var type = typeof(User);
+            switch (userType.ToLower())
+            {
+                //case "User": type = typeof(User); break;
+                //case "Doctor": type = typeof(Doctor); break;
+                case "patient": type = typeof(Patient); break; 
+            } 
+            return type;
         }
 
         [HttpGet]

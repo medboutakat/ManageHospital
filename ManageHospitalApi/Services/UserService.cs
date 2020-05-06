@@ -68,13 +68,21 @@ namespace ManageHospitalApi.Services
             CreatePasswordHash(password, out passwordHash, out passwordSalt);
 
             user.PasswordHash = passwordHash;
-            user.PasswordSalt = passwordSalt;
-            user.RoleId = StaticObject.AdminId;
+            user.PasswordSalt = passwordSalt; 
+
+            var guidId = (user.GetType() == typeof(Patient)) ?
+                StaticObject.PatientId : 
+                StaticObject.AdminId;
+
+            var getType = user.GetType();
+            user.RoleId = guidId;
             _context.Users.Add(user);
             _context.SaveChanges();
 
             return user;
         }
+
+
 
         public void Update(User userParam, string password = null)
         {

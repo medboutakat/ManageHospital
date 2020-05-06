@@ -19,7 +19,11 @@ namespace ManageHospitalApi
                 opt => opt.MapFrom(src => src.LastName));
 
 
-            CreateMap<RegisterModel, User>().ReverseMap();
+            CreateMap<RegisterModel, User>().ReverseMap(); 
+            CreateMap<RegisterModel, Patient>().ReverseMap();
+            CreateMap<RegisterModel, Doctor>().ReverseMap();
+            CreateMap<RegisterModel, Assutance>().ReverseMap();
+
 
             CreateMap<UserModel, User>()
             .ForMember(d => d.contact, act => act.MapFrom(src => src.ContactModel));
