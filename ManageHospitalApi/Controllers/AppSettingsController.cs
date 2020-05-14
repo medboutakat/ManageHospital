@@ -11,10 +11,11 @@ using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ManageHospitalApi.Controllers
 {
-
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     [DisableCors]

@@ -8,15 +8,15 @@ namespace ManageHospitalData
     {
 
 
-        private static Guid adminId = new Guid("252161AC-17DA-453E-894C-B993C0D21925");
+        private static Guid companyId = new Guid("252161AC-17DA-453E-894C-B993C0D21925");
         private static Guid patientId = new Guid("252161AC-17DA-453E-894C-B993C0D21925");
         //private static Guid ssusstanceId = new Guid("252161AC-17DA-453E-894C-B993C0D21925");
         //private static Guid doctorId = new Guid("252161AC-17DA-453E-894C-B993C0D21925");
 
-        public static Guid AdminId
+        public static Guid CompanyId
         {
-            get { return adminId; }
-            set { adminId = value; }
+            get { return companyId; }
+            set { companyId = value; }
         }
 
         public static Guid PatientId

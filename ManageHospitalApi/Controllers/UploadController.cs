@@ -2,9 +2,15 @@
 using Microsoft.AspNetCore.Hosting; 
 using System.IO;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
+using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
 namespace WebUI.Controllers
 {
+    [Authorize]
     [Produces("application/json")]
     [Route("api/[controller]")]
     public class UploadController : ControllerBase
@@ -47,3 +53,5 @@ namespace WebUI.Controllers
         }
     }
 }
+
+ 

@@ -9,9 +9,11 @@ using ManageHospitalData;
 using ManageHospitalData.Entities;
 using AutoMapper;
 using ManageHospitalModels.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace  ManageHospitalApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController] 
     public class MaterialController : ControllerBase

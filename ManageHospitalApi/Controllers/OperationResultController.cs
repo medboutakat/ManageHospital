@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Cors;
+using Microsoft.EntityFrameworkCore; 
 using ManageHospitalData;
 using ManageHospitalData.Entities;
 using AutoMapper;
 using ManageHospitalModels.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ManageHospitalApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController] 
     public class OperationResultController : ControllerBase

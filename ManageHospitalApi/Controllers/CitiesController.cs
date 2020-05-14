@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Cors;
-using ManageHospitalData;
-using ManageHospitalData.Entities;
+using Microsoft.AspNetCore.Mvc; 
+using ManageHospitalData; 
 using AutoMapper;
-using ManageHospitalModels.Models;
+using ManageHospitalModels.Models; 
 
 namespace ManageHospitalApi.Controllers
-{
+{ 
     [Route("api/[controller]")]
     [ApiController] 
     public class CityController : ControllerBase

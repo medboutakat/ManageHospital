@@ -62,7 +62,7 @@ namespace ManageHospitalData
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ManageHospitalDBContext).Assembly);
 
             modelBuilder.Entity<Role>().HasData(
-                new Role { Id = StaticObject.AdminId, Name = "Admin", Remark = "Administrator" }
+                new Role { Id = StaticObject.CompanyId, Name = "Admin", Remark = "Company" }
             );
 
             modelBuilder.Entity<Role>().HasData(

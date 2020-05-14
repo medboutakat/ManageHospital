@@ -12,9 +12,11 @@ using ManageHospitalModels.Models;
 using System.IO;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
 
 namespace ManageHospitalApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class HospitalController : ControllerBase
@@ -61,6 +63,9 @@ namespace ManageHospitalApi.Controllers
             var dataModel = _mapper.Map<HospitalModel>(obj);
             return Ok(dataModel);
         }
+
+
+
 
         // PUT: api/OperationCategories/5
         [HttpPut("{Id}")]
@@ -118,6 +123,33 @@ namespace ManageHospitalApi.Controllers
             return CreatedAtAction("GetObject", new { Id = model.Id }, dataModel);
         }
 
+
+        [HttpPost("Picture")]
+        public async Task<IActionResult> Post(List<IFormFile> files)
+        {
+            try
+            {
+                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images");
+
+                foreach (var file in files)
+                { 
+                    var time = DateTime.Now.Ticks;
+                    var fileName = "img" + time + file.FileName;
+                    string fullPath = Path.Combine(imagePath, fileName);
+                    using (var fileStream = new FileStream(fullPath, FileMode.Create))
+                    {
+                        //hosp.CovePath = Path.Combine(@"images", fileName);
+                    }
+                }
+
+                return Ok();
+            }
+            catch (Exception ex)
+            {
+                return BadRequest($"Unable to upload file(s).");
+            }
+        }
+
         [HttpPut("UpdateImages/{Id}")]
         public async Task<IActionResult> UpdateImages([FromRoute] Guid id, [FromForm]HospitalImages obj)
         {
@@ -142,7 +174,7 @@ namespace ManageHospitalApi.Controllers
             {
 
                 var fileName = "img" + time + imageCover?.FileName;
-                string fullPath = Path.Combine(imagePath, fileName); 
+                string fullPath = Path.Combine(imagePath, fileName);
                 using (var fileStream = new FileStream(fullPath, FileMode.Create))
                 {
                     hosp.CovePath = Path.Combine(@"images", fileName);
@@ -151,7 +183,7 @@ namespace ManageHospitalApi.Controllers
             if (imageProfile != null)
             {
                 var fileName = "img" + time + imageProfile?.FileName;
-                string fullPath = Path.Combine(imagePath, fileName); 
+                string fullPath = Path.Combine(imagePath, fileName);
                 using (var fileStream = new FileStream(fullPath, FileMode.Create))
                 {
                     hosp.PictureProfilePath = Path.Combine(@"images", fileName);

@@ -1,22 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
 using AutoMapper;
 using ManageHospitalModels.Models;
+using Microsoft.AspNetCore.Authorization;
 
-namespace  ManageHospitalApi.Controllers
+namespace ManageHospitalApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
-    [ApiController] 
+    [ApiController]
     public class ProductController : ControllerBase
     {
-        private readonly ManageHospitalDBContext _context; 
+        private readonly ManageHospitalDBContext _context;
         private readonly IMapper _mapper;
 
 
@@ -30,7 +32,7 @@ namespace  ManageHospitalApi.Controllers
         [HttpGet]
         public IEnumerable<ProductModel> GetPatients()
         {
-            return _mapper.Map<IEnumerable<ProductModel>>(_context.Products); 
+            return _mapper.Map<IEnumerable<ProductModel>>(_context.Products);
         }
 
         // GET: api/Patients/5
@@ -49,9 +51,30 @@ namespace  ManageHospitalApi.Controllers
                 return NotFound();
             }
             var dataModel = _mapper.Map<ProductModel>(obj);
-            return Ok(dataModel); 
+            return Ok(dataModel);
         }
+        // GET: api/Patients/5
+        [HttpGet("name/{name}")]
+        public async Task<IActionResult> GetByName([FromRoute] string name)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
 
+            var sqlQuery = string.Format("Select * from Products where name like'%{0}%'", name);
+            var objs = _context.Products.FromSqlRaw(sqlQuery) ;
+
+            if (objs == null)
+            {
+                return NotFound();
+            }
+
+            var dataModels = _mapper.Map<IEnumerable<ProductModel>>(objs);
+            var result =await Task.FromResult(dataModels);
+
+            return Ok(result);
+        }
         // PUT: api/Productss/5
         [HttpPut("{Id}")]
         public async Task<IActionResult> PutProducts([FromRoute] Guid Id, [FromBody] Product obj)
@@ -103,6 +126,7 @@ namespace  ManageHospitalApi.Controllers
 
             return CreatedAtAction("GetById", new { Id = obj.Id }, obj);
         }
+
 
         // DELETE: api/Productss/5
         [HttpDelete("{Id}")]

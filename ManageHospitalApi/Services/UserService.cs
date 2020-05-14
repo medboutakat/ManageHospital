@@ -72,7 +72,7 @@ namespace ManageHospitalApi.Services
 
             var guidId = (user.GetType() == typeof(Patient)) ?
                 StaticObject.PatientId : 
-                StaticObject.AdminId;
+                StaticObject.CompanyId;
 
             var getType = user.GetType();
             user.RoleId = guidId;

@@ -1,35 +1,42 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks; 
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore; 
+using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Cors;
 using ManageHospitalData;
 using ManageHospitalData.Entities;
 using AutoMapper;
 using ManageHospitalModels.Models;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
 
-namespace  ManageHospitalApi.Controllers
+namespace ManageHospitalApi.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
-    [ApiController] 
+    [ApiController]
     public class ProductImageController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
         private readonly IMapper _mapper;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProductImageController(ManageHospitalDBContext context, IMapper mapper)
+        public ProductImageController(ManageHospitalDBContext context, IMapper mapper, IWebHostEnvironment webHostEnvironment)
         {
             _context = context;
             _mapper = mapper;
+            _webHostEnvironment = webHostEnvironment;
         }
 
         // GET: api/OperationCategories
         [HttpGet]
         public IEnumerable<ProductImageModel> GetOperationCategories()
         {
-            return _mapper.Map<IEnumerable<ProductImageModel>>(_context.ProductImages); 
+            return _mapper.Map<IEnumerable<ProductImageModel>>(_context.ProductImages);
         }
 
         // GET: api/OperationCategories/5
@@ -90,7 +97,7 @@ namespace  ManageHospitalApi.Controllers
 
         // POST: api/OperationCategories
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] ProductImageModel obj)
+        public async Task<IActionResult> PostProductCategorie([FromBody] ProductImageModelForm obj)
         {
 
 
@@ -104,6 +111,55 @@ namespace  ManageHospitalApi.Controllers
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetById", new { Id = obj.Id }, obj);
+        }
+         
+
+        [HttpPut("UpdateImages/{proudctId}")]
+        public async Task<IActionResult> UpdateImages([FromRoute] Guid proudctId, [FromForm]ProductImageModelForm obj)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var time = DateTime.Now.Ticks.ToString();
+
+            var product = _context.Products.FirstOrDefault(e => e.Id == proudctId);
+            if (product == null)
+                product = new Product();
+
+            //Getting Image
+            var imageCover = obj.ImageCoverForm;
+            //Saving Image on Server
+
+            var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images");
+            var fullPathName = "";
+            if (imageCover != null)
+            {
+
+                var fileName = "img" + time + imageCover?.FileName;
+                string fullPath = Path.Combine(imagePath, fileName);
+                fullPathName = Path.Combine(@"images", fileName);
+                var imageId = Guid.NewGuid();
+                using (var fileStream = new FileStream(fullPath, FileMode.Create))
+                {
+                    ProductImage productImage = new ProductImage
+                    {
+                        Id = imageId,
+                        Path = fullPathName
+                    };
+
+                    product.ProductImages.Add(productImage);
+
+                }
+            }
+
+
+            _context.Entry(product).State = EntityState.Modified; 
+            await _context.SaveChangesAsync();
+
+            return Ok(fullPathName);
+
+
         }
 
         // DELETE: api/OperationCategories/5

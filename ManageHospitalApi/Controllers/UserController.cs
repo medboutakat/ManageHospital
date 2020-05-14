@@ -15,7 +15,7 @@ using System.Text;
 
 namespace ManageHospitalApi.Controllers
 {
-
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class UsersController : ControllerBase
