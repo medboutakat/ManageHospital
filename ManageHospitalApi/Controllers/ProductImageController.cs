@@ -34,7 +34,7 @@ namespace ManageHospitalApi.Controllers
 
         // GET: api/OperationCategories
         [HttpGet]
-        public IEnumerable<ProductImageModel> GetOperationCategories()
+        public IEnumerable<ProductImageModel> GetAll()
         {
             return _mapper.Map<IEnumerable<ProductImageModel>>(_context.ProductImages);
         }
@@ -57,6 +57,27 @@ namespace ManageHospitalApi.Controllers
             var dataModel = _mapper.Map<ProductImageModel>(obj);
             return Ok(dataModel);
         }
+
+
+        // GET: api/OperationCategories/5
+        [HttpGet("product/{productId}")]
+        public async Task<IActionResult> product([FromRoute] Guid productId)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var obj = await _context.ProductImages.Where(x => x.ProductId == productId).ToListAsync();
+
+            if (obj == null)
+            {
+                return NotFound();
+            }
+            var dataModel = _mapper.Map<ProductImageModel>(obj);
+            return Ok(dataModel);
+        }
+
 
         // PUT: api/OperationCategories/5
         [HttpPut("{Id}")]
@@ -112,7 +133,7 @@ namespace ManageHospitalApi.Controllers
 
             return CreatedAtAction("GetById", new { Id = obj.Id }, obj);
         }
-         
+
 
         [HttpPut("UpdateImages/{proudctId}")]
         public async Task<IActionResult> UpdateImages([FromRoute] Guid proudctId, [FromForm]ProductImageModelForm obj)
@@ -154,7 +175,7 @@ namespace ManageHospitalApi.Controllers
             }
 
 
-            _context.Entry(product).State = EntityState.Modified; 
+            _context.Entry(product).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return Ok(fullPathName);

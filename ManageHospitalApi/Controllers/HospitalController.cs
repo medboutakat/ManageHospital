@@ -16,25 +16,23 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace ManageHospitalApi.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class HospitalController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
-        private readonly IMapper _mapper;
-        private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly IMapper _mapper; 
 
-        public HospitalController(ManageHospitalDBContext context, IMapper mapper, IWebHostEnvironment webHostEnvironment)
+        public HospitalController(ManageHospitalDBContext context, IMapper mapper )
         {
             _context = context;
-            _mapper = mapper;
-            _webHostEnvironment = webHostEnvironment;
+            _mapper = mapper; 
         }
 
         // GET: api/OperationCategories
         [HttpGet]
-        public IEnumerable<HospitalModel> GetObjects()
+        public IEnumerable<HospitalModel> GetAll()
         {
             return _mapper.Map<IEnumerable<HospitalModel>>(_context.Hospitals);
         }
@@ -124,18 +122,35 @@ namespace ManageHospitalApi.Controllers
         }
 
 
+        //public async Task<IActionResult> Download(string filename)
+        //{
+        //    if (filename == null)
+        //        return Content("filename not present");
+
+        //    var path = Path.Combine(
+        //                   Directory.GetCurrentDirectory(),
+        //                   "wwwroot", filename);
+
+        //    var memory = new MemoryStream();
+        //    using (var stream = new FileStream(path, FileMode.Open))
+        //    {
+        //        await stream.CopyToAsync(memory);
+        //    }
+        //    memory.Position = 0;
+        //    return File(memory, GetContentType(path), Path.GetFileName(path));
+        //}
+
         [HttpPost("Picture")]
         public async Task<IActionResult> Post(List<IFormFile> files)
         {
             try
-            {
-                var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images");
+            { 
 
                 foreach (var file in files)
                 { 
                     var time = DateTime.Now.Ticks;
                     var fileName = "img" + time + file.FileName;
-                    string fullPath = Path.Combine(imagePath, fileName);
+                    string fullPath = Path.Combine(FolderCreator.ImagePath, fileName);
                     using (var fileStream = new FileStream(fullPath, FileMode.Create))
                     {
                         //hosp.CovePath = Path.Combine(@"images", fileName);
@@ -150,9 +165,9 @@ namespace ManageHospitalApi.Controllers
             }
         }
 
-        [HttpPut("UpdateImages/{Id}")]
+        [HttpPut("UpdateImages/{id}")]
         public async Task<IActionResult> UpdateImages([FromRoute] Guid id, [FromForm]HospitalImages obj)
-        {
+        { 
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
@@ -167,25 +182,26 @@ namespace ManageHospitalApi.Controllers
             var imageCover = obj.ImageCoverForm;
             var imageProfile = obj.ImageProfileForm;
             //Saving Image on Server
-
-            var imagePath = Path.Combine(_webHostEnvironment.WebRootPath, @"images");
+             
 
             if (imageCover != null)
             {
 
                 var fileName = "img" + time + imageCover?.FileName;
-                string fullPath = Path.Combine(imagePath, fileName);
+                string fullPath = Path.Combine(FolderCreator.ImagePath, fileName);
                 using (var fileStream = new FileStream(fullPath, FileMode.Create))
                 {
+                    imageCover.CopyTo(fileStream);
                     hosp.CovePath = Path.Combine(@"images", fileName);
                 }
             }
             if (imageProfile != null)
             {
                 var fileName = "img" + time + imageProfile?.FileName;
-                string fullPath = Path.Combine(imagePath, fileName);
+                string fullPath = Path.Combine(FolderCreator.ImagePath, fileName);
                 using (var fileStream = new FileStream(fullPath, FileMode.Create))
                 {
+                    imageProfile.CopyTo(fileStream);
                     hosp.PictureProfilePath = Path.Combine(@"images", fileName);
                 }
             }

@@ -44,6 +44,7 @@ namespace ManageHospitalData
         public DbSet<Ansurance> Assurances { get; set; }
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
+        public DbSet<Customer> Customers { get; set; }
 
         public DbSet<City> Cities { get; set; }
         public DbSet<Region> Regions { get; set; }
@@ -64,19 +65,7 @@ namespace ManageHospitalData
             modelBuilder.Entity<Role>().HasData(
                 new Role { Id = StaticObject.CompanyId, Name = "Admin", Remark = "Company" }
             );
-
-            modelBuilder.Entity<Role>().HasData(
-                          new Role { Id = Guid.NewGuid(), Name = "Patient", Remark = "Patient" }
-            );
-
-            modelBuilder.Entity<Role>().HasData(
-               new Role { Id = Guid.NewGuid(), Name = "Assusstance", Remark = "Assusstance" }
-            );
-
-            modelBuilder.Entity<Role>().HasData(
-            new Role { Id = Guid.NewGuid(), Name = "Doctor", Remark = "Doctor" }
-            ); 
-
+            
         }
     }
 }

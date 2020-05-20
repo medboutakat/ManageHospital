@@ -29,7 +29,7 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/Assurances
         [HttpGet]
-        public IEnumerable<AnsuranceModel> GetAnssurances()
+        public IEnumerable<AnsuranceModel> GetAll()
         { 
             return _mapper.Map<IEnumerable<AnsuranceModel>>(_context.Assurances); 
         }

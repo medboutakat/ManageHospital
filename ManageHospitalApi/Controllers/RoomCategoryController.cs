@@ -29,7 +29,7 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/RoomCategories
         [HttpGet]
-        public IEnumerable<RoomCategoryModel> GetRoomCategories()
+        public IEnumerable<RoomCategoryModel> GetAll()
         {
             return _mapper.Map<IEnumerable<RoomCategoryModel>>(_context.RoomCategories);  
         }

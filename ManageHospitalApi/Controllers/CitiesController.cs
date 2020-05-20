@@ -23,7 +23,7 @@ namespace ManageHospitalApi.Controllers
 
         // GET: api/City
         [HttpGet]
-        public IEnumerable<CityModel> GetObjects()
+        public IEnumerable<CityModel> GetAll()
         {
             var data = _context.Cities.AsEnumerable();
             var dataModel = _mapper.Map<IEnumerable<CityModel>>(data);

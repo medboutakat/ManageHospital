@@ -28,7 +28,7 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/AppointementStatus
         [HttpGet]
-        public IEnumerable<AppointementStatusModel> GetObjects()
+        public IEnumerable<AppointementStatusModel> GetAll()
         {
             var data = _context.AppointementStatuss.AsEnumerable();
             var dataModel = _mapper.Map<IEnumerable<AppointementStatusModel>>(data);

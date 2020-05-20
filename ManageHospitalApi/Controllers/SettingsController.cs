@@ -28,7 +28,7 @@ namespace ManageHospitalApi.Controllers
 
         // GET: api/Doctors
         [HttpGet]
-        public IEnumerable<SettingsModel> GetObjects()
+        public IEnumerable<SettingsModel> GetAll()
         {
             return _mapper.Map<IEnumerable<SettingsModel>>(_context.Settings);
         }

@@ -30,10 +30,18 @@ namespace ManageHospitalApi.Controllers
 
         // GET: api/Patients
         [HttpGet]
-        public IEnumerable<ProductModel> GetPatients()
+        public IEnumerable<ProductModel> GetAll()
         {
             return _mapper.Map<IEnumerable<ProductModel>>(_context.Products);
         }
+
+        // GET: api/Patients
+        [HttpGet]
+        [HttpGet("category/{categoryId}")]
+        public IEnumerable<ProductModel> GetObjectsBayCategory(Guid categoryId)
+        {
+            return _mapper.Map<IEnumerable<ProductModel>>(_context.Products.Where(x => x.ProductCategoryId == categoryId));
+        } 
 
         // GET: api/Patients/5
         [HttpGet("{Id}")]
@@ -63,7 +71,7 @@ namespace ManageHospitalApi.Controllers
             }
 
             var sqlQuery = string.Format("Select * from Products where name like'%{0}%'", name);
-            var objs = _context.Products.FromSqlRaw(sqlQuery) ;
+            var objs = _context.Products.FromSqlRaw(sqlQuery);
 
             if (objs == null)
             {
@@ -71,7 +79,7 @@ namespace ManageHospitalApi.Controllers
             }
 
             var dataModels = _mapper.Map<IEnumerable<ProductModel>>(objs);
-            var result =await Task.FromResult(dataModels);
+            var result = await Task.FromResult(dataModels);
 
             return Ok(result);
         }

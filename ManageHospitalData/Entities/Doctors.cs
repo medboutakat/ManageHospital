@@ -12,6 +12,7 @@ namespace ManageHospitalData.Entities
 
         public ICollection<DoctorOperation> DoctorOperations { get; set; }
 
+        public Guid DoctorCategoryId { get; set; }
         public DoctorCategory DoctorCategory { get; set; }
          
     }

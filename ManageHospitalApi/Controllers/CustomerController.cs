@@ -16,46 +16,46 @@ namespace  ManageHospitalApi.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController] 
-    public class RoomController : ControllerBase
+    public class CustomerController : ControllerBase
     {
-        private readonly ManageHospitalDBContext _context; 
+        private readonly ManageHospitalDBContext _context;
         private readonly IMapper _mapper;
 
-        public RoomController(ManageHospitalDBContext context, IMapper mapper)
+        public CustomerController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
         }
 
-        // GET: api/Rooms
+        // GET: api/Doctors
         [HttpGet]
-        public IEnumerable<RoomModel> GetAll()
+        public IEnumerable<CustomerModel> GetAll()
         {
-            return _mapper.Map<IEnumerable<RoomModel>>(_context.Rooms); 
+            return _mapper.Map<IEnumerable<CustomerModel>>(_context.Customers); 
         }
 
-        // GET: api/Rooms/5
+        // GET: api/Doctors/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetRooms([FromRoute] Guid Id)
+        public async Task<IActionResult> GetById([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var obj = await _context.Rooms.FindAsync(Id);
+            var obj = await _context.Customers.FindAsync(Id);
 
             if (obj == null)
             {
                 return NotFound();
             }
-            var dataModel = _mapper.Map<RoomModel>(obj);
+            var dataModel = _mapper.Map<CustomerModel>(obj);
             return Ok(dataModel); 
         }
 
-        // PUT: api/Roomss/5
+        // PUT: api/Doctors/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutRooms([FromRoute] Guid Id, [FromBody] Room obj)
+        public async Task<IActionResult> PutDoctors([FromRoute] Guid Id, [FromBody] Customer obj)
         {
             if (!ModelState.IsValid)
             {
@@ -88,9 +88,9 @@ namespace  ManageHospitalApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Roomss
+        // POST: api/Doctors
         [HttpPost]
-        public async Task<IActionResult> PostRooms([FromBody] Room obj)
+        public async Task<IActionResult> PostDoctors([FromBody] Customer obj)
         {
 
 
@@ -99,28 +99,28 @@ namespace  ManageHospitalApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Rooms.Add(obj);
+            _context.Customers.Add(obj);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetRooms", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetById", new { Id = obj.Id }, obj);
         }
 
-        // DELETE: api/Roomss/5
+        // DELETE: api/Doctors/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteRooms([FromRoute] Guid Id)
+        public async Task<IActionResult> Delete([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            var obj = await _context.Rooms.FindAsync(Id);
+            var obj = await _context.Customers.FindAsync(Id);
             if (obj == null)
             {
                 return NotFound();
             }
 
-            _context.Rooms.Remove(obj);
+            _context.Customers.Remove(obj);
             await _context.SaveChangesAsync();
 
             return Ok(obj);
@@ -128,7 +128,7 @@ namespace  ManageHospitalApi.Controllers
 
         private bool Exists(Guid Id)
         {
-            return _context.Rooms.Any(e => e.Id == Id);
+            return _context.Customers.Any(e => e.Id == Id);
         }
     }
 }

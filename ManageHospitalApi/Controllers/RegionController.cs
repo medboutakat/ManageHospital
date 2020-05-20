@@ -28,7 +28,7 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/Region
         [HttpGet]
-        public IEnumerable<RegionModel> GetObjects()
+        public IEnumerable<RegionModel> GetAll()
         {
             var data = _context.Regions.AsEnumerable();
             var dataModel = _mapper.Map<IEnumerable<RegionModel>>(data);

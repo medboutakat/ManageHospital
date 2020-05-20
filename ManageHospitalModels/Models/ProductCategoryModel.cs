@@ -6,9 +6,9 @@ namespace   ManageHospitalModels.Models
     {
         public ProductCategoryModel()
         {
-            OperationsModel = new HashSet<OperationModel>();
+            ProductsModel = new HashSet<ProductModel>();
         }
 
-        public ICollection<OperationModel> OperationsModel { get; set; }
+        public ICollection<ProductModel> ProductsModel { get; set; }
     } 
 }

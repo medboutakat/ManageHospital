@@ -29,7 +29,7 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/Contacts
         [HttpGet]
-        public IEnumerable<ContactModel> GetContacts()
+        public IEnumerable<ContactModel> GetAll()
         {
             return _mapper.Map<IEnumerable<ContactModel>>(_context.Contacts);
         }

@@ -28,7 +28,7 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/Invoice
         [HttpGet]
-        public IEnumerable<InvoiceModel> GetObjects()
+        public IEnumerable<InvoiceModel> GetAll()
         {
             var data = _context.Invoices.AsEnumerable();
             var dataModel = _mapper.Map<IEnumerable<InvoiceModel>>(data);

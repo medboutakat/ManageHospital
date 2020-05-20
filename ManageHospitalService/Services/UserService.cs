@@ -69,7 +69,7 @@ namespace ManageHospitalService.Services
 
             user.PasswordHash = passwordHash;
             user.PasswordSalt = passwordSalt;
-            user.RoleId = StaticObject.AdminId;
+            user.RoleId = StaticObject.CompanyId;
             _context.Users.Add(user);
             _context.SaveChanges();
 

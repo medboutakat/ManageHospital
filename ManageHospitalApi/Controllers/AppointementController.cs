@@ -84,7 +84,7 @@ namespace ManageHospitalApi.Controllers
         }
         // GET: api/ProductCategories
         [HttpGet]
-        public IEnumerable<AppointementModel> GetAppointements()
+        public IEnumerable<AppointementModel> GetAll()
         {
             var appi = _context.Appointements.AsEnumerable();
             var appointements = _mapper.Map<IEnumerable<AppointementModel>>(appi);

@@ -40,7 +40,7 @@ namespace ManageHospitalApi.Controllers
             var user = _userService.Authenticate(model.Username, model.Password);
 
             if (user == null)
-                return BadRequest(new { message = "Username or password is incorrect" });
+                return BadRequest("Username or password is incorrect");
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
@@ -78,7 +78,7 @@ namespace ManageHospitalApi.Controllers
             try
             {
                 var userType = GetUserType(model.UserType);
-                var user = _mapper.Map(model, typeof(RegisterModel), userType);
+                var user = _mapper.Map(model, typeof(RegisterModel), userType); 
 
                 // create user
                 _userService.Create((User)user, model.Password);
@@ -99,8 +99,8 @@ namespace ManageHospitalApi.Controllers
             {
                 //case "User": type = typeof(User); break;
                 //case "Doctor": type = typeof(Doctor); break;
-                case "patient": type = typeof(Patient); break; 
-            } 
+                case "patient": type = typeof(Patient); break;
+            }
             return type;
         }
 

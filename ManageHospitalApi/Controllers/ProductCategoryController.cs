@@ -29,7 +29,7 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/OperationCategories
         [HttpGet]
-        public IEnumerable<ProductCategoryModel> GetOperationCategories()
+        public IEnumerable<ProductCategoryModel> GetAll()
         {
             return _mapper.Map<IEnumerable<ProductCategoryModel>>(_context.ProductCategories); 
         }

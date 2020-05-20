@@ -17,7 +17,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
-using Microsoft.IdentityModel.Tokens; 
+using Microsoft.IdentityModel.Tokens;
+using NSwag;
+using NSwag.Generation.Processors.Security;
 
 namespace ManageHospitalApi
 {
@@ -55,7 +57,7 @@ namespace ManageHospitalApi
 
             services.AddDirectoryBrowser();
 
-            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies()); 
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             services.AddRazorPages();
 
@@ -110,12 +112,24 @@ namespace ManageHospitalApi
 
             // configure DI for application services
             services.AddScoped<IUserService, UserService>();
-            #endregion
+            #endregion 
 
             services.AddOpenApiDocument(configure =>
             {
                 configure.Title = "ManageHospital API";
+                configure.AddSecurity(appSettings.Secret, Enumerable.Empty<string>(), new OpenApiSecurityScheme
+                {
+                    Type = OpenApiSecuritySchemeType.ApiKey,
+                    Name = "Authorization",
+                    In = OpenApiSecurityApiKeyLocation.Header,
+                    Description = "Type into the textbox: Bearer {your JWT token}."
+                });
+
+                configure.OperationProcessors.Add(
+                    new AspNetCoreOperationSecurityScopeProcessor("bearer"));
+                //      new OperationSecurityScopeProcessor("bearer"));
             });
+           https://github.com/RicoSuter/NSwag/wiki/AspNetCore-Middleware
 
             _services = services;
         }
@@ -147,9 +161,18 @@ namespace ManageHospitalApi
 
             app.UseStaticFiles();
 
+
+            FolderCreator.CreateIfNotExist();
+
+            app.UseStaticFiles(new StaticFileOptions()
+            {
+                FileProvider = new PhysicalFileProvider(FolderCreator.ImagePath),
+                RequestPath = new PathString("/MyImages")
+            });
+
             app.UseDirectoryBrowser(new DirectoryBrowserOptions()
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"wwwroot\images")),
+                FileProvider = new PhysicalFileProvider(FolderCreator.ImagePath),
                 RequestPath = new PathString("/MyImages")
             });
 
@@ -188,7 +211,7 @@ namespace ManageHospitalApi
             ////    }
             ////});
         }
- 
+
 
         private void RegisteredServicesPage(IApplicationBuilder app)
         {
