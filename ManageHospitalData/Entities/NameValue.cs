@@ -2,10 +2,10 @@
 
 namespace ManageHospitalData.Entities
 {
-    public abstract class NameValue
+    public abstract class NameRemark
     {
         public Guid Id { set; get; }
         public string Name { set; get; }
-        public string Value { set; get; }
+        public string Remark { set; get; }
     } 
 }

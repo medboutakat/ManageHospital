@@ -16,12 +16,12 @@ namespace  ManageHospitalApi.Controllers
     [Authorize]
     [Route("api/[controller]")]
     [ApiController] 
-    public class ProductCategoryController : ControllerBase
+    public class TaxController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
         private readonly IMapper _mapper;
 
-        public ProductCategoryController(ManageHospitalDBContext context, IMapper mapper)
+        public TaxController(ManageHospitalDBContext context, IMapper mapper)
         {
             _context = context;
             _mapper = mapper;
@@ -29,9 +29,9 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/OperationCategories
         [HttpGet]
-        public IEnumerable<ProductCategoryModel> GetAll()
+        public IEnumerable<TaxModel> GetAll()
         {
-            return _mapper.Map<IEnumerable<ProductCategoryModel>>(_context.ProductCategories); 
+            return _mapper.Map<IEnumerable<TaxModel>>(_context.Taxs); 
         }
 
         // GET: api/OperationCategories/5
@@ -43,19 +43,19 @@ namespace  ManageHospitalApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var obj = await _context.ProductCategories.FindAsync(Id);
+            var obj = await _context.Taxs.FindAsync(Id);
 
             if (obj == null)
             {
                 return NotFound();
             }
-            var dataModel = _mapper.Map<ProductCategoryModel>(obj);
+            var dataModel = _mapper.Map<TaxModel>(obj);
             return Ok(dataModel);
         }
 
         // PUT: api/OperationCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] ProductCategoryModel obj)
+        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] TaxModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace  ManageHospitalApi.Controllers
                 return BadRequest();
             }
 
-            var dataModel = _mapper.Map<ProductCategoryModel>(obj);
+            var dataModel = _mapper.Map<Tax>(obj);
 
             _context.Entry(dataModel).State = EntityState.Modified;
 
@@ -92,7 +92,7 @@ namespace  ManageHospitalApi.Controllers
 
         // POST: api/OperationCategories
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] ProductCategory obj)
+        public async Task<IActionResult> PostProductCategorie([FromBody] Tax obj)
         {
 
 
@@ -101,7 +101,7 @@ namespace  ManageHospitalApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.ProductCategories.Add(obj);
+            _context.Taxs.Add(obj);
             await _context.SaveChangesAsync();
 
             return CreatedAtAction("GetById", new { Id = obj.Id }, obj);
@@ -116,13 +116,13 @@ namespace  ManageHospitalApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            var obj = await _context.ProductCategories.FindAsync(Id);
+            var obj = await _context.Taxs.FindAsync(Id);
             if (obj == null)
             {
                 return NotFound();
             }
 
-            _context.ProductCategories.Remove(obj);
+            _context.Taxs.Remove(obj);
             await _context.SaveChangesAsync();
 
             return Ok(obj);
@@ -130,7 +130,7 @@ namespace  ManageHospitalApi.Controllers
 
         private bool Exists(Guid Id)
         {
-            return _context.ProductCategories.Any(e => e.Id == Id);
+            return _context.Taxs.Any(e => e.Id == Id);
         }
     }
 }
