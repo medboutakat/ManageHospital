@@ -40,7 +40,7 @@ namespace ManageHospitalApi.Controllers
         public IEnumerable<ProductModel> GetByCategoryId(Guid categoryId)
         {
             return _mapper.Map<IEnumerable<ProductModel>>(_context.Products.Where(x => x.ProductCategoryId == categoryId));
-        } 
+        }
 
         // GET: api/Patients/5
         [HttpGet("{Id}")]
@@ -84,7 +84,7 @@ namespace ManageHospitalApi.Controllers
         }
         // PUT: api/Productss/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProducts([FromRoute] Guid Id, [FromBody] Product obj)
+        public async Task<IActionResult> Edit([FromRoute] Guid Id, [FromBody] Product obj)
         {
             if (!ModelState.IsValid)
             {
@@ -119,7 +119,7 @@ namespace ManageHospitalApi.Controllers
 
         // POST: api/Productss
         [HttpPost]
-        public async Task<IActionResult> PostProducts([FromBody] Product obj)
+        public async Task<IActionResult> Add([FromBody] Product obj)
         {
 
 
@@ -135,7 +135,7 @@ namespace ManageHospitalApi.Controllers
         }
         // DELETE: api/Productss/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProducts([FromRoute] Guid Id)
+        public async Task<IActionResult> Delete([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {

@@ -37,7 +37,7 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/AppointementStatus/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetObject([FromRoute] Guid Id)
+        public async Task<IActionResult> GetById([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -56,7 +56,7 @@ namespace  ManageHospitalApi.Controllers
 
         // PUT: api/AppointementStatus/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutObject([FromRoute] Guid Id, [FromBody] AppointementStatusModel obj)
+        public async Task<IActionResult> Edit([FromRoute] Guid Id, [FromBody] AppointementStatusModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -92,7 +92,7 @@ namespace  ManageHospitalApi.Controllers
 
         // POST: api/AppointementStatus
         [HttpPost]
-        public async Task<IActionResult> PostObject([FromBody] AppointementStatusModel obj)
+        public async Task<IActionResult> Add([FromBody] AppointementStatusModel obj)
         {
 
 
@@ -107,12 +107,12 @@ namespace  ManageHospitalApi.Controllers
 
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetObject", new { Id = obj.Id }, dataModel);
+            return CreatedAtAction("GetById", new { Id = obj.Id }, dataModel);
         }
 
         // DELETE: api/AppointementStatus/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteObject([FromRoute] Guid Id)
+        public async Task<IActionResult> Delete ([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {

@@ -55,7 +55,7 @@ namespace  ManageHospitalApi.Controllers
 
         // PUT: api/Roomss/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutRooms([FromRoute] Guid Id, [FromBody] Room obj)
+        public async Task<IActionResult> Edit([FromRoute] Guid Id, [FromBody] Room obj)
         {
             if (!ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace  ManageHospitalApi.Controllers
 
         // POST: api/Roomss
         [HttpPost]
-        public async Task<IActionResult> PostRooms([FromBody] Room obj)
+        public async Task<IActionResult> Add([FromBody] Room obj)
         {
 
 

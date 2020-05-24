@@ -55,7 +55,7 @@ namespace  ManageHospitalApi.Controllers
 
         // PUT: api/Doctors/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutDoctors([FromRoute] Guid Id, [FromBody] Customer obj)
+        public async Task<IActionResult> Edit([FromRoute] Guid Id, [FromBody] Customer obj)
         {
             if (!ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace  ManageHospitalApi.Controllers
 
         // POST: api/Doctors
         [HttpPost]
-        public async Task<IActionResult> PostDoctors([FromBody] Customer obj)
+        public async Task<IActionResult> Add([FromBody] CustomerModel obj)
         {
 
 
@@ -99,10 +99,11 @@ namespace  ManageHospitalApi.Controllers
                 return BadRequest(ModelState);
             }
 
-            _context.Customers.Add(obj);
+            var dataModel = _mapper.Map<Customer>(obj);
+            _context.Customers.Add(dataModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetById", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetById", new { Id = obj.Id }, dataModel);
         }
 
         // DELETE: api/Doctors/5

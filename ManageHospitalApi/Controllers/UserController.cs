@@ -121,7 +121,7 @@ namespace ManageHospitalApi.Controllers
         }
 
         [HttpPut("{id}")]
-        public IActionResult Update(Guid id, [FromBody]UserModel model)
+        public IActionResult Edit(Guid id, [FromBody]UserModel model)
         {
             // map model to entity and set id
             var user = _mapper.Map<User>(model);

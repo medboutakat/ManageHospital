@@ -36,7 +36,7 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/OperationCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> GetById([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -55,7 +55,7 @@ namespace  ManageHospitalApi.Controllers
 
         // PUT: api/OperationCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutProductCategorie([FromRoute] Guid Id, [FromBody] HospitalCategoryModel obj)
+        public async Task<IActionResult> Edit([FromRoute] Guid Id, [FromBody] HospitalCategoryModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace  ManageHospitalApi.Controllers
 
         // POST: api/OperationCategories
         [HttpPost]
-        public async Task<IActionResult> PostProductCategorie([FromBody] HospitalCategory obj)
+        public async Task<IActionResult> Add([FromBody] HospitalCategory obj)
         {
 
 
@@ -102,12 +102,12 @@ namespace  ManageHospitalApi.Controllers
             _context.HospitalCategories.Add(obj);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetOperationCategories", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetById", new { Id = obj.Id }, obj);
         }
 
         // DELETE: api/OperationCategories/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteProductCategorie([FromRoute] Guid Id)
+        public async Task<IActionResult> Delete ([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {

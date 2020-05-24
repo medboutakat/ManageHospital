@@ -56,7 +56,7 @@ namespace  ManageHospitalApi.Controllers
 
         // PUT: api/Patientss/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutPatients([FromRoute] Guid Id, [FromBody] Patient obj)
+        public async Task<IActionResult> Edit([FromRoute] Guid Id, [FromBody] Patient obj)
         {
             if (!ModelState.IsValid)
             {
@@ -91,7 +91,7 @@ namespace  ManageHospitalApi.Controllers
 
         // POST: api/Patientss
         [HttpPost]
-        public async Task<IActionResult> PostPatients([FromBody] Patient obj)
+        public async Task<IActionResult> Add([FromBody] Patient obj)
         {
 
 
@@ -108,7 +108,7 @@ namespace  ManageHospitalApi.Controllers
 
         // DELETE: api/Patientss/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeletePatients([FromRoute] Guid Id)
+        public async Task<IActionResult> Delete([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {

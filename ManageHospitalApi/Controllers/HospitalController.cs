@@ -39,7 +39,7 @@ namespace ManageHospitalApi.Controllers
 
         // GET: api/OperationCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetObject([FromRoute] Guid Id)
+        public async Task<IActionResult> GetById([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -67,7 +67,7 @@ namespace ManageHospitalApi.Controllers
 
         // PUT: api/OperationCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutObject([FromRoute] Guid Id, [FromBody] HospitalModel obj)
+        public async Task<IActionResult> Edit([FromRoute] Guid Id, [FromBody] HospitalModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -104,7 +104,7 @@ namespace ManageHospitalApi.Controllers
 
         // POST: api/OperationCategories
         [HttpPost]
-        public async Task<IActionResult> PostObject([FromBody]HospitalModel model)
+        public async Task<IActionResult> Add([FromBody]HospitalModel model)
         {
             if (!ModelState.IsValid)
             {
@@ -118,7 +118,7 @@ namespace ManageHospitalApi.Controllers
 
             var dataModel = _mapper.Map<HospitalModel>(model);
 
-            return CreatedAtAction("GetObject", new { Id = model.Id }, dataModel);
+            return CreatedAtAction("GetById", new { Id = model.Id }, dataModel);
         }
 
 
@@ -141,7 +141,7 @@ namespace ManageHospitalApi.Controllers
         //}
 
         [HttpPost("Picture")]
-        public async Task<IActionResult> Post(List<IFormFile> files)
+        public async Task<IActionResult> Add(List<IFormFile> files)
         {
             try
             { 
@@ -166,7 +166,7 @@ namespace ManageHospitalApi.Controllers
         }
 
         [HttpPut("UpdateImages/{id}")]
-        public async Task<IActionResult> UpdateImages([FromRoute] Guid id, [FromForm]HospitalImages obj)
+        public async Task<IActionResult> Edit([FromRoute] Guid id, [FromForm]HospitalImages obj)
         { 
             if (!ModelState.IsValid)
             {

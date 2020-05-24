@@ -23,7 +23,7 @@ namespace WebUI.Controllers
         }
 
         [HttpPost, DisableRequestSizeLimit]
-        public ActionResult UploadFile()
+        public ActionResult Add()
         {
             try
             {

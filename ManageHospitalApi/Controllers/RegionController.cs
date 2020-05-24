@@ -37,7 +37,7 @@ namespace  ManageHospitalApi.Controllers
 
         // GET: api/Region/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetObject([FromRoute] int Id)
+        public async Task<IActionResult> GetById([FromRoute] int Id)
         {
             if (!ModelState.IsValid)
             {

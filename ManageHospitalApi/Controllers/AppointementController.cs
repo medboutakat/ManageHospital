@@ -15,7 +15,7 @@ namespace ManageHospitalApi.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
-    [ApiController] 
+    [ApiController]
     public class AppointementController : ControllerBase
     {
         private readonly ManageHospitalDBContext _context;
@@ -46,8 +46,8 @@ namespace ManageHospitalApi.Controllers
             int pageSize = 10;
             var apiQUiry = appi.AsQueryable<Appointement>();
             var data = PagingList<Appointement>.CreateAsync(apiQUiry, pageNo ?? 1, pageSize);
-           
-            var dt = this.SortAppointement(data , sortField, currentSortField, currentSortOrder);
+
+            var dt = this.SortAppointement(data, sortField, currentSortField, currentSortOrder);
             return dt;
         }
         private List<Appointement> SortAppointement(List<Appointement> employees, string sortField, string currentSortField, string currentSortOrder)
@@ -63,7 +63,7 @@ namespace ManageHospitalApi.Controllers
             {
                 if (currentSortField == sortField)
                 {
-                    sortOrder = currentSortOrder == "Asc" ? "Desc" : "Asc"; 
+                    sortOrder = currentSortOrder == "Asc" ? "Desc" : "Asc";
                 }
                 else
                 {
@@ -94,7 +94,7 @@ namespace ManageHospitalApi.Controllers
 
         // GET: api/ProductCategories/5
         [HttpGet("{Id}")]
-        public async Task<IActionResult> GetAppointements([FromRoute] Guid Id)
+        public async Task<IActionResult> GetById([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
@@ -116,7 +116,7 @@ namespace ManageHospitalApi.Controllers
 
         // PUT: api/ProductCategories/5
         [HttpPut("{Id}")]
-        public async Task<IActionResult> PutAppointements([FromRoute] Guid Id, [FromBody] AppointementModel obj)
+        public async Task<IActionResult> Edit([FromRoute] Guid Id, [FromBody] AppointementModel obj)
         {
             if (!ModelState.IsValid)
             {
@@ -152,7 +152,7 @@ namespace ManageHospitalApi.Controllers
 
         // POST: api/ProductCategories
         [HttpPost]
-        public async Task<IActionResult> PostAppointements([FromBody] AppointementModel obj)
+        public async Task<IActionResult> Add([FromBody] AppointementModel obj)
         {
 
 
@@ -164,12 +164,12 @@ namespace ManageHospitalApi.Controllers
             _context.Appointements.Add(dataModel);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetAppointements", new { Id = obj.Id }, obj);
+            return CreatedAtAction("GetById", new { Id = obj.Id }, obj);
         }
 
         // DELETE: api/ProductCategories/5
         [HttpDelete("{Id}")]
-        public async Task<IActionResult> DeleteAppointements([FromRoute] Guid Id)
+        public async Task<IActionResult> Delete([FromRoute] Guid Id)
         {
             if (!ModelState.IsValid)
             {
